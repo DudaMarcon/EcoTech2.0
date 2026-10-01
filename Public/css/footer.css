@@ -1,0 +1,127 @@
+/* =========================
+   FOOTER ECOTECH
+   ========================= */
+
+.footer-ecotech {
+    background-color: var(--dark-green);
+    color: white;
+    padding: 45px 0 20px;
+    margin-top: 60px;
+}
+
+
+/* =========================
+   CONTEÚDO PRINCIPAL
+   ========================= */
+
+.footer-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+/* =========================
+   BLOCO ECOTECH
+   ========================= */
+
+.footer-info {
+    width: 50%;
+    text-align: center;
+}
+
+.footer-logo {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0 0 15px 0;
+}
+
+.footer-info p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0 auto 12px;
+}
+
+.footer-description {
+    max-width: 420px;
+}
+
+
+/* =========================
+   BLOCO CONTATO
+   ========================= */
+
+.footer-contact {
+    width: 50%;
+    text-align: center;
+}
+
+.footer-contact h4 {
+    color: white;
+    font-size: 1.1rem;
+    margin: 0 0 18px 0;
+}
+
+.footer-contact p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+
+/* =========================
+   LINHA
+   ========================= */
+
+.footer-ecotech hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    margin: 30px 0 20px;
+}
+
+
+/* =========================
+   PARTE INFERIOR
+   ========================= */
+
+.footer-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.85rem;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+
+@media (max-width: 768px) {
+
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-info,
+    .footer-contact {
+        width: 100%;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+}

@@ -1,0 +1,170 @@
+/* =========================
+   HERO - PÁGINA INICIAL
+   ========================= */
+
+.hero {
+    position: relative;
+    height: 550px;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Imagem do Hero */
+
+.hero-image {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    z-index: 1;
+}
+
+
+/* Camada escura sobre a imagem */
+
+.hero-overlay {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(31, 64, 55, 0.70);
+
+    z-index: 2;
+}
+
+
+/* Conteúdo que fica sobre a imagem */
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+
+/* Título */
+
+.hero h1 {
+    color: white;
+    font-size: 3.2rem;
+    font-weight: bold;
+}
+
+
+/* Texto */
+
+.hero p {
+    color: white;
+    font-size: 1.2rem;
+
+    margin-top: 25px;
+    margin-bottom: 35px;
+}
+
+
+/* Botão */
+
+/* Botão principal do Hero */
+
+/* Botão principal do Hero */
+
+/* Botão principal do Hero */
+
+/* =========================
+   BOTÃO DO HERO
+   ========================= */
+
+.hero .btn-hero {
+    display: inline-block;
+
+    background-color: #FFFFFF !important;
+    color: #1F4037 !important;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 12px 28px;
+
+    font-weight: bold;
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+
+/* Quando passar o mouse */
+
+.hero .btn-hero:hover {
+    background-color: #E8DFC9 !important;
+    color: #1F4037 !important;
+}
+
+/* =========================
+   BOTÕES "SAIBA MAIS"
+   ========================= */
+
+
+
+
+/* Botões das outras seções */
+
+section .btn-outline-ecotech {
+    display: inline-block;
+
+    background-color: #1F4037 !important;
+    color: white !important;
+
+    border: 2px solid #1F4037 !important;
+    border-radius: 8px;
+
+    padding: 10px 22px;
+
+    font-weight: bold;
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+
+/* Quando passar o mouse */
+
+section .btn-outline-ecotech:hover {
+    background-color: #3A6351 !important;
+    border-color: #3A6351 !important;
+    color: white !important;
+}
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+
+@media (max-width: 768px) {
+
+    .hero {
+        height: 500px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+}
+

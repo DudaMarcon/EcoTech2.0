@@ -2,27 +2,263 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>EcoTech</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/home.css">
+
+
 </head>
 
 <body>
 
+    <!-- Navbar -->
     <%- include("partials/header") %>
 
+
+    <!-- Conteúdo principal -->
     <main>
-        <h2>Bem-vindo à EcoTech!</h2>
+<!-- HERO -->
+<!-- HERO -->
+<section class="hero">
 
-        <p>
-            Uma plataforma para economia circular
-            de resíduos eletroeletrônicos.
-        </p>
-    </main>
+    <!-- Imagem de fundo do Hero -->
+    <img 
+        src="/img/freepik-15175114.jpg"
+        alt="Componentes eletrônicos para reciclagem"
+        class="hero-image"
+    >
 
+    <!-- Camada escura sobre a imagem -->
+    <div class="hero-overlay"></div>
+
+    <!-- Conteúdo do Hero -->
+    <div class="container hero-content">
+
+        <div class="row justify-content-center text-center">
+
+            <div class="col-12 col-lg-9">
+
+                <h1>
+                    Tecnologia que se renova.
+                    <br>
+                    Sustentabilidade que se transforma.
+                </h1>
+
+                <p>
+                    Dê um novo destino aos seus eletrônicos
+                    através da economia circular.
+                </p>
+
+                <a href="/login" class="btn btn-hero">
+                    Cadastrar eletrônico
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SOBRE A ECOTECH -->
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-12 col-lg-7">
+
+                <h2>
+                    O que é a EcoTech?
+                </h2>
+
+                <p>
+                    A EcoTech é uma plataforma de gestão de resíduos
+                    eletroeletrônicos baseada na economia circular.
+                    Nosso objetivo é ajudar a dar novos destinos aos
+                    eletrônicos, evitando que materiais que ainda podem
+                    ser aproveitados sejam simplesmente descartados.
+                </p>
+
+                <p>
+                    Em vez de pensar apenas em reciclagem, a EcoTech
+                    busca identificar possibilidades de
+                    <strong>reparo, reutilização, remanufatura e reciclagem</strong>.
+                </p>
+
+                <a href="/saibamais#sobre" class="btn btn-outline-ecotech">
+                    Saiba mais sobre a EcoTech
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ECONOMIA CIRCULAR -->
+<section class="home-section py-5">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <!-- Espaço para imagem -->
+            <div class="col-12 col-lg-6">
+
+                <!-- Podemos colocar uma imagem aqui depois -->
+
+            </div>
+
+            <!-- Texto à direita -->
+            <div class="col-12 col-lg-6">
+
+                <h2>
+                    Economia Circular
+                </h2>
+
+                <p>
+                    A economia circular busca aproveitar os produtos,
+                    materiais e componentes pelo maior tempo possível,
+                    evitando o descarte desnecessário.
+                </p>
+
+                <p>
+                    Na EcoTech, um eletrônico pode seguir diferentes
+                    caminhos, como <strong>reparo, reutilização,
+                    remanufatura ou reciclagem</strong>.
+                </p>
+
+                <a href="/saibamais#circular" class="btn btn-outline-ecotech">
+                    Saiba mais sobre economia circular
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="home-section py-5">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <!-- Texto à esquerda -->
+            <div class="col-12 col-lg-6">
+
+                <h2>
+                    Como funciona?
+                </h2>
+
+                <p>
+                    A EcoTech permite que o usuário cadastre um
+                    eletrônico que não utiliza mais e acompanhe
+                    o processo de análise e destinação do item.
+                </p>
+
+                <p>
+                    Depois do cadastro, a equipe da EcoTech analisa
+                    o eletrônico e define qual destino é mais
+                    adequado, buscando aproveitar seus materiais
+                    e componentes.
+                </p>
+
+                <a href="/saibamais#funciona" class="btn btn-outline-ecotech">
+                    Saiba como funciona
+                </a>
+
+            </div>
+
+            <!-- Espaço para imagem -->
+            <div class="col-12 col-lg-6">
+
+                <!-- Podemos colocar uma imagem aqui depois -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ECOPONTOS -->
+<section class="home-section py-5">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <!-- Espaço para imagem -->
+            <div class="col-12 col-lg-6">
+
+                <!-- Podemos colocar uma imagem aqui depois -->
+
+            </div>
+
+            <!-- Texto à direita -->
+            <div class="col-12 col-lg-6">
+
+                <h2>
+                    Acumule EcoPontos
+                </h2>
+
+                <p>
+                    Ao participar da EcoTech e dar um novo destino
+                    aos seus eletrônicos, o usuário pode acumular
+                    EcoPontos.
+                </p>
+
+                <p>
+                    Esses pontos podem ser utilizados para conseguir
+                    descontos em aparelhos disponíveis na plataforma,
+                    criando uma forma de incentivar o reaproveitamento
+                    e a economia circular.
+                </p>
+
+                <a href="/saibamais#ecopontos" class="btn btn-outline-ecotech">
+                    Saiba mais sobre os EcoPontos
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- Footer -->
     <%- include("partials/footer") %>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
 </body>
 
 </html>

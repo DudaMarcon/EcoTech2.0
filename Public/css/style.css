@@ -3,10 +3,10 @@
    ========================= */
 
 :root {
-    --primary-color: #468236;
-    --secondary-color: #1abc9c;
-    --dark-green: #346329;
-    --base-color: #F5EEDD;
+    --primary-color: #1F4037;   /* Verde escuro */
+    --secondary-color: #F0EADC; /* Creme */
+    --dark-green: #3A6351;      /* Verde médio */
+    --base-color: #E8DFC9;     /* Eggshell */
     --text-color: #000000;
 }
 /* =========================
@@ -215,134 +215,26 @@ footer p {
    CICLO DA ECOTECH
    ========================= */
 
+
 .ciclo-ecotech {
-    position: relative;
-    width: 650px;
-    height: 650px;
-    margin: 50px auto;
-}
-
-
-/* Círculo principal */
-
-.ciclo-ecotech::before {
-    content: "";
-    position: absolute;
-
-    width: 330px;
-    height: 330px;
-
-    border: 4px solid var(--secondary-color);
-    border-radius: 50%;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-}
-
-
-/* Centro */
-
-.ciclo-centro {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-
-    width: 150px;
-    height: 150px;
-
-    border-radius: 50%;
-
-    background-color: var(--primary-color);
-    color: white;
-
+    width: 100%;
     display: flex;
-    flex-direction: column;
-
-    align-items: center;
     justify-content: center;
-
-    text-align: center;
-
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-
-/* Itens */
-
-.ciclo-item {
-    position: absolute;
-
-    width: 150px;
-    min-height: 120px;
-
-    background-color: white;
-
-    border-radius: 15px;
-
-    padding: 15px;
-
-    text-align: center;
-
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.10);
-
-    display: flex;
-    flex-direction: column;
-
     align-items: center;
-    justify-content: center;
 }
 
+.ciclo-ecotech img {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    display: block;
 
-/* Ícones */
+    /* Bordas arredondadas */
+    border-radius: 18px;
 
-.ciclo-icon {
-    font-size: 2rem;
-    margin-bottom: 5px;
-}
+    /* Borda da EcoTech */
+    border: 2px solid var(--dark-green);
 
-
-/* Textos */
-
-.ciclo-item strong {
-    color: var(--dark-green);
-    font-size: 0.9rem;
-}
-
-.ciclo-item small {
-    margin-top: 5px;
-    font-size: 0.75rem;
-}
-
-
-/* Posições */
-
-.ciclo-usar {
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.ciclo-reparar {
-    top: 180px;
-    left: 0;
-}
-
-.ciclo-reutilizar {
-    top: 180px;
-    right: 0;
-}
-
-.ciclo-remanufaturar {
-    bottom: 20px;
-    left: 80px;
-}
-
-.ciclo-reciclar {
-    bottom: 20px;
-    right: 80px;
+    /* Sombra leve */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }

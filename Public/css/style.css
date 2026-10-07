@@ -238,3 +238,13 @@ footer p {
     /* Sombra leve */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
+
+.btn-ecotech {
+    background-color: #1F4037;
+    color: white;
+}
+
+.btn-ecotech:hover {
+    background-color: #16332c;
+    color: white;
+}

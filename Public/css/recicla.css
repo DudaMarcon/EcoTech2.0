@@ -1,0 +1,521 @@
+/* ========================================
+   ABERTURA
+======================================== */
+
+.recicla-abertura {
+    background-color: var(--primary-color);
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    padding: 80px 20px;
+}
+
+.recicla-label {
+    color: #B8D5C5;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.recicla-abertura h1 {
+    color: white;
+    font-size: 3.5rem;
+    font-weight: bold;
+    line-height: 1.15;
+    margin-top: 15px;
+}
+
+.recicla-abertura p {
+    max-width: 650px;
+    color: #E8E8E8;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 25px 0 30px;
+}
+
+.btn-recicla {
+    display: inline-block;
+    background-color: var(--base-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-recicla:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+
+/* ========================================
+   SÍMBOLO
+======================================== */
+
+.recicla-symbol {
+    width: 230px;
+    height: 230px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    color: white;
+    font-size: 7rem;
+    transform: rotate(-10deg);
+}
+
+
+/* ========================================
+   PADRÃO DAS SEÇÕES
+======================================== */
+
+.section-label {
+    color: var(--dark-green);
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.recicla-impacto h2,
+.recicla-problemas h2,
+.impacto-ecotech h2,
+.recicla-importancia h2,
+.recicla-processo h2,
+.recicla-final h2 {
+    color: var(--primary-color);
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+/* ========================================
+   IMPACTO DO LIXO ELETRÔNICO
+======================================== */
+
+.recicla-impacto {
+    background-color: var(--base-color);
+    padding: 100px 20px;
+}
+
+.impacto-intro {
+    max-width: 700px;
+    margin: 20px auto 0;
+    color: #666;
+    line-height: 1.7;
+}
+
+.impacto-card {
+    background-color: var(--card-color);
+    border: 1px solid rgba(58, 99, 81, 0.15) !important;
+    border-radius: 18px;
+    transition: 0.3s;
+}
+
+.impacto-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px rgba(31, 64, 55, 0.12) !important;
+}
+
+.impacto-numero {
+    display: block;
+    color: var(--primary-color);
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+.impacto-card h3 {
+    color: var(--dark-green);
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.impacto-card p {
+    color: #666;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+.fonte-dados {
+    color: #777;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 35px;
+}
+
+
+/* ========================================
+   IMPACTOS AMBIENTAIS
+======================================== */
+
+.recicla-problemas {
+    background-color: var(--base-color);
+    padding: 100px 20px;
+}
+
+.recicla-problemas .text-center > p {
+    max-width: 700px;
+    margin: 15px auto 0;
+    color: #666;
+    line-height: 1.7;
+}
+
+.problema-card {
+    background-color: var(--card-color);
+    border: 1px solid rgba(58, 99, 81, 0.15) !important;
+    border-radius: 18px;
+    transition: 0.3s;
+}
+
+.problema-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px rgba(31, 64, 55, 0.12) !important;
+}
+
+.problema-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.problema-card h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.problema-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-top: 12px;
+}
+
+.alerta-impacto {
+    background-color: #DCE8DF;
+    border-left: 4px solid var(--dark-green);
+    border-radius: 10px;
+    padding: 20px 25px;
+    color: #555;
+}
+
+.alerta-impacto strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 8px;
+}
+
+
+/* ========================================
+   IMPACTO DA ECOTECH
+======================================== */
+
+.impacto-ecotech {
+    background-color: var(--base-color);
+    padding: 100px 20px;
+}
+
+.impacto-ecotech-intro {
+    max-width: 750px;
+    margin: 20px auto 0;
+    color: #666;
+    line-height: 1.7;
+}
+
+.impacto-ecotech-card {
+    height: 100%;
+    background-color: var(--card-color);
+    border: 1px solid rgba(58, 99, 81, 0.15);
+    border-radius: 18px;
+    padding: 30px 25px;
+    transition: 0.3s;
+}
+
+.impacto-ecotech-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px rgba(31, 64, 55, 0.12);
+}
+
+.impacto-ecotech-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.impacto-ecotech-card h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.impacto-ecotech-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.impacto-ecotech-destaque {
+    max-width: 850px;
+    margin: 60px auto 0;
+    padding: 35px;
+    background-color: var(--primary-color);
+    border-radius: 18px;
+    text-align: center;
+}
+
+.impacto-ecotech-destaque h3 {
+    color: white;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.impacto-ecotech-destaque p {
+    color: #E0E8E3;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+
+/* ========================================
+   POR QUE RECICLAR
+======================================== */
+
+.recicla-importancia {
+    background-color: var(--primary-color);
+    padding: 100px 20px;
+}
+
+.recicla-importancia .section-label {
+    color: #B8D5C5;
+}
+
+.recicla-importancia h2 {
+    color: white;
+}
+
+.recicla-importancia > .container p {
+    color: #E0E8E3;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.beneficios {
+    margin-top: 30px;
+}
+
+.beneficios div {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 15px 18px;
+    margin-bottom: 12px;
+}
+
+.beneficios strong {
+    display: block;
+    color: white;
+    margin-bottom: 4px;
+}
+
+.beneficios span {
+    color: #D1DDD7;
+}
+
+
+/* ========================================
+   COMO FUNCIONA
+======================================== */
+
+.recicla-processo {
+    background-color: var(--base-color);
+    padding: 100px 20px;
+}
+
+.recicla-processo .text-center > p {
+    max-width: 700px;
+    margin: 15px auto 0;
+    color: #666;
+    line-height: 1.7;
+}
+
+.processo-card {
+    background-color: var(--card-color);
+    border: 1px solid rgba(58, 99, 81, 0.15) !important;
+    border-radius: 18px;
+    transition: 0.3s;
+}
+
+.processo-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px rgba(31, 64, 55, 0.12) !important;
+}
+
+.processo-numero {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 20px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+}
+
+.processo-card h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.processo-card p {
+    color: #666;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+
+/* ========================================
+   FINAL
+======================================== */
+
+.recicla-final {
+    background-color: var(--dark-green);
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.recicla-final .section-label {
+    color: #C9DDD1;
+}
+
+.recicla-final h2 {
+    color: white;
+}
+
+.recicla-final p {
+    max-width: 650px;
+    margin: 20px auto 30px;
+    color: #E5ECE8;
+    line-height: 1.7;
+}
+
+.btn-recicla-final {
+    display: inline-block;
+    background-color: var(--base-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-recicla-final:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+
+/* ========================================
+   FONTES
+======================================== */
+
+.recicla-fontes {
+    background-color: var(--base-color);
+    padding: 40px 20px;
+}
+
+.recicla-fontes h3 {
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.recicla-fontes p {
+    color: #666;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 991px) {
+
+    .recicla-abertura {
+        text-align: center;
+    }
+
+    .recicla-abertura p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .recicla-symbol {
+        margin-top: 50px;
+        width: 180px;
+        height: 180px;
+        font-size: 5.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .recicla-abertura h1 {
+        font-size: 2.6rem;
+    }
+
+    .recicla-impacto h2,
+    .recicla-problemas h2,
+    .impacto-ecotech h2,
+    .recicla-importancia h2,
+    .recicla-processo h2,
+    .recicla-final h2 {
+        font-size: 2rem;
+    }
+
+    .recicla-abertura,
+    .recicla-impacto,
+    .recicla-problemas,
+    .impacto-ecotech,
+    .recicla-importancia,
+    .recicla-processo,
+    .recicla-final {
+        padding: 70px 20px;
+    }
+
+    .impacto-numero {
+        font-size: 2.6rem;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .recicla-abertura h1 {
+        font-size: 2.2rem;
+    }
+
+    .recicla-abertura p {
+        font-size: 1rem;
+    }
+
+    .recicla-symbol {
+        width: 150px;
+        height: 150px;
+        font-size: 4.5rem;
+    }
+
+    .impacto-numero {
+        font-size: 2.3rem;
+    }
+}

@@ -25,10 +25,7 @@
             </a>
 
             <!-- Botão do menu no celular -->
-            <button class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#menu">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -43,25 +40,48 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/recicla">
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+
                             Recicla
-                        </a>
-                    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/impacto">
-                            Impacto
                         </a>
-                    </li>
 
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a class="dropdown-item" href="/recicla#funciona">
+                                    Como funciona
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/recicla#problemas">
+                                    Impactos ambientais
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/recicla#impacto-ecotech">
+                                    Impacto da EcoTech
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/recicla#impacto">
+                                    Dados sobre o impacto
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
                     <!-- Saiba mais -->
                     <li class="nav-item dropdown">
 
-                        <a class="nav-link dropdown-toggle"
-                           href="#"
-                           role="button"
-                           data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
 
                             Saiba mais
 
@@ -87,7 +107,7 @@
                                 </a>
                             </li>
 
-                             <li>
+                            <li>
                                 <a class="dropdown-item" href="/saibamais#ecopontos">
                                     EcoPontos
                                 </a>
@@ -110,14 +130,14 @@
                                 Olá, <%= nomeUsuario %>!
                             </span>
                         </li>
-                    <% } else { %>
-                        <li class="nav-item">
-                         <a class="nav-link" href="/login">
-                            Entrar
-                         </a>
-                    </li>
+                        <% } else { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login">
+                                    Entrar
+                                </a>
+                            </li>
 
-                    <% } %>
+                            <% } %>
 
                 </ul>
 
@@ -125,3 +145,5 @@
 
         </div>
     </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

@@ -29,6 +29,9 @@ app.use(sobreRoutes);
 const usuarioRoutes = require("./Routes/usuarioRoutes");
 app.use(usuarioRoutes);
 
+const reciclaRoutes = require("./Routes/reciclaRoutes");
+app.use(reciclaRoutes);
+
 
 
 app.get("/", (req, res) => {

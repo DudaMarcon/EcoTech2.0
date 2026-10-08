@@ -395,3 +395,7 @@ footer p {
 .texto-erro {
     color: red;
 }
+
+.main-content {
+    flex: 1;
+}

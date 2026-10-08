@@ -262,6 +262,10 @@ h3 {
    BOTÕES
    ========================= */
 
+.navbar .dropdown-toggle::after {
+    display: none !important;
+}
+
 .btn-ecotech {
     background-color: var(--primary-color);
     color: white;
@@ -276,6 +280,12 @@ h3 {
     color: white;
 }
 
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
 
 /* =========================
    CARDS

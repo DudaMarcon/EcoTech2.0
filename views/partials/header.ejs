@@ -103,22 +103,34 @@
 
                     </li>
 
-                    <!-- Login/Nome do usuário-->
-                    <% if (nomeUsuario) { %>
-                        <li class="nav-item">
-                            <span class="nav-link fw-bold">
-                                Olá, <%= nomeUsuario %>!
-                            </span>
-                        </li>
-                    <% } else { %>
-                        <li class="nav-item">
-                         <a class="nav-link" href="/login">
-                            Entrar
-                         </a>
-                    </li>
+             <!-- Login / usuário -->
+<% if (nomeUsuario) { %>
 
-                    <% } %>
+    <!-- Usuário logado -->
+    <li class="nav-item">
+        <span class="nav-link fw-bold">
+            Olá, <%= nomeUsuario %>!
+        </span>
+    </li>
 
+
+   <li class="nav-item">
+    <a class="nav-link" href="/logout">
+        <img src="/img/sair.png" alt="Logout" width="25">
+    </a>
+</li>
+
+<% } else { %>
+
+    <!-- Usuário não logado -->
+    <li class="nav-item">
+        <a class="nav-link" href="/login">
+            Entrar
+        </a>
+    </li>
+
+
+<% } %>
                 </ul>
 
             </div>

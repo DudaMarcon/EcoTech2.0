@@ -83,7 +83,45 @@ a {
     font-size: 1.5rem;
 }
 
+.logo {
+    width: 150px;
+    height: 50px;
+    object-fit: contain;
+    display: block;
+}
 
+.navbar-nav {
+    flex-wrap: nowrap;
+}
+
+.navbar-nav .nav-link {
+    white-space: nowrap;
+}
+
+.campo-erro {
+    border: 2px solid red !important;
+}
+/*ERRO NO FORMULARIO DE CADASTRO*/
+.texto-erro {
+    color: red;
+    margin-top: 5px;
+}
+
+.campo-erro {
+    border: 2px solid red !important;
+}
+
+.texto-erro {
+    color: red;
+}
+
+.campo-erro {
+    border: 2px solid red !important;
+}
+
+.texto-erro {
+    color: red;
+}
 /* =========================
    ANIMAÇÃO DOS LINKS DO MENU
    ========================= */
@@ -347,4 +385,13 @@ footer p {
 .btn-ecotech:hover {
     background-color: #16332c;
     color: white;
+}
+
+
+.campo-erro {
+    border: 2px solid red !important;
+}
+
+.texto-erro {
+    color: red;
 }

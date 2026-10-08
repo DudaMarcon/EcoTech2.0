@@ -33,42 +33,46 @@
 
                         </div>
 
+                        <% if (erro) { %>
+    <div class="texto-erro">
+        <%= erro %>
+    </div>
+<% } %>
 
-                        <div class="mb-3">
+  <div class="mb-3">
 
-                            <label for="email" class="form-label">
-                                E-mail
-                            </label>
+    <label for="email" class="form-label">
+        E-mail
+    </label>
 
-                            <input
-                                type="email"
-                                class="form-control"
-                                id="email"
-                                name="email"
-                                placeholder="Digite seu e-mail"
-                                required
-                            >
+    <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder="Digite seu e-mail"
+        required
+    >
 
-                        </div>
+</div>
 
 
-                        <div class="mb-3">
+<div class="mb-3">
 
-                            <label for="senha" class="form-label">
-                                Senha
-                            </label>
+    <label for="senha" class="form-label">
+        Senha
+    </label>
 
-                            <input
-                                type="password"
-                                class="form-control"
-                                id="senha"
-                                name="senha"
-                                placeholder="Digite sua senha"
-                                required
-                            >
+    <input
+        type="password"
+        class="form-control"
+        id="senha"
+        name="senha"
+        placeholder="Digite sua senha"
+        required
+    >
 
-                        </div>
-
+</div>
 
                         <button
                             type="submit"

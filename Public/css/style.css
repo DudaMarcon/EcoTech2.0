@@ -133,100 +133,75 @@ a {
     transition: 0.3s;
 }
 
-
-/* Linha que aparece embaixo dos links */
-
-.navbar > .container .nav-link::after {
+/* Linha que aparece embaixo de todos os links (incluindo dropdowns) */
+.navbar .nav-link::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 50%;
-
     width: 0;
     height: 2px;
-
     background-color: var(--secondary-color);
-
     transition: 0.3s;
-
     transform: translateX(-50%);
 }
 
-
-/* Efeito quando passa o mouse */
-
+/* Efeito quando passa o mouse (links normais e o dropdown pai) */
 .nav-link:hover {
     color: var(--secondary-color) !important;
     transform: translateY(-2px);
 }
 
-
-/* Faz a linha aparecer */
-
-.navbar > .container .nav-link:hover::after {
+/* Faz a linha aparecer em qualquer link da navbar ao passar o mouse */
+.navbar .nav-link:hover::after,
+.navbar .dropdown:hover .nav-link::after {
     width: 70%;
 }
 
-
 /* =========================
-   DROPDOWN DO MENU
+   DROPDOWN DO MENU (Corrigido com Hover Forçado)
    ========================= */
 
 .navbar .dropdown {
     position: relative;
 }
 
-
-/* Menu fechado */
-
+/* Oculta o menu por padrão */
 .navbar .dropdown-menu {
     display: none;
-
     position: absolute;
     top: 100%;
     left: 0;
-
     min-width: 200px;
-
     background-color: #F0EADC;
-
     border: none;
     border-radius: 10px;
-
     padding: 8px;
-
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-
     z-index: 9999;
 }
 
-
-/* Abre o submenu ao passar o mouse */
-
+/* Força a abertura pura via CSS ao passar o mouse */
 .navbar .dropdown:hover > .dropdown-menu {
-    display: block;
+    display: block !important;
 }
 
+/* Mudar a cor do link principal no hover */
+.navbar .dropdown:hover > .nav-link {
+    color: var(--secondary-color) !important;
+}
 
 /* Itens do submenu */
-
 .navbar .dropdown-item {
     color: var(--primary-color);
-
     border-radius: 6px;
-
     padding: 8px 12px;
 }
-
-
-/* Hover dos itens */
 
 .navbar .dropdown-item:hover {
     background-color: var(--base-color);
     color: var(--primary-color);
 }
-
-
 /* =========================
    SETINHA DOS DROPDOWNS
    ========================= */

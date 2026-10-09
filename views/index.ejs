@@ -61,11 +61,16 @@
                     Dê um novo destino aos seus eletrônicos
                     através da economia circular.
                 </p>
+                <!-- Botão para cadastro -->
+                <button class="btn btn-hero" onclick=<%"irParaCadastro()"%>>
+                    Cadastre seu eletrônico
 
-                <a href="/cadastrar-eletro" class="btn btn-hero">
-                    Cadastrar eletrônico
-                </a>
-
+                </button>
+                <%
+                    function irParaCadastro() {
+                        window.location.href = "/verficar-login";
+                    }
+                    %>
             </div>
 
         </div>

@@ -109,6 +109,14 @@ router.post("/cadastro", async (req, res) => {
 
 
 // ========================================
+// CADASTRAR ELETRÔNICO
+// ========================================
+
+router.get("/cadastrar-eletro", (req, res) => {
+    res.render("cadastrar-eletro");
+});
+
+// ========================================
 // DASHBOARD
 // ========================================
 

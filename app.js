@@ -37,21 +37,13 @@ app.use(reciclaRoutes);
 const ecoProdutosRoutes = require("./Routes/ecoProdutosRoutes");
 app.use(ecoProdutosRoutes);
 
-const cadastrarEletronicos = require("./Routes/cadastrarEletronicosRoutes");
-app.use(cadastrarEletronicos);
+const cadastrarEletronicosRoutes = require("./Routes/cadastrarEletronicosRoutes");
+app.use(cadastrarEletronicosRoutes);
 
-//verificação se o usuario está logado para acesso da pagina de cadastro de eletronicos
-app.get("/verificar-login"),
-  (req, res) => {
-    if (req.session.nome) {
-      //usuario logado, redireciona para a página de cadastro de eletronicos
-      res.redirect("/cadastrarEletronicos");
-    }
-    //usuario não logado, redireciona para a página de login
-    else {
-      res.redirect("/login");
-    }
-  };
+const verificarLoginRoutes = require("./Routes/verificarLoginRoutes");
+app.use("/verificarLogin", verificarLoginRoutes);
+
+
 app.get("/", (req, res) => {
   res.render("index");
 });

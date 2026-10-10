@@ -1,0 +1,155 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f6f4;
+    color: #172b24;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.form-card {
+    background: white;
+    width: 100%;
+    max-width: 850px;
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px #00000012;
+}
+
+.form-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e0e7e2;
+}
+
+.icon {
+    background: #159447;
+    color: white;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 32px;
+}
+
+h1 {
+    font-size: 28px;
+    color: #064e35;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    color: #647067;
+    line-height: 1.5;
+}
+
+.form-group {
+    margin-bottom: 23px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 9px;
+}
+
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccd5cf;
+    border-radius: 7px;
+    font-size: 15px;
+    background: white;
+    outline: none;
+}
+
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #159447;
+    box-shadow: 0 0 0 3px #15944720;
+}
+
+.form-group textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+#contador {
+    display: block;
+    text-align: right;
+    color: #647067;
+    margin-top: 7px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.form-actions button {
+    padding: 13px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.btn-voltar {
+    background: white;
+    border: 1px solid #ccd5cf;
+    color: #263b30;
+}
+
+.btn-cadastrar {
+    background: #159447;
+    color: white;
+    border: none;
+}
+
+.btn-cadastrar:hover {
+    background: #107639;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    .form-card {
+        padding: 22px;
+    }
+
+    .form-header {
+        align-items: flex-start;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+}

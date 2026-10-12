@@ -1,94 +1,94 @@
-<%- include("../partials/header") %>
 
-<main class="main-content">
-<div class="container mt-5">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar eletrônico | EcoTech</title>
 
-    <div class="row justify-content-center">
+    <link rel="stylesheet" href="/css/cadastroProduto.css">
+</head>
+<body>
 
-        <div class="col-md-6">
+    <%- include ('../partials/header.ejs') %>
+    <main class="container">
+        <section class="form-card">
 
-            <div class="card shadow">
+            <header class="form-header">
+                <div class="icon">＋</div>
+                <div>
+                    <h1>Cadastrar eletrônico</h1>
+                    <p>Informe os dados do eletrônico que deseja descartar ou doar.</p>
+                </div>
+            </header>
 
-                <div class="card-body">
+            <form action="/cadastrar-produto" method="POST">
 
-                    <h3 class="text-center mb-4">
-                        Login
-                    </h3>
-
-                    <form action="/login" method="POST">
-
-                        <div class="mb-3">
-
-                            <label for="email" class="form-label">
-                                E-mail
-                            </label>
-
-   <input
-    type="email"
-    class="form-control <%= (typeof erro !== 'undefined' && erro) ? 'campo-erro' : '' %>"
-    id="email"
-    name="email"
-    placeholder="Digite seu e-mail"
-    required
->
-
-
-                            <small class="form-text text-muted">
-                                Seu e-mail será utilizado para acessar sua conta.
-                            </small>
-
-                        </div>
-
-
-                        <div class="mb-3">
-
-                            <label for="senha" class="form-label">
-                                Senha
-                            </label>
-<input
-    type="password"
-    class="form-control <%= (typeof erro !== 'undefined' && erro) ? 'campo-erro' : '' %>"
-    id="senha"
-    name="senha"
-    placeholder="Digite sua senha"
-    required
->
-
-                        </div>
-
-<% if (typeof erro !== 'undefined' && erro) { %>
-    <div class="texto-erro mb-3">
-        <%= erro %>
-    </div>
-<% } %>
-                        <button
-                            type="submit"
-                            class="btn btn-ecotech w-100"
-                        >
-                            Entrar
-                        </button>
-
-                    </form>
-
-
-                    <div class="text-center mt-3">
-
-                        <span>Não possui uma conta?</span>
-
-                        <a href="/cadastro">
-                            Cadastre-se
-                        </a>
-
-                    </div>
-
+                <div class="form-group">
+                    <label for="produto">Produto *</label>
+                    <select id="produto" name="produto" required>
+                        <option value="">Selecione o produto</option>
+                        <option value="Celular">Celular</option>
+                        <option value="Notebook">Notebook</option>
+                        <option value="Televisão">Televisão</option>
+                        <option value="Impressora">Impressora</option>
+                        <option value="Outro">Outro</option>
+                    </select>
                 </div>
 
-            </div>
+                <div class="form-group">
+                    <label for="estado">Estado de funcionamento *</label>
+                    <select id="estado" name="estado" required>
+                        <option value="">Selecione o estado</option>
+                        <option value="Funcionando">Funcionando</option>
+                        <option value="Funcionamento parcial">Funcionamento parcial</option>
+                        <option value="Não liga">Não liga</option>
+                    </select>
+                </div>
 
-        </div>
+                <div class="form-group">
+                    <label for="problema">Problema *</label>
+                    <select id="problema" name="problema" required>
+                        <option value="">Selecione o problema</option>
+                        <option value="Tela quebrada">Tela quebrada</option>
+                        <option value="Bateria">Problema na bateria</option>
+                        <option value="Não liga">Não liga</option>
+                        <option value="Superaquecimento">Superaquecimento</option>
+                        <option value="Nenhum">Nenhum problema</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
 
-    </div>
-</div>
-</main>
-<%- include("../partials/footer") %>
+                <div class="form-group">
+                    <label for="descricao">Descrição *</label>
+                    <textarea
+                        id="descricao"
+                        name="descricao"
+                        maxlength="500"
+                        placeholder="Descreva mais detalhes sobre o eletrônico..."
+                        required
+                    ></textarea>
 
+                    <small id="contador">0/500 caracteres</small>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-voltar"
+                        onclick="history.back()">
+                        Voltar
+                    </button>
+
+                    <button type="submit" class="btn-cadastrar">
+                        Cadastrar eletrônico
+                    </button>
+                </div>
+
+            </form>
+        </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/cadastroProduto.js"></script>
+
+</body>
+</html>

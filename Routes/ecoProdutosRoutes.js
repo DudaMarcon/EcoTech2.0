@@ -18,6 +18,14 @@ const produtosLista = [
         descricaoCompleta: "Notebook recondicionado, testado e com garantia.",
         imagens: ["/img/notebook-recondicionado.jpg"],
         estado: "Bom"
+    },
+    {
+        id: "3",
+        nome: "Caixa de som Pro",
+        preco: "799,00",
+        descricaoCompleta: "Caixa de som usada, testado e com garantia.",
+        imagens: ["/img/notebook-recondicionado.jpg"],
+        estado: "Regular"
     }
 ];
 

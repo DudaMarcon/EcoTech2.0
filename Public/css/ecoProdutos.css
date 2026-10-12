@@ -1,0 +1,14 @@
+.estado-excelente {
+    background-color: #198754;
+    color: #ffffff;
+}
+
+.estado-bom {
+    background-color: #0d6efd;
+    color: #ffffff;
+}
+
+.estado-regular {
+    background-color: #ffc107;
+    color: #212529;
+}

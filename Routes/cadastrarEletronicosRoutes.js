@@ -6,5 +6,9 @@ router.get("/cadastrarEletronicos", (req, res) => {
     res.render("usuario/cadastrarEletronicos");
 });
 
+router.post("/cadastrarEletronicos", (req, res) => {
+    
+    res.redirect("/sucesso");
+});
 
 module.exports = router;

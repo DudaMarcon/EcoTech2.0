@@ -1,94 +1,147 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar eletrônico | EcoTech</title>
 
-    <link rel="stylesheet" href="/css/cadastroProduto.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/cadastrarEletronicos.css">
+
 </head>
+
 <body>
 
     <%- include ('../partials/header.ejs') %>
-    <main class="container">
-        <section class="form-card">
+        <main class="main-content">
+            <div class="container mt-5">
 
-            <header class="form-header">
-                <div class="icon">＋</div>
-                <div>
-                    <h1>Cadastrar eletrônico</h1>
-                    <p>Informe os dados do eletrônico que deseja descartar ou doar.</p>
+                <div class="row justify-content-center">
+
+                    <div class="col-md-6">
+
+                        <div class="card shadow">
+
+                            <div class="card-body">
+
+                                <h3 class="text-center mb-4">
+                                    Cadastrar eletrônico
+                                </h3>
+
+                                <form class="formulario-cadastro" action="/cadastrarEletronicos" method="POST">
+
+                                    <div class="mb-3">
+
+                                        <label for="produto">Produto:</label>
+
+                                        <br>
+
+                                        <select class="select-ecotech" id="produto" name="produto" required
+                                            onfocus="this.size=5;" onblur="this.size=1;"
+                                            onchange="this.size=1; this.blur();">
+
+                                            <option value="" disabled selected>
+                                                Selecione um produto:
+                                            </option>
+
+                                            <option value="celular">Celular / Smartphone</option>
+                                            <option value="computador">Computador / Notebook</option>
+                                            <option value="tablet">Tablet</option>
+                                            <option value="televisao">Televisão / Monitor</option>
+                                            <option value="perifericos">Teclado / Mouse / Periféricos</option>
+                                            <option value="console">Console de videogame</option>
+                                            <option value="impressora">Impressora</option>
+                                            <option value="outro">Outro eletrônico</option>
+
+                                        </select>
+                                    </div>
+
+
+                                    <div class="mb-3">
+
+                                        <label for="funcionamento" class="form-label">
+                                            Estado de funcionamento
+                                        </label>
+                                        <br>
+                                        <select class="select-ecotech" onfocus="this.size=4;" onblur="this.size=1;"
+                                            onchange="this.size=1; this.blur();" required id="funcionamento"
+                                            name="funcionamento">
+
+                                            <option value="" disabled selected>
+                                                Selecione uma opção:
+                                            </option>
+
+                                            <option value="funcionando">Funcionando normalmente</option>
+                                            <option value="defeito">Com defeito</option>
+                                            <option value="danificado">Danificado</option>
+                                            <option value="nao_testado">Não testado</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="problema">Problema apresentado <span
+                                                class="required">*</span></label>
+
+                                        <textarea id="problema" name="problema" class="form-control"
+                                            placeholder="Descreva o defeito do eletrônico..." rows="3" maxlength="300"
+                                            required></textarea>
+                                        <div class="problema-info">
+                                            <small>Informe os defeitos identificados no eletrônico.</small>
+                                            <span id="contadorproblema">0/300</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="descricao-container">
+                                        <label for="descricao">Descrição</label>
+
+                                        <textarea id="descricao" name="descricao" class="textarea-descricao"
+                                            placeholder="Descreva mais detalhes sobre o eletrônico, como modelo, tempo de uso e outras informações..."
+                                            rows="4" maxlength="500"></textarea>
+
+                                        <div class="descricao-info">
+                                            <small>Inclua informações que possam ajudar no processo de
+                                                avaliação.</small>
+                                            <span id="contadordescricao">0/500</span>
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        const descricaoTextarea = document.getElementById('descricao');
+                                        const contadorSpan = document.getElementById('contadordescricao');
+                                        const problemaTextarea = document.getElementById('problema');
+                                        const contadorProblemaSpan = document.getElementById('contadorproblema');
+
+                                        descricaoTextarea.addEventListener('input', () => {
+                                            let caracteres = descricaoTextarea.value.length;
+                                            contadorSpan.textContent = `${caracteres}/500`;
+                                        });
+
+                                        problemaTextarea.addEventListener('input', () => {
+                                            let caracteres = problemaTextarea.value.length;
+                                            contadorProblemaSpan.textContent = `${caracteres}/300`;
+                                        });
+                                    </script>
+
+                                    <button type="submit" class="btn btn-ecotech w-100">
+                                        Cadastrar
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
-            </header>
+            </div>
+        </main>
 
-            <form action="/cadastrar-produto" method="POST">
-
-                <div class="form-group">
-                    <label for="produto">Produto *</label>
-                    <select id="produto" name="produto" required>
-                        <option value="">Selecione o produto</option>
-                        <option value="Celular">Celular</option>
-                        <option value="Notebook">Notebook</option>
-                        <option value="Televisão">Televisão</option>
-                        <option value="Impressora">Impressora</option>
-                        <option value="Outro">Outro</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="estado">Estado de funcionamento *</label>
-                    <select id="estado" name="estado" required>
-                        <option value="">Selecione o estado</option>
-                        <option value="Funcionando">Funcionando</option>
-                        <option value="Funcionamento parcial">Funcionamento parcial</option>
-                        <option value="Não liga">Não liga</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="problema">Problema *</label>
-                    <select id="problema" name="problema" required>
-                        <option value="">Selecione o problema</option>
-                        <option value="Tela quebrada">Tela quebrada</option>
-                        <option value="Bateria">Problema na bateria</option>
-                        <option value="Não liga">Não liga</option>
-                        <option value="Superaquecimento">Superaquecimento</option>
-                        <option value="Nenhum">Nenhum problema</option>
-                        <option value="Outro">Outro</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="descricao">Descrição *</label>
-                    <textarea
-                        id="descricao"
-                        name="descricao"
-                        maxlength="500"
-                        placeholder="Descreva mais detalhes sobre o eletrônico..."
-                        required
-                    ></textarea>
-
-                    <small id="contador">0/500 caracteres</small>
-                </div>
-
-                <div class="form-actions">
-                    <button type="button" class="btn-voltar"
-                        onclick="history.back()">
-                        Voltar
-                    </button>
-
-                    <button type="submit" class="btn-cadastrar">
-                        Cadastrar eletrônico
-                    </button>
-                </div>
-
-            </form>
-        </section>
-    </main>
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="/js/cadastroProduto.js"></script>
-
+        <%- include ('../partials/footer.ejs') %>
 </body>
+
 </html>

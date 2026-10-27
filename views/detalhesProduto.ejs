@@ -34,7 +34,13 @@
         <div class="row">
             <!-- Galeria de Fotos -->
             <div class="col-md-6">
-                <img src="<%= produto.imagens[0] %>" class="img-fluid rounded shadow-sm mb-3" alt="<%= produto.nome %>" id="imagemPrincipal">
+            <img
+                src="<%= produto.imagens && produto.imagens.length > 0 ? produto.imagens[0] : '/img/eletronico-padrao.png' %>"
+                class="card-img-top p-3"
+                alt="<%= produto.nome %>"
+                style="height: 200px; object-fit: contain;"
+            >
+
             </div>
 
             <!-- Informações e Botões -->

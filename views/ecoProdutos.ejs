@@ -57,11 +57,11 @@
 
                             <!-- Imagem do produto -->
                             <img
-                                src="<%= produto.imagens[0] %>"
-                                class="img-fluid rounded shadow-sm mb-3"
+                                src="<%= produto.imagens && produto.imagens.length > 0 ? produto.imagens[0] : '/img/eletronico-padrao.png' %>"
+                                class="card-img-top p-3"
                                 alt="<%= produto.nome %>"
-                                id="imagemPrincipal"
-                                >
+                                style="height: 200px; object-fit: contain;"
+                            >
 
                             <div class="card-body d-flex flex-column">
 

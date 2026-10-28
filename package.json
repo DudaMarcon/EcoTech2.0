@@ -11,6 +11,8 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "cloudinary": "^2.11.0",
+    "dotenv": "^18.0.9",
     "ejs": "^6.0.1",
     "express": "^5.3.0",
     "express-session": "^1.19.0",

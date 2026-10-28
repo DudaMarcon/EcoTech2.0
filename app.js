@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express"); // aqui importa o express
 const session = require("express-session");
 const app = express();

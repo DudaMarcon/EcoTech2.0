@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastrar eletrônico | EcoTech</title>
 
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/footer.css" />
-    <link rel="stylesheet" href="/css/home.css" />
-    <link rel="stylesheet" href="/css/cadastrarEletronicos.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastrar eletrônico | EcoTech</title>
 
-  <body>
-    <%- include ('../partials/header.ejs') %>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+  <link rel="stylesheet" href="/css/home.css" />
+  <link rel="stylesheet" href="/css/cadastrarEletronicos.css" />
+</head>
+
+<body>
+  <%- include ('../partials/header.ejs') %>
     <main class="main-content">
       <div class="container mt-5">
         <div class="row justify-content-center">
@@ -21,28 +22,18 @@
               <div class="card-body">
                 <h3 class="text-center mb-4">Cadastrar eletrônico</h3>
 
-                <form
-                  class="formulario-cadastro"
-                  action="/cadastrarEletronicos"
-                  method="POST"
-                >
+                <form class="formulario-cadastro" action="/cadastrarEletronicos" method="POST"
+                  enctype="multipart/form-data">
                   <div class="mb-3">
                     <label for="produto">Produto:</label>
 
                     <br />
 
-                    <select
-                      class="select-ecotech"
-                      id="produto"
-                      name="produto"
-                      required
-                      onfocus="this.size = 5"
-                      onblur="this.size = 1"
-                      onchange="
+                    <select class="select-ecotech" id="produto" name="produto" required onfocus="this.size = 5"
+                      onblur="this.size = 1" onchange="
                         this.size = 1;
                         this.blur();
-                      "
-                    >
+                      ">
                       <option value="" disabled selected>
                         Selecione um produto:
                       </option>
@@ -65,18 +56,10 @@
                       Estado de funcionamento
                     </label>
                     <br />
-                    <select
-                      class="select-ecotech"
-                      onfocus="this.size = 4"
-                      onblur="this.size = 1"
-                      onchange="
+                    <select class="select-ecotech" onfocus="this.size = 4" onblur="this.size = 1" onchange="
                         this.size = 1;
                         this.blur();
-                      "
-                      required
-                      id="funcionamento"
-                      name="funcionamento"
-                    >
+                      " required id="funcionamento" name="funcionamento">
                       <option value="" disabled selected>
                         Selecione uma opção:
                       </option>
@@ -91,24 +74,13 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="problema"
-                      >Problema apresentado
-                      <span class="required">*</span></label
-                    >
+                    <label for="problema">Problema apresentado
+                      <span class="required">*</span></label>
 
-                    <textarea
-                      id="problema"
-                      name="problema"
-                      class="form-control"
-                      placeholder="Descreva o defeito do eletrônico..."
-                      rows="3"
-                      maxlength="300"
-                      required
-                    ></textarea>
+                    <textarea id="problema" name="problema" class="form-control"
+                      placeholder="Descreva o defeito do eletrônico..." rows="3" maxlength="300" required></textarea>
                     <div class="problema-info">
-                      <small
-                        >Informe os defeitos identificados no eletrônico.</small
-                      >
+                      <small>Informe os defeitos identificados no eletrônico.</small>
                       <span id="contadorproblema">0/300</span>
                     </div>
                   </div>
@@ -116,20 +88,13 @@
                   <div class="descricao-container">
                     <label for="descricao">Descrição</label>
 
-                    <textarea
-                      id="descricao"
-                      name="descricao"
-                      class="textarea-descricao"
+                    <textarea id="descricao" name="descricao" class="textarea-descricao"
                       placeholder="Descreva mais detalhes sobre o eletrônico, como modelo, tempo de uso e outras informações..."
-                      rows="4"
-                      maxlength="500"
-                    ></textarea>
+                      rows="4" maxlength="500"></textarea>
 
                     <div class="descricao-info">
-                      <small
-                        >Inclua informações que possam ajudar no processo de
-                        avaliação.</small
-                      >
+                      <small>Inclua informações que possam ajudar no processo de
+                        avaliação.</small>
                       <span id="contadordescricao">0/500</span>
                     </div>
                   </div>
@@ -160,20 +125,26 @@
                   </script>
 
                   <div class="mb-3">
+                    <label for="foto" class="form-label">Foto do eletrônico</label>
+
+                    <input type="file" id="foto" name="foto" class="form-control"
+                      accept="image/jpeg,image/png,image/webp" required />
+
+                    <small class="text-muted">
+                      Selecione uma imagem JPEG, PNG ou WebP.
+                    </small>
+
+                    <img id="previewFoto" alt="Pré-visualização da foto selecionada"
+                      style="display: none; max-width: 100%; max-height: 250px; margin-top: 12px;" />
+                  </div>
+
+                  <div class="mb-3">
                     <label for="preco" class="form-label">
                       Preço de venda (R$)
                     </label>
 
-                    <input
-                      type="number"
-                      id="preco"
-                      name="preco"
-                      class="form-control"
-                      placeholder="Ex.: 1299.90"
-                      min="0.01"
-                      step="0.01"
-                      required
-                    />
+                    <input type="number" id="preco" name="preco" class="form-control" placeholder="Ex.: 1299.90"
+                      min="0.01" step="0.01" required />
                   </div>
 
                   <script>
@@ -209,5 +180,6 @@
     </main>
 
     <%- include ('../partials/footer.ejs') %>
-  </body>
+</body>
+
 </html>

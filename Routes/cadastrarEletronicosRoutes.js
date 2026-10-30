@@ -1,3 +1,4 @@
+
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
@@ -73,6 +74,22 @@ router.post(
                 preco
             } = req.body;
 
+            // Novos campos do eletrônico
+            const marcaProduto =
+                req.body.marca || req.body.marcaManual || "";
+
+            const modeloProduto =
+                req.body.modelo || req.body.modeloManual || "";
+
+            const armazenamento =
+                req.body.armazenamento || "";
+
+            const memoriaRam =
+                req.body.ram || "";
+
+            const tamanhoTela =
+                req.body.tamanhoTela || "";
+
             const nomesProdutos = {
                 celular: "Celular / Smartphone",
                 computador: "Computador / Notebook",
@@ -119,10 +136,17 @@ router.post(
             // Faz upload da foto
             const resultadoImagem = await enviarImagem(req.file.buffer);
 
-            // Mantém a estrutura atual dos produtos
+            // Dados do produto
             const novoProduto = {
                 nome: nomesProdutos[produto],
                 categoria: produto,
+
+                marca: marcaProduto,
+                modelo: modeloProduto,
+                armazenamento: armazenamento,
+                ram: memoriaRam,
+                tamanhoTela: tamanhoTela,
+
                 funcionamento,
                 estado: nomesEstados[funcionamento],
                 problema: problema.trim(),
@@ -150,18 +174,21 @@ router.post(
 
             return res.redirect("/ecoProdutos");
 
-        } catch (erro) {
-            console.error("Erro ao cadastrar eletrônico:", erro);
+        }  catch (erro) {
+    console.error("ERRO AO CADASTRAR ELETRÔNICO:");
+    console.error(erro);
+    console.error("Mensagem:", erro.message);
+    console.error("HTTP Code:", erro.http_code);
 
-            if (erro instanceof multer.MulterError) {
-                return res.status(400).send(
-                    "A imagem deve ter no máximo 5 MB."
-                );
-            }
+    if (erro instanceof multer.MulterError) {
+        return res.status(400).send(
+            "A imagem deve ter no máximo 5 MB."
+        );
+    }
 
-            return res.status(500).send(
-                "Não foi possível cadastrar o eletrônico. Verifique a configuração do Cloudinary e tente novamente."
-            );
+    return res.status(500).send(
+        "Erro ao cadastrar. Verifique o terminal."
+    );
         }
     }
 );

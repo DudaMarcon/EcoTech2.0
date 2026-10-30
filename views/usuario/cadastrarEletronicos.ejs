@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,173 +12,1186 @@
 </head>
 
 <body>
-  <%- include ('../partials/header.ejs') %>
-    <main class="main-content">
-      <div class="container mt-5">
-        <div class="row justify-content-center">
-          <div class="col-md-6">
-            <div class="card shadow">
-              <div class="card-body">
-                <h3 class="text-center mb-4">Cadastrar eletrônico</h3>
+  <%- include('../partials/header.ejs') %>
 
-                <form class="formulario-cadastro" action="/cadastrarEletronicos" method="POST"
-                  enctype="multipart/form-data">
-                  <div class="mb-3">
-                    <label for="produto">Produto:</label>
+  <main class="main-content">
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3 class="text-center mb-4">Cadastrar eletrônico</h3>
 
-                    <br />
+              <form
+                class="formulario-cadastro"
+                action="/cadastrarEletronicos"
+                method="POST"
+                enctype="multipart/form-data"
+              >
+                <div class="mb-3">
+                  <label for="produto" class="form-label">Produto</label>
+                  <select
+                    class="select-ecotech"
+                    id="produto"
+                    name="produto"
+                    required
+                  >
+                    <option value="" selected disabled>
+                      Selecione um produto
+                    </option>
+                    <option value="celular">Celular / Smartphone</option>
+                    <option value="computador">Computador / Notebook</option>
+                    <option value="desktop">Computador de mesa</option>
+                    <option value="tablet">Tablet</option>
+                    <option value="televisao">Televisão / Monitor</option>
+                    <option value="perifericos">Teclado / Mouse / Periféricos</option>
+                    <option value="console">Console de videogame</option>
+                    <option value="impressora">Impressora</option>
+                    <option value="outro">Outro eletrônico</option>
+                  </select>
+                </div>
 
-                    <select class="select-ecotech" id="produto" name="produto" required onfocus="this.size = 5"
-                      onblur="this.size = 1" onchange="
-                        this.size = 1;
-                        this.blur();
-                      ">
-                      <option value="" disabled selected>
-                        Selecione um produto:
-                      </option>
+                <!-- Seleção da marca -->
+                <div class="mb-3" id="areaMarca" hidden>
+                  <label for="marca" class="form-label">Marca</label>
+                  <select
+                    class="select-ecotech"
+                    id="marca"
+                    name="marca"
+                  >
+                    <option value="">Selecione uma marca</option>
+                  </select>
+                  <small id="statusMarca" class="text-muted"></small>
+                </div>
 
-                      <option value="celular">Celular / Smartphone</option>
-                      <option value="computador">Computador / Notebook</option>
-                      <option value="tablet">Tablet</option>
-                      <option value="televisao">Televisão / Monitor</option>
-                      <option value="perifericos">
-                        Teclado / Mouse / Periféricos
-                      </option>
-                      <option value="console">Console de videogame</option>
-                      <option value="impressora">Impressora</option>
-                      <option value="outro">Outro eletrônico</option>
-                    </select>
-                  </div>
+                <!-- Seleção do modelo -->
+                <div class="mb-3" id="areaModelo" hidden>
+                  <label for="modelo" class="form-label">Modelo</label>
+                  <select
+                    class="form-control"
+                    id="modelo"
+                    name="modelo"
+                    disabled
+                  >
+                    <option value="">Selecione primeiro uma marca</option>
+                  </select>
+                  <small id="statusModelo" class="text-muted"></small>
+                </div>
 
-                  <div class="mb-3">
-                    <label for="funcionamento" class="form-label">
-                      Estado de funcionamento
-                    </label>
-                    <br />
-                    <select class="select-ecotech" onfocus="this.size = 4" onblur="this.size = 1" onchange="
-                        this.size = 1;
-                        this.blur();
-                      " required id="funcionamento" name="funcionamento">
-                      <option value="" disabled selected>
-                        Selecione uma opção:
-                      </option>
+                <div class="mb-3">
+                  <label for="armazenamento" class="form-label">
+                    Armazenamento
+                  </label>
+                  <select
+                    class="form-control"
+                    id="armazenamento"
+                    name="armazenamento"
+                  >
+                    <option value="">Não informado / Não se aplica</option>
+                    <option value="32 GB">32 GB</option>
+                    <option value="64 GB">64 GB</option>
+                    <option value="128 GB">128 GB</option>
+                    <option value="256 GB">256 GB</option>
+                    <option value="512 GB">512 GB</option>
+                    <option value="1 TB">1 TB</option>
+                    <option value="2 TB ou mais">2 TB ou mais</option>
+                    <option value="Outro">Outro</option>
+                  </select>
+                </div>
 
-                      <option value="funcionando">
-                        Funcionando normalmente
-                      </option>
-                      <option value="defeito">Com defeito</option>
-                      <option value="danificado">Danificado</option>
-                      <option value="nao_testado">Não testado</option>
-                    </select>
-                  </div>
+                <div class="mb-3">
+                  <label for="ram" class="form-label">Memória RAM</label>
+                  <select class="form-control" id="ram" name="ram">
+                    <option value="">Não informado / Não se aplica</option>
+                    <option value="2 GB">2 GB</option>
+                    <option value="4 GB">4 GB</option>
+                    <option value="8 GB">8 GB</option>
+                    <option value="16 GB">16 GB</option>
+                    <option value="32 GB">32 GB</option>
+                    <option value="64 GB ou mais">64 GB ou mais</option>
+                  </select>
+                </div>
 
-                  <div class="mb-3">
-                    <label for="problema">Problema apresentado
-                      <span class="required">*</span></label>
+                <div class="mb-3" id="areaTamanhoTela" hidden>
+  <label for="tamanhoTela" class="form-label">
+    Tamanho da tela
+  </label>
+  <input
+    type="text"
+    class="form-control"
+    id="tamanhoTela"
+    name="tamanhoTela"
+    maxlength="30"
+    placeholder="Ex.: 15,6 polegadas"
+  />
+</div>
+                <div class="mb-3">
+                  <label for="funcionamento" class="form-label">
+                    Estado de funcionamento
+                  </label>
+                  <select
+                    class="select-ecotech"
+                    id="funcionamento"
+                    name="funcionamento"
+                    required
+                  >
+                    <option value="" disabled selected>
+                      Selecione uma opção
+                    </option>
+                    <option value="funcionando">Funcionando normalmente</option>
+                    <option value="defeito">Com defeito</option>
+                    <option value="danificado">Danificado</option>
+                    <option value="nao_testado">Não testado</option>
+                  </select>
+                </div>
 
-                    <textarea id="problema" name="problema" class="form-control"
-                      placeholder="Descreva o defeito do eletrônico..." rows="3" maxlength="300" required></textarea>
-                    <div class="problema-info">
-                      <small>Informe os defeitos identificados no eletrônico.</small>
-                      <span id="contadorproblema">0/300</span>
-                    </div>
-                  </div>
-
-                  <div class="descricao-container">
-                    <label for="descricao">Descrição</label>
-
-                    <textarea id="descricao" name="descricao" class="textarea-descricao"
-                      placeholder="Descreva mais detalhes sobre o eletrônico, como modelo, tempo de uso e outras informações..."
-                      rows="4" maxlength="500"></textarea>
-
-                    <div class="descricao-info">
-                      <small>Inclua informações que possam ajudar no processo de
-                        avaliação.</small>
-                      <span id="contadordescricao">0/500</span>
-                    </div>
-                  </div>
-
-                  <script>
-                    const campoFoto = document.getElementById("foto");
-                    const previewFoto = document.getElementById("previewFoto");
-
-                    campoFoto.addEventListener("change", function () {
-                      const arquivo = this.files[0];
-
-                      if (!arquivo) {
-                        previewFoto.style.display = "none";
-                        previewFoto.removeAttribute("src");
-                        return;
-                      }
-
-                      if (!arquivo.type.startsWith("image/")) {
-                        alert("Selecione um arquivo de imagem.");
-                        this.value = "";
-                        previewFoto.style.display = "none";
-                        return;
-                      }
-
-                      previewFoto.src = URL.createObjectURL(arquivo);
-                      previewFoto.style.display = "block";
-                    });
-                  </script>
-
-                  <div class="mb-3">
-                    <label for="foto" class="form-label">Foto do eletrônico</label>
-
-                    <input type="file" id="foto" name="foto" class="form-control"
-                      accept="image/jpeg,image/png,image/webp" required />
-
+                <div class="mb-3">
+                  <label for="problema" class="form-label">
+                    Problema apresentado
+                  </label>
+                  <textarea
+                    id="problema"
+                    name="problema"
+                    class="form-control"
+                    placeholder="Descreva o defeito do eletrônico..."
+                    rows="3"
+                    maxlength="300"
+                    required
+                  ></textarea>
+                  <div class="d-flex justify-content-between">
                     <small class="text-muted">
-                      Selecione uma imagem JPEG, PNG ou WebP.
+                      Informe os defeitos identificados.
                     </small>
-
-                    <img id="previewFoto" alt="Pré-visualização da foto selecionada"
-                      style="display: none; max-width: 100%; max-height: 250px; margin-top: 12px;" />
+                    <span id="contadorproblema">0/300</span>
                   </div>
+                </div>
 
-                  <div class="mb-3">
-                    <label for="preco" class="form-label">
-                      Preço de venda (R$)
-                    </label>
-
-                    <input type="number" id="preco" name="preco" class="form-control" placeholder="Ex.: 1299.90"
-                      min="0.01" step="0.01" required />
+                <div class="mb-3">
+                  <label for="descricao" class="form-label">
+                    Descrição
+                  </label>
+                  <textarea
+                    id="descricao"
+                    name="descricao"
+                    class="form-control"
+                    placeholder="Detalhes, tempo de uso e outras informações..."
+                    rows="4"
+                    maxlength="500"
+                  ></textarea>
+                  <div class="d-flex justify-content-between">
+                    <small class="text-muted">
+                      Inclua informações relevantes sobre o eletrônico.
+                    </small>
+                    <span id="contadordescricao">0/500</span>
                   </div>
+                </div>
 
-                  <script>
-                    const descricaoTextarea =
-                      document.getElementById("descricao");
-                    const contadorSpan =
-                      document.getElementById("contadordescricao");
-                    const problemaTextarea =
-                      document.getElementById("problema");
-                    const contadorProblemaSpan =
-                      document.getElementById("contadorproblema");
+                <div class="mb-3">
+                  <label for="foto" class="form-label">
+                    Foto do eletrônico
+                  </label>
+                  <input
+                    type="file"
+                    id="foto"
+                    name="foto"
+                    class="form-control"
+                    accept="image/jpeg,image/png,image/webp"
+                    required
+                  />
+                  <small class="text-muted">
+                    Selecione uma imagem JPEG, PNG ou WebP.
+                  </small>
+                  <img
+                    id="previewFoto"
+                    alt="Pré-visualização da foto"
+                    style="display:none;max-width:100%;max-height:250px;margin-top:12px;"
+                  />
+                </div>
 
-                    descricaoTextarea.addEventListener("input", () => {
-                      let caracteres = descricaoTextarea.value.length;
-                      contadorSpan.textContent = `${caracteres}/500`;
-                    });
+                <div class="mb-3">
+                  <label for="preco" class="form-label">
+                    Preço de venda (R$)
+                  </label>
+                  <input
+                    type="number"
+                    id="preco"
+                    name="preco"
+                    class="form-control"
+                    placeholder="Ex.: 1299.90"
+                    min="0.01"
+                    step="0.01"
+                    required
+                  />
+                </div>
 
-                    problemaTextarea.addEventListener("input", () => {
-                      let caracteres = problemaTextarea.value.length;
-                      contadorProblemaSpan.textContent = `${caracteres}/300`;
-                    });
-                  </script>
-
-                  <button type="submit" class="btn btn-ecotech w-100">
-                    Cadastrar
-                  </button>
-                </form>
-              </div>
+                <button type="submit" class="btn btn-ecotech w-100">
+                  Cadastrar
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
+  </main>
 
-    <%- include ('../partials/footer.ejs') %>
+  <%- include('../partials/footer.ejs') %>
+
+  <script>
+    const categoria = document.getElementById("produto");
+
+    const areaTamanhoTela = document.getElementById("areaTamanhoTela");
+
+const categoriasComTela = [
+  "computador",
+  "tablet",
+  "televisao"
+];
+
+function atualizarCampoTamanhoTela() {
+  areaTamanhoTela.hidden =
+    !categoriasComTela.includes(categoria.value);
+}
+
+categoria.addEventListener("change", atualizarCampoTamanhoTela);
+
+    const areaMarca = document.getElementById("areaMarca");
+    const areaModelo = document.getElementById("areaModelo");
+
+    const marca = document.getElementById("marca");
+    const modelo = document.getElementById("modelo");
+
+    const statusMarca = document.getElementById("statusMarca");
+    const statusModelo = document.getElementById("statusModelo");
+
+    /*
+      Catálogo de marcas e modelos.
+
+      As listas são separadas por categoria para evitar
+      mostrar marcas que não fazem sentido para o produto.
+    */
+
+    const catalogo = {
+
+      celular: {
+        "Samsung": [
+          "Galaxy A04",
+          "Galaxy A05",
+          "Galaxy A06",
+          "Galaxy A14",
+          "Galaxy A15",
+          "Galaxy A16",
+          "Galaxy A24",
+          "Galaxy A25",
+          "Galaxy A26",
+          "Galaxy A34",
+          "Galaxy A35",
+          "Galaxy A36",
+          "Galaxy A54",
+          "Galaxy A55",
+          "Galaxy A56",
+          "Galaxy S21",
+          "Galaxy S22",
+          "Galaxy S23",
+          "Galaxy S23 FE",
+          "Galaxy S24",
+          "Galaxy S24 FE",
+          "Galaxy S25",
+          "Galaxy S25 Ultra",
+          "Galaxy Z Flip",
+          "Galaxy Z Fold"
+        ],
+
+        "Apple": [
+          "iPhone 11",
+          "iPhone 11 Pro",
+          "iPhone 12",
+          "iPhone 12 Pro",
+          "iPhone 13",
+          "iPhone 13 Pro",
+          "iPhone 14",
+          "iPhone 14 Plus",
+          "iPhone 14 Pro",
+          "iPhone 15",
+          "iPhone 15 Plus",
+          "iPhone 15 Pro",
+          "iPhone 16",
+          "iPhone 16 Plus",
+          "iPhone 16 Pro",
+          "iPhone 16 Pro Max",
+          "iPhone SE"
+        ],
+
+        "Motorola": [
+          "Moto E13",
+          "Moto E22",
+          "Moto G04",
+          "Moto G14",
+          "Moto G24",
+          "Moto G34",
+          "Moto G54",
+          "Moto G84",
+          "Moto G85",
+          "Edge 30",
+          "Edge 40",
+          "Edge 40 Neo",
+          "Edge 50 Fusion",
+          "Edge 50 Pro",
+          "Edge 60",
+          "Razr 40",
+          "Razr 50"
+        ],
+
+        "Xiaomi": [
+          "Xiaomi 12",
+          "Xiaomi 12T",
+          "Xiaomi 13",
+          "Xiaomi 13T",
+          "Xiaomi 14",
+          "Xiaomi 14T"
+        ],
+
+        "Redmi": [
+          "Redmi 10",
+          "Redmi 12",
+          "Redmi 13C",
+          "Redmi 13",
+          "Redmi Note 11",
+          "Redmi Note 12",
+          "Redmi Note 13",
+          "Redmi Note 13 Pro",
+          "Redmi Note 14",
+          "Redmi Note 14 Pro"
+        ],
+
+        "POCO": [
+          "POCO C65",
+          "POCO C75",
+          "POCO M6",
+          "POCO X5 Pro",
+          "POCO X6",
+          "POCO X6 Pro",
+          "POCO X7",
+          "POCO F5",
+          "POCO F6"
+        ],
+
+        "Realme": [
+          "Realme C55",
+          "Realme C53",
+          "Realme C67",
+          "Realme 11",
+          "Realme 12",
+          "Realme 12 Pro",
+          "Realme 12 Pro Plus"
+        ],
+
+        "ASUS": [
+          "Zenfone 9",
+          "Zenfone 10",
+          "ROG Phone 6",
+          "ROG Phone 7",
+          "ROG Phone 8"
+        ],
+
+        "Infinix": [
+          "Hot 30",
+          "Hot 40",
+          "Hot 40i",
+          "Note 30",
+          "Note 40",
+          "Smart 8"
+        ],
+
+        "LG": [
+          "LG K22",
+          "LG K41S",
+          "LG K51S",
+          "LG K52",
+          "LG K62",
+          "LG Velvet"
+        ]
+      },
+
+      computador: {
+        "Acer": [
+          "Aspire 3",
+          "Aspire 5",
+          "Aspire 7",
+          "Nitro 5",
+          "Nitro V 15",
+          "Swift 3",
+          "Swift Go"
+        ],
+
+        "Apple": [
+          "MacBook Air M1",
+          "MacBook Air M2",
+          "MacBook Air M3",
+          "MacBook Air M4",
+          "MacBook Pro 13",
+          "MacBook Pro 14",
+          "MacBook Pro 16"
+        ],
+
+        "ASUS": [
+          "VivoBook 15",
+          "VivoBook Go 15",
+          "ZenBook 14",
+          "TUF Gaming F15",
+          "TUF Gaming A15",
+          "ROG Strix G16",
+          "ROG Zephyrus G14"
+        ],
+
+        "Dell": [
+          "Inspiron 15",
+          "Inspiron 14",
+          "Inspiron 16",
+          "Vostro 15",
+          "Latitude 3420",
+          "Latitude 3440",
+          "G15",
+          "XPS 13",
+          "XPS 15"
+        ],
+
+        "HP": [
+          "HP 14",
+          "HP 15",
+          "HP 256 G9",
+          "Pavilion 15",
+          "Victus 15",
+          "Victus 16",
+          "ProBook 440"
+        ],
+
+        "Lenovo": [
+          "IdeaPad 1",
+          "IdeaPad 3",
+          "IdeaPad 5",
+          "IdeaPad Gaming 3",
+          "LOQ",
+          "Legion 5",
+          "ThinkPad E14",
+          "ThinkPad E15"
+        ],
+
+        "Samsung": [
+          "Samsung Book",
+          "Galaxy Book2",
+          "Galaxy Book3",
+          "Galaxy Book4",
+          "Galaxy Book4 Pro"
+        ],
+
+        "Positivo": [
+          "Motion Q",
+          "Motion C",
+          "Vision C",
+          "Vision R15",
+          "Master N"
+        ],
+
+        "Avell": [
+          "A52",
+          "A65",
+          "Storm 450",
+          "Storm 460"
+        ],
+
+        "MSI": [
+          "Modern 14",
+          "Modern 15",
+          "Thin GF63",
+          "Katana 15",
+          "Cyborg 15",
+          "Stealth 14"
+        ]
+      },
+
+      desktop: {
+        "Dell": [
+          "OptiPlex",
+          "Inspiron Desktop",
+          "XPS Desktop",
+          "Precision Tower"
+        ],
+
+        "HP": [
+          "Pavilion Desktop",
+          "ProDesk",
+          "EliteDesk",
+          "OMEN Desktop"
+        ],
+
+        "Lenovo": [
+          "IdeaCentre",
+          "ThinkCentre",
+          "Legion Tower"
+        ],
+
+        "Acer": [
+          "Aspire TC",
+          "Predator Orion"
+        ],
+
+        "ASUS": [
+          "ROG G-series",
+          "ROG Strix",
+          "ExpertCenter"
+        ],
+
+        "Apple": [
+          "Mac mini",
+          "Mac Studio",
+          "Mac Pro"
+        ],
+
+        "Positivo": [
+          "Master",
+          "Union",
+          "Stilo"
+        ],
+
+        "PC montado / Sem marca específica": [
+          "Computador montado",
+          "Computador gamer montado",
+          "Computador de escritório montado"
+        ]
+      },
+
+      tablet: {
+        "Apple": [
+          "iPad 9ª geração",
+          "iPad 10ª geração",
+          "iPad A16",
+          "iPad Mini 6",
+          "iPad Mini 7",
+          "iPad Air 5",
+          "iPad Air 6",
+          "iPad Pro 11",
+          "iPad Pro 12,9"
+        ],
+
+        "Samsung": [
+          "Galaxy Tab A7 Lite",
+          "Galaxy Tab A8",
+          "Galaxy Tab A9",
+          "Galaxy Tab A9+",
+          "Galaxy Tab S6 Lite",
+          "Galaxy Tab S7 FE",
+          "Galaxy Tab S8",
+          "Galaxy Tab S9",
+          "Galaxy Tab S9 FE",
+          "Galaxy Tab S10+",
+          "Galaxy Tab S10 Ultra"
+        ],
+
+        "Lenovo": [
+          "Tab M8",
+          "Tab M9",
+          "Tab M10",
+          "Tab M11",
+          "Tab P11",
+          "Tab P12"
+        ],
+
+        "Xiaomi": [
+          "Redmi Pad",
+          "Redmi Pad SE",
+          "Redmi Pad Pro",
+          "Xiaomi Pad 5",
+          "Xiaomi Pad 6",
+          "Xiaomi Pad 6S Pro"
+        ],
+
+        "Positivo": [
+          "Vision Tab 7",
+          "Vision Tab 10",
+          "Q10"
+        ],
+
+        "Huawei": [
+          "MatePad SE",
+          "MatePad 10.4",
+          "MatePad 11",
+          "MatePad 11.5"
+        ]
+      },
+
+      televisao: {
+        "Samsung": [
+          "Crystal UHD",
+          "Crystal UHD CU8000",
+          "Crystal UHD DU8000",
+          "QLED Q60",
+          "QLED Q70",
+          "QLED Q80",
+          "Neo QLED",
+          "OLED S90",
+          "OLED S95",
+          "Odyssey G3",
+          "Odyssey G5",
+          "Odyssey G7"
+        ],
+
+        "LG": [
+          "UHD UR7800",
+          "UHD UR8750",
+          "QNED80",
+          "QNED85",
+          "OLED C2",
+          "OLED C3",
+          "OLED C4",
+          "OLED G3",
+          "UltraGear 24GN60R",
+          "UltraGear 27GN65R",
+          "UltraWide"
+        ],
+
+        "TCL": [
+          "P635",
+          "P735",
+          "P755",
+          "C645",
+          "C655",
+          "C755",
+          "C845"
+        ],
+
+        "Philips": [
+          "Ambilight",
+          "The One",
+          "PUG7908",
+          "PUG7408",
+          "241V8",
+          "242V8"
+        ],
+
+        "Sony": [
+          "Bravia X80",
+          "Bravia X85",
+          "Bravia X90",
+          "Bravia A80",
+          "Bravia A95"
+        ],
+
+        "Hisense": [
+          "A6",
+          "A7",
+          "U6",
+          "U7",
+          "U8"
+        ],
+
+        "Panasonic": [
+          "LED 4K",
+          "MX700",
+          "MX800"
+        ],
+
+        "AOC": [
+          "Hero 24G2",
+          "Hero 27G2",
+          "Agon",
+          "B1",
+          "E1"
+        ],
+
+        "Dell": [
+          "P2422H",
+          "P2425H",
+          "S2721",
+          "S2722",
+          "UltraSharp"
+        ],
+
+        "Acer": [
+          "Nitro VG240Y",
+          "Nitro VG270",
+          "Predator XB",
+          "SA240Y"
+        ],
+
+        "ASUS": [
+          "TUF Gaming VG249Q1A",
+          "TUF Gaming VG27",
+          "ROG Swift",
+          "ProArt"
+        ],
+
+        "BenQ": [
+          "ZOWIE XL2411K",
+          "ZOWIE XL2546K",
+          "GW2480",
+          "Mobiuz"
+        ]
+      },
+
+      perifericos: {
+        "Logitech": [
+          "G203",
+          "G305",
+          "G502 HERO",
+          "G Pro X",
+          "MX Master 3S",
+          "K120",
+          "K380",
+          "K400",
+          "G213",
+          "C920"
+        ],
+
+        "Razer": [
+          "DeathAdder Essential",
+          "DeathAdder V2",
+          "Viper Mini",
+          "BlackWidow V3",
+          "Huntsman",
+          "Kraken X",
+          "Seiren Mini"
+        ],
+
+        "Redragon": [
+          "Kumara K552",
+          "Mitra K551",
+          "Cobra M711",
+          "Griffin M607",
+          "Zeus X",
+          "Fizz",
+          "Lakshmi"
+        ],
+
+        "HyperX": [
+          "Cloud Stinger",
+          "Cloud Stinger 2",
+          "Cloud II",
+          "Alloy Core RGB",
+          "Alloy Origins",
+          "Pulsefire Core",
+          "Pulsefire Haste"
+        ],
+
+        "Corsair": [
+          "K55",
+          "K70",
+          "Harpoon",
+          "Katar Pro",
+          "HS55",
+          "Void Elite",
+          "Scimitar"
+        ],
+
+        "SteelSeries": [
+          "Rival 3",
+          "Rival 5",
+          "Arctis Nova 1",
+          "Arctis 5",
+          "Apex 3",
+          "Apex 5"
+        ],
+
+        "JBL": [
+          "Tune 510BT",
+          "Tune 520BT",
+          "Quantum 100",
+          "Quantum 200",
+          "Quantum 400",
+          "Quantum 610"
+        ],
+
+        "Microsoft": [
+          "Bluetooth Mouse",
+          "Basic Optical Mouse",
+          "Sculpt Ergonomic",
+          "Wireless Desktop"
+        ],
+
+        "Dell": [
+          "Mouse WM126",
+          "Mouse MS116",
+          "Teclado KB216",
+          "Combo KM3322W"
+        ],
+
+        "HP": [
+          "Mouse X1000",
+          "Mouse M100",
+          "Teclado 125",
+          "Combo 230"
+        ],
+
+        "Lenovo": [
+          "ThinkPad Mouse",
+          "Essential Mouse",
+          "Professional Keyboard",
+          "Combo 510"
+        ],
+
+        "Havit": [
+          "HV-MS1001",
+          "HV-KB432L",
+          "H2002D",
+          "MS1022"
+        ],
+
+        "Fortrek": [
+          "Blackfire",
+          "G Pro",
+          "Spider",
+          "G Crusader"
+        ],
+
+        "Multi": [
+          "Mouse MO251",
+          "Mouse MO277",
+          "Teclado TC193",
+          "Headset Warrior"
+        ]
+      },
+
+      console: {
+        "Sony": [
+          "PlayStation 3",
+          "PlayStation 4",
+          "PlayStation 4 Slim",
+          "PlayStation 4 Pro",
+          "PlayStation 5",
+          "PlayStation 5 Slim",
+          "PlayStation 5 Pro"
+        ],
+
+        "Microsoft": [
+          "Xbox 360",
+          "Xbox One",
+          "Xbox One S",
+          "Xbox One X",
+          "Xbox Series S",
+          "Xbox Series X"
+        ],
+
+        "Nintendo": [
+          "Nintendo 3DS",
+          "Nintendo Wii",
+          "Nintendo Wii U",
+          "Nintendo Switch",
+          "Nintendo Switch Lite",
+          "Nintendo Switch OLED",
+          "Nintendo Switch 2"
+        ],
+
+        "Valve": [
+          "Steam Deck LCD",
+          "Steam Deck OLED"
+        ]
+      },
+
+      impressora: {
+        "Epson": [
+          "EcoTank L121",
+          "EcoTank L1250",
+          "EcoTank L3210",
+          "EcoTank L3250",
+          "EcoTank L4260",
+          "EcoTank L5290",
+          "EcoTank L6270",
+          "EcoTank L8180",
+          "WorkForce"
+        ],
+
+        "HP": [
+          "DeskJet Ink Advantage 2774",
+          "DeskJet Ink Advantage 2874",
+          "Smart Tank 517",
+          "Smart Tank 581",
+          "Smart Tank 583",
+          "Smart Tank 750",
+          "LaserJet M111w",
+          "LaserJet MFP M140w"
+        ],
+
+        "Canon": [
+          "Mega Tank G3110",
+          "Mega Tank G3160",
+          "Mega Tank G6010",
+          "Mega Tank G7010",
+          "PIXMA TS",
+          "PIXMA TR"
+        ],
+
+        "Brother": [
+          "DCP-T420W",
+          "DCP-T520W",
+          "DCP-T720DW",
+          "DCP-T820DW",
+          "HL-L1232W",
+          "HL-L2360DW",
+          "MFC-L"
+        ],
+
+        "Pantum": [
+          "P2500W",
+          "P2502W",
+          "M6550NW",
+          "M6800FDW"
+        ]
+      },
+
+      outro: {
+        "Apple": [
+          "Apple Watch",
+          "AirPods",
+          "AirTag",
+          "HomePod",
+          "Apple TV"
+        ],
+
+        "Samsung": [
+          "Galaxy Watch",
+          "Galaxy Buds",
+          "Galaxy Fit",
+          "SmartTag"
+        ],
+
+        "Xiaomi": [
+          "Mi Band",
+          "Smart Band",
+          "Redmi Watch",
+          "Mi Watch",
+          "Mi Box"
+        ],
+
+        "JBL": [
+          "Flip",
+          "Charge",
+          "Go",
+          "Boombox",
+          "PartyBox",
+          "Tune",
+          "Wave"
+        ],
+
+        "Sony": [
+          "WH-1000XM",
+          "WF-1000XM",
+          "SRS-XB",
+          "Cyber-shot",
+          "Alpha"
+        ],
+
+        "Philips": [
+          "Airfryer",
+          "Soundbar",
+          "Caixa de som",
+          "Fone de ouvido"
+        ],
+
+        "GoPro": [
+          "HERO 9",
+          "HERO 10",
+          "HERO 11",
+          "HERO 12",
+          "HERO 13"
+        ],
+
+        "Canon": [
+          "EOS Rebel",
+          "EOS R",
+          "PowerShot"
+        ],
+
+        "Nikon": [
+          "D3500",
+          "D5600",
+          "Z50",
+          "Z6"
+        ],
+
+        "TP-Link": [
+          "Archer C6",
+          "Archer C80",
+          "Archer AX10",
+          "Deco M4",
+          "Deco X20"
+        ],
+
+        "Garmin": [
+          "Forerunner",
+          "Fenix",
+          "Vivoactive",
+          "Venu"
+        ],
+
+        "Huawei": [
+          "Watch GT",
+          "Watch Fit",
+          "FreeBuds"
+        ],
+
+        "Intel": [
+          "Core i3",
+          "Core i5",
+          "Core i7",
+          "Core i9",
+          "Core Ultra"
+        ],
+
+        "AMD": [
+          "Ryzen 3",
+          "Ryzen 5",
+          "Ryzen 7",
+          "Ryzen 9",
+          "Radeon"
+        ],
+
+        "Kingston": [
+          "DataTraveler",
+          "NV2",
+          "A400",
+          "Fury"
+        ],
+
+        "SanDisk": [
+          "Ultra",
+          "Extreme",
+          "Extreme Pro",
+          "Cruzer"
+        ],
+
+        "Seagate": [
+          "Expansion",
+          "Backup Plus",
+          "One Touch",
+          "Barracuda"
+        ],
+
+        "Western Digital": [
+          "WD Blue",
+          "WD Black",
+          "WD My Passport",
+          "WD Elements"
+        ],
+
+        "Outra / Sem marca específica": [
+          "Outro eletrônico",
+          "Modelo não identificado"
+        ]
+      }
+    };
+
+    // Quando o usuário escolhe uma categoria
+    categoria.addEventListener("change", () => {
+      const valorCategoria = categoria.value;
+      const marcasDisponiveis = catalogo[valorCategoria];
+
+      // Exibe os campos
+      areaMarca.hidden = false;
+      areaModelo.hidden = false;
+
+      // Limpa as seleções anteriores
+      marca.replaceChildren(
+        new Option("Selecione uma marca", "")
+      );
+
+      modelo.replaceChildren(
+        new Option("Selecione primeiro uma marca", "")
+      );
+
+      modelo.disabled = true;
+
+      // Adiciona as marcas da categoria escolhida
+      Object.keys(marcasDisponiveis).forEach(nomeMarca => {
+        marca.add(new Option(nomeMarca, nomeMarca));
+      });
+
+      // Opção de fallback para marcas que não estão no catálogo
+      marca.add(
+        new Option("Outra marca / Não listada", "Outra marca / Não listada")
+      );
+
+      statusMarca.textContent =
+        `${Object.keys(marcasDisponiveis).length} marcas disponíveis.`;
+
+      statusModelo.textContent =
+        "Selecione uma marca para visualizar os modelos.";
+    });
+
+    // Quando o usuário escolhe uma marca
+    marca.addEventListener("change", () => {
+      const valorCategoria = categoria.value;
+      const valorMarca = marca.value;
+
+      modelo.replaceChildren(
+        new Option("Selecione um modelo", "")
+      );
+
+      modelo.disabled = false;
+
+      if (!valorMarca) {
+        modelo.disabled = true;
+        statusModelo.textContent = "";
+        return;
+      }
+
+      const modelosDisponiveis =
+        catalogo[valorCategoria][valorMarca] || [];
+
+      // Adiciona os modelos correspondentes à marca
+      modelosDisponiveis.forEach(nomeModelo => {
+        modelo.add(new Option(nomeModelo, nomeModelo));
+      });
+
+      // Alternativa caso o modelo não esteja cadastrado
+      modelo.add(
+        new Option(
+          "Meu modelo não está na lista",
+          "Modelo não listado"
+        )
+      );
+
+      statusModelo.textContent =
+        `${modelosDisponiveis.length} modelos disponíveis.`;
+    });
+
+    // Pré-visualização da imagem
+    const campoFoto = document.getElementById("foto");
+    const previewFoto = document.getElementById("previewFoto");
+
+    campoFoto.addEventListener("change", function () {
+      const arquivo = this.files[0];
+
+      if (!arquivo) {
+        previewFoto.style.display = "none";
+        previewFoto.removeAttribute("src");
+        return;
+      }
+
+      if (!["image/jpeg", "image/png", "image/webp"].includes(arquivo.type)) {
+        alert("Selecione uma imagem JPEG, PNG ou WebP.");
+        this.value = "";
+        previewFoto.style.display = "none";
+        previewFoto.removeAttribute("src");
+        return;
+      }
+
+      previewFoto.src = URL.createObjectURL(arquivo);
+      previewFoto.style.display = "block";
+    });
+
+    // Contadores de caracteres
+    const descricao = document.getElementById("descricao");
+    const problema = document.getElementById("problema");
+
+    descricao.addEventListener("input", () => {
+      document.getElementById("contadordescricao").textContent =
+        `${descricao.value.length}/500`;
+    });
+
+    problema.addEventListener("input", () => {
+      document.getElementById("contadorproblema").textContent =
+        `${problema.value.length}/300`;
+    });
+  </script>
 </body>
-
 </html>

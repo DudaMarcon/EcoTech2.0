@@ -1,102 +1,41 @@
-
 const express = require("express");
 const router = express.Router();
 
-const FIREBASE_URL =
-    "https://ecotech-4344c-default-rtdb.firebaseio.com/";
-
-// ========================================
-// LISTAR PRODUTOS DO FIREBASE
-// ========================================
-
-router.get("/ecoProdutos", async (req, res) => {
-    try {
-        const resposta = await fetch(
-            `${FIREBASE_URL}/produtos.json`
-        );
-
-        if (!resposta.ok) {
-            throw new Error("Erro ao consultar o Firebase.");
-        }
-
-        const dados = await resposta.json();
-
-        const produtos = dados
-            ? Object.entries(dados)
-                .filter(([id, dadosProduto]) => {
-                    return dadosProduto.status === "aprovado";
-                })
-                .map(([id, dadosProduto]) => ({
-                    ...dadosProduto,
-                    id,
-                    preco: Number(
-                        dadosProduto.preco || 0
-                    ).toLocaleString("pt-BR", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2
-                    })
-                }))
-                .reverse()
-            : [];
-
-        res.render("ecoProdutos", { produtos });
-
-    } catch (erro) {
-        console.error("Erro ao listar produtos:", erro);
-
-        res.status(500).send(
-            "Não foi possível carregar os produtos."
-        );
+// 1. Lista de produtos
+const produtosLista = [
+    {
+        id: "1",
+        nome: "Smartphone EcoTech X",
+        preco: "1.299,00",
+        descricaoCompleta: "Smartphone recondicionado com certificação de qualidade EcoTech.",
+        imagens: ["/img/smartphone-recondicionado.jpg"],
+        estado: "Excelente"
+    },
+    {
+        id: "2",
+        nome: "Notebook EcoTech Pro",
+        preco: "2.499,00",
+        descricaoCompleta: "Notebook recondicionado, testado e com garantia.",
+        imagens: ["/img/notebook-recondicionado.jpg"],
+        estado: "Bom"
     }
+];
+
+// 2. Rota que envia os dados para a view ecoProdutos.ejs
+router.get("/ecoProdutos", (req, res) => {
+    res.render("ecoProdutos", { produtos: produtosLista });
 });
 
-// ========================================
-// DETALHES DO PRODUTO
-// ========================================
+// 3. Rota dinâmica de detalhes
+router.get("/produto/:id", (req, res) => {
+    const produtoId = req.params.id;
+    const produtoEncontrado = produtosLista.find(p => p.id === produtoId);
 
-router.get("/produto/:id", async (req, res) => {
-    try {
-        const resposta = await fetch(
-            `${FIREBASE_URL}/produtos/${req.params.id}.json`
-        );
-
-        if (!resposta.ok) {
-            throw new Error("Erro ao consultar o Firebase.");
-        }
-
-        const dados = await resposta.json();
-
-        if (!dados) {
-            return res.status(404).send(
-                "Produto não encontrado."
-            );
-        }
-        if (dados.status !== "aprovado") {
-            return res.status(404).send(
-                "Produto não encontrado."
-            );
-        }
-
-        const produto = {
-            ...dados,
-            id: req.params.id,
-            preco: Number(
-                dados.preco || 0
-            ).toLocaleString("pt-BR", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            })
-        };
-
-        res.render("detalhesProduto", { produto });
-
-    } catch (erro) {
-        console.error("Erro ao carregar detalhes:", erro);
-
-        res.status(500).send(
-            "Não foi possível carregar os detalhes do produto."
-        );
+    if (!produtoEncontrado) {
+        return res.status(404).send("Produto não encontrado.");
     }
+
+    res.render("detalhesProduto", { produto: produtoEncontrado });
 });
 
 module.exports = router;

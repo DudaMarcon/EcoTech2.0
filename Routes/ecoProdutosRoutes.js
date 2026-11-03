@@ -23,6 +23,9 @@ router.get("/ecoProdutos", async (req, res) => {
 
         const produtos = dados
             ? Object.entries(dados)
+                .filter(([id, dadosProduto]) => {
+                    return dadosProduto.status === "aprovado";
+                })
                 .map(([id, dadosProduto]) => ({
                     ...dadosProduto,
                     id,
@@ -64,6 +67,11 @@ router.get("/produto/:id", async (req, res) => {
         const dados = await resposta.json();
 
         if (!dados) {
+            return res.status(404).send(
+                "Produto não encontrado."
+            );
+        }
+        if (dados.status !== "aprovado") {
             return res.status(404).send(
                 "Produto não encontrado."
             );

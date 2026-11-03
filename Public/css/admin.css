@@ -1,0 +1,411 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --green-dark: #194b32;
+    --green: #32764e;
+    --green-light: #eaf2ec;
+    --text: #29352e;
+    --muted: #828b84;
+    --border: #e8ece8;
+    --background: #f8f9f7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    font-size: 14px;
+}
+
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 245px;
+    background: #fff;
+    border-right: 1px solid var(--border);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.brand {
+    padding: 0 10px;
+    margin-bottom: 55px;
+}
+
+.brand h3 {
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--green-dark);
+}
+
+.brand h3 span {
+    color: #78a886;
+}
+
+.brand small {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+.menu-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    color: #a0a8a1;
+    padding: 0 10px;
+    margin-bottom: 14px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 13px;
+    text-decoration: none;
+    color: #68736b;
+    border-radius: 6px;
+    transition: .2s;
+    font-size: 13px;
+}
+
+.nav-item:hover {
+    background: #f4f7f4;
+    color: var(--green-dark);
+}
+
+.nav-item.active {
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-weight: 600;
+}
+
+.nav-icon {
+    font-size: 17px;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 20px 10px 0;
+    border-top: 1px solid var(--border);
+}
+
+.sidebar-footer a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* CONTEÚDO */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.topbar {
+    height: 90px;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.breadcrumb-text {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.topbar h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.user-info strong,
+.user-info small {
+    display: block;
+}
+
+.user-info strong {
+    font-size: 12px;
+}
+
+.user-info small {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 3px;
+}
+
+.user-avatar {
+    width: 35px;
+    height: 35px;
+    background: var(--green-light);
+    color: var(--green-dark);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+}
+
+.content-area {
+    padding: 40px 45px;
+    max-width: 1500px;
+}
+
+/* BOAS-VINDAS */
+
+.welcome-section {
+    margin-bottom: 35px;
+}
+
+.welcome-section h2 {
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: -.6px;
+}
+
+.welcome-section p {
+    color: var(--muted);
+    margin-top: 9px;
+    font-size: 13px;
+}
+
+/* INDICADORES */
+
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 28px;
+}
+
+.stat-item {
+    padding: 24px 27px;
+    border-right: 1px solid var(--border);
+}
+
+.stat-item:last-child {
+    border-right: none;
+}
+
+.stat-item span,
+.stat-item strong,
+.stat-item small {
+    display: block;
+}
+
+.stat-item span {
+    color: #68736b;
+    font-size: 12px;
+}
+
+.stat-item strong {
+    font-size: 27px;
+    font-weight: 600;
+    margin: 12px 0 5px;
+    color: var(--green-dark);
+}
+
+.stat-item small {
+    color: #9aa29b;
+    font-size: 11px;
+}
+
+/* APROVAÇÃO */
+
+.approval-section {
+    background: #edf4ee;
+    border: 1px solid #dce9de;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.approval-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.section-overline {
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    color: var(--green);
+}
+
+.approval-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.approval-content p {
+    color: #69766c;
+    font-size: 12px;
+    margin: 0;
+}
+
+.btn-approval {
+    background: var(--green-dark);
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 19px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    transition: .2s;
+}
+
+.btn-approval:hover {
+    background: #286641;
+    color: white;
+}
+
+/* ATIVIDADES */
+
+.activity-section {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 25px;
+}
+
+.section-heading h3 {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.empty-state {
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
+    padding: 35px 10px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.empty-state span {
+    font-size: 25px;
+}
+
+.empty-state p {
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.admin-footer {
+    text-align: center;
+    color: #a0a8a1;
+    font-size: 11px;
+    padding: 30px 0 5px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .topbar,
+    .content-area {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
+
+@media (max-width: 650px) {
+    .admin-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .brand {
+        margin-bottom: 20px;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .nav-item {
+        white-space: nowrap;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .topbar {
+        padding: 15px 20px;
+        height: auto;
+    }
+
+    .content-area {
+        padding: 25px 15px;
+    }
+
+    .stats-section {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-item {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .stat-item:last-child {
+        border-bottom: none;
+    }
+
+    .approval-content {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

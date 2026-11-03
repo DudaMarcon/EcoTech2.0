@@ -247,6 +247,9 @@ app.use(reciclaRoutes);
 const ecoProdutosRoutes = require("./Routes/ecoProdutosRoutes");
 app.use(ecoProdutosRoutes);
 
+const adminRoutes = require("./Routes/adminRoutes");
+app.use("/admin", adminRoutes);
+
 const cadastrarEletronicosRoutes =
   require("./Routes/cadastrarEletronicosRoutes");
 
@@ -256,6 +259,10 @@ const verificarLoginRoutes =
   require("./Routes/verificarLoginRoutes");
 
 app.use("/verificarLogin", verificarLoginRoutes);
+
+// ==========================================
+// ROTAS ADMINISTRATIVAS
+// ==========================================
 
 // Página inicial
 app.get("/", (req, res) => {

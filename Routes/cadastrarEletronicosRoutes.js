@@ -153,7 +153,10 @@ router.post(
                 descricaoCompleta: descricao?.trim() || "",
                 preco: Number(preco),
                 imagens: [resultadoImagem.secure_url],
-                criadoEm: new Date().toISOString()
+                criadoEm: new Date().toISOString(),
+
+                // Controle de aprovação administrativa
+                status: "pendente"
             };
 
             // Salva o produto no Firebase Realtime Database
@@ -174,21 +177,21 @@ router.post(
 
             return res.redirect("/ecoProdutos");
 
-        }  catch (erro) {
-    console.error("ERRO AO CADASTRAR ELETRÔNICO:");
-    console.error(erro);
-    console.error("Mensagem:", erro.message);
-    console.error("HTTP Code:", erro.http_code);
+        } catch (erro) {
+            console.error("ERRO AO CADASTRAR ELETRÔNICO:");
+            console.error(erro);
+            console.error("Mensagem:", erro.message);
+            console.error("HTTP Code:", erro.http_code);
 
-    if (erro instanceof multer.MulterError) {
-        return res.status(400).send(
-            "A imagem deve ter no máximo 5 MB."
-        );
-    }
+            if (erro instanceof multer.MulterError) {
+                return res.status(400).send(
+                    "A imagem deve ter no máximo 5 MB."
+                );
+            }
 
-    return res.status(500).send(
-        "Erro ao cadastrar. Verifique o terminal."
-    );
+            return res.status(500).send(
+                "Erro ao cadastrar. Verifique o terminal."
+            );
         }
     }
 );

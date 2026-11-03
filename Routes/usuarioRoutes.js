@@ -1,7 +1,9 @@
+
 const express = require("express");
 const router = express.Router();
 
-const FIREBASE_URL = "https://ecotech-4344c-default-rtdb.firebaseio.com/";
+const FIREBASE_URL =
+    "https://ecotech-4344c-default-rtdb.firebaseio.com/";
 
 // ========================================
 // LOGIN
@@ -23,6 +25,10 @@ router.post("/login", async (req, res) => {
             `${FIREBASE_URL}/usuarios.json`
         );
 
+        if (!resposta.ok) {
+            throw new Error("Erro ao consultar usuários.");
+        }
+
         const usuarios = await resposta.json();
 
         let usuarioEncontrado = null;
@@ -33,29 +39,39 @@ router.post("/login", async (req, res) => {
                     usuarios[id].email === email &&
                     usuarios[id].senha === senha
                 ) {
-                    usuarioEncontrado = usuarios[id];
+                    usuarioEncontrado = {
+                        ...usuarios[id],
+                        uid: id
+                    };
+
                     break;
                 }
             }
         }
 
-        // Login incorreto
+        // Verifica se o login está correto
         if (!usuarioEncontrado) {
             return res.render("usuario/login", {
                 erro: "E-mail ou senha incorretos"
             });
         }
 
-        // Salva o nome na sessão
+        // Salva os dados na sessão
         req.session.nome = usuarioEncontrado.nome;
+        req.session.uid = usuarioEncontrado.uid;
+        req.session.tipo = usuarioEncontrado.tipo || "usuario";
 
-        // Login correto
-        res.redirect("/usuario/dashboard");
+        // Redireciona conforme o tipo
+        if (req.session.tipo === "admin") {
+            return res.redirect("/admin");
+        }
+
+        return res.redirect("/usuario/dashboard");
 
     } catch (erro) {
         console.log(erro);
 
-        res.render("usuario/login", {
+        return res.render("usuario/login", {
             erro: "Erro ao tentar fazer login. Tente novamente."
         });
     }
@@ -77,14 +93,16 @@ router.get("/cadastro", (req, res) => {
 router.post("/cadastro", async (req, res) => {
     const { nome, email, senha } = req.body;
 
+    // Todo novo cadastro será usuário comum
     const novoUsuario = {
         nome: nome,
         email: email,
-        senha: senha
+        senha: senha,
+        tipo: "usuario"
     };
 
     try {
-        await fetch(
+        const resposta = await fetch(
             `${FIREBASE_URL}/usuarios.json`,
             {
                 method: "POST",
@@ -94,6 +112,10 @@ router.post("/cadastro", async (req, res) => {
                 body: JSON.stringify(novoUsuario)
             }
         );
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao salvar usuário.");
+        }
 
         // Cadastro realizado
         res.redirect("/login");
@@ -116,11 +138,17 @@ router.get("/cadastrar-eletro", (req, res) => {
     res.render("cadastrar-eletro");
 });
 
+
 // ========================================
-// DASHBOARD
+// DASHBOARD DO USUÁRIO
 // ========================================
 
 router.get("/usuario/dashboard", (req, res) => {
+
+    if (!req.session.uid) {
+        return res.redirect("/login");
+    }
+
     res.render("usuario/dashboard");
 });
 

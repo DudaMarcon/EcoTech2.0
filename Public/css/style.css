@@ -397,3 +397,182 @@ body {
 .main-content {
     flex: 1;
 }
+
+
+/* ====================================== */
+/* ECOPONTOS - ESTILIZAÇÃO */
+/* ====================================== */
+
+#modalEcopontos {
+    --eco-verde: #1F4037;
+    --eco-verde-hover: rgb(70, 95, 65);
+    --eco-verde-escuro: rgb(70, 95, 65);
+    --eco-fundo: #e8f5e9;
+    --eco-texto: #1b1b1b;
+}
+
+/* Área de status */
+
+#statusEcopontos {
+    text-align: center;
+    color: #065f46;
+    font-size: 0.95rem;
+    margin: 15px 0 20px;
+    font-weight: 500;
+}
+
+/* Lista de ecopontos */
+
+#listaEcopontos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0;
+    margin: 15px auto;
+    max-width: 500px;
+}
+
+/* Cards */
+
+#listaEcopontos > div {
+    background-color: var(--eco-fundo);
+    border-left: 5px solid var(--eco-verde) !important;
+    border-radius: 7px !important;
+    padding: 15px !important;
+    margin: 0 !important;
+    text-align: left;
+    color: var(--eco-texto);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efeito ao passar o mouse */
+
+#listaEcopontos > div:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.12);
+}
+
+/* Nome do ecoponto */
+
+#listaEcopontos h6 {
+    color: var(--eco-verde-escuro);
+    font-size: 1.05rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Distância e endereço */
+
+#listaEcopontos p {
+    color: #444;
+    font-size: 0.9rem;
+    margin-bottom: 7px;
+    line-height: 1.5;
+}
+
+/* Link do mapa */
+
+#listaEcopontos a {
+    display: inline-block;
+    margin-top: 5px;
+    color: var(--eco-verde);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+#listaEcopontos a:hover {
+    color: var(--eco-verde-escuro);
+    text-decoration: underline;
+}
+
+/* ====================================== */
+/* NOTIFICAÇÕES */
+/* ====================================== */
+
+#areaNotificacoes {
+    position: relative;
+}
+
+#areaNotificacoes .notificacoes-menu {
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    right: 0 !important;
+    left: auto !important;
+
+    width: 400px;
+    max-width: calc(100vw - 30px);
+    max-height: 500px;
+
+    overflow-y: auto;
+    padding: 20px !important;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+#listaNotificacoes {
+    width: 100%;
+}
+
+#listaNotificacoes > div {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px !important;
+    margin-bottom: 12px !important;
+    border-radius: 8px;
+}
+
+#listaNotificacoes strong {
+    display: block;
+    margin-bottom: 8px;
+}
+
+#listaNotificacoes p {
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 576px) {
+    #areaNotificacoes .notificacoes-menu {
+        width: calc(100vw - 24px);
+        right: -8px;
+    }
+}
+
+
+
+/* ====================================== */
+/* RESPONSIVIDADE */
+/* ====================================== */
+
+@media (max-width: 576px) {
+
+    #listaEcopontos {
+        max-width: 100%;
+    }
+
+    #listaEcopontos > div {
+        padding: 12px !important;
+    }
+
+    #listaEcopontos h6 {
+        font-size: 1rem;
+    }
+
+}
+
+/* Remove o contorno azul dos links do menu */
+.navbar .dropdown-toggle:focus,
+.navbar .dropdown-toggle:active,
+.navbar .dropdown-toggle:focus-visible,
+.navbar .dropdown-menu a:focus,
+.navbar .dropdown-menu a:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove o destaque azul do Bootstrap */
+.navbar .dropdown-toggle:focus:not(:focus-visible) {
+    box-shadow: none !important;
+}

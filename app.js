@@ -250,6 +250,9 @@ app.use(ecoProdutosRoutes);
 const adminRoutes = require("./Routes/adminRoutes");
 app.use("/admin", adminRoutes);
 
+const notificacaoRoutes = require("./Routes/notificacaoRoutes");
+app.use(notificacaoRoutes);
+
 const cadastrarEletronicosRoutes =
   require("./Routes/cadastrarEletronicosRoutes");
 

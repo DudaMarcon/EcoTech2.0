@@ -155,8 +155,11 @@ router.post(
                 imagens: [resultadoImagem.secure_url],
                 criadoEm: new Date().toISOString(),
 
-                // Controle de aprovação administrativa
-                status: "pendente"
+                  // Identificação de quem cadastrou
+                  usuarioId: req.session.uid,
+
+                 // Controle de aprovação administrativa
+                 status: "pendente"
             };
 
             // Salva o produto no Firebase Realtime Database

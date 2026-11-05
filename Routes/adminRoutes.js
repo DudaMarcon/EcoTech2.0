@@ -1,24 +1,21 @@
-
 const express = require("express");
 const router = express.Router();
 
 const FIREBASE_URL =
     "https://ecotech-4344c-default-rtdb.firebaseio.com/";
 
-// ========================================
-// PROTEÇÃO ADMINISTRATIVA
+    // ========================================
+// VERIFICAR ADMINISTRADOR
 // ========================================
 
 function verificarAdmin(req, res, next) {
-    if (
-        !req.session.uid ||
-        req.session.tipo !== "admin"
-    ) {
+    if (!req.session.uid || req.session.tipo !== "admin") {
         return res.status(403).send("Acesso não autorizado.");
     }
 
     next();
 }
+
 
 // ========================================
 // DASHBOARD
@@ -113,8 +110,30 @@ router.get("/aprovar-produtos", verificarAdmin, async (req, res) => {
 
 router.post("/aprovar-produto/:id", verificarAdmin, async (req, res) => {
     try {
-        const resposta = await fetch(
-            `${FIREBASE_URL}/produtos/${req.params.id}/status.json`,
+        const idProduto = req.params.id;
+
+        // Busca o produto no Firebase
+        const respostaProduto = await fetch(
+            `${FIREBASE_URL}/produtos/${idProduto}.json`
+        );
+
+        if (!respostaProduto.ok) {
+            throw new Error("Erro ao consultar produto.");
+        }
+
+        const produto = await respostaProduto.json();
+
+        if (!produto || produto.status !== "pendente") {
+            return res.redirect("/admin/aprovar-produtos");
+        }
+
+        if (!produto.usuarioId) {
+            throw new Error("Produto sem identificação do usuário.");
+        }
+
+        // Atualiza o status do produto
+        const respostaStatus = await fetch(
+            `${FIREBASE_URL}/produtos/${idProduto}/status.json`,
             {
                 method: "PUT",
                 headers: {
@@ -124,14 +143,39 @@ router.post("/aprovar-produto/:id", verificarAdmin, async (req, res) => {
             }
         );
 
-        if (!resposta.ok) {
+        if (!respostaStatus.ok) {
             throw new Error("Erro ao aprovar produto.");
+        }
+
+        // Cria a notificação para o usuário
+        const notificacao = {
+            titulo: "Produto aprovado!",
+            mensagem: `Seu produto ${produto.nome || "eletrônico"} foi aprovado pela equipe EcoTech.`,
+            tipo: "aprovado",
+            produtoId: idProduto,
+            lida: false,
+            criadoEm: new Date().toISOString()
+        };
+
+        const respostaNotificacao = await fetch(
+            `${FIREBASE_URL}/notificacoes/${produto.usuarioId}.json`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(notificacao)
+            }
+        );
+
+        if (!respostaNotificacao.ok) {
+            throw new Error("Produto aprovado, mas não foi possível criar a notificação.");
         }
 
         res.redirect("/admin/aprovar-produtos");
 
     } catch (erro) {
-        console.error("Erro ao aprovar:", erro);
+        console.error("Erro ao aprovar produto:", erro);
         res.status(500).send("Não foi possível aprovar o produto.");
     }
 });
@@ -142,8 +186,30 @@ router.post("/aprovar-produto/:id", verificarAdmin, async (req, res) => {
 
 router.post("/rejeitar-produto/:id", verificarAdmin, async (req, res) => {
     try {
-        const resposta = await fetch(
-            `${FIREBASE_URL}/produtos/${req.params.id}/status.json`,
+        const idProduto = req.params.id;
+
+        // Busca o produto no Firebase
+        const respostaProduto = await fetch(
+            `${FIREBASE_URL}/produtos/${idProduto}.json`
+        );
+
+        if (!respostaProduto.ok) {
+            throw new Error("Erro ao consultar produto.");
+        }
+
+        const produto = await respostaProduto.json();
+
+        if (!produto || produto.status !== "pendente") {
+            return res.redirect("/admin/aprovar-produtos");
+        }
+
+        if (!produto.usuarioId) {
+            throw new Error("Produto sem identificação do usuário.");
+        }
+
+        // Atualiza o status do produto
+        const respostaStatus = await fetch(
+            `${FIREBASE_URL}/produtos/${idProduto}/status.json`,
             {
                 method: "PUT",
                 headers: {
@@ -153,16 +219,40 @@ router.post("/rejeitar-produto/:id", verificarAdmin, async (req, res) => {
             }
         );
 
-        if (!resposta.ok) {
+        if (!respostaStatus.ok) {
             throw new Error("Erro ao rejeitar produto.");
+        }
+
+        // Cria a notificação para o usuário
+        const notificacao = {
+            titulo: "Produto não aprovado",
+            mensagem: "Infelizmente, seu produto não atende aos requisitos para ser vendido como um EcoProduto. Mas você ainda pode fazer parte do movimento EcoTech! Encontre um ecoponto próximo e descubra onde descartá-lo corretamente para que possamos dar a ele o destino adequado.",
+            tipo: "rejeitado",
+            produtoId: idProduto,
+            lida: false,
+            criadoEm: new Date().toISOString()
+        };
+
+        const respostaNotificacao = await fetch(
+            `${FIREBASE_URL}/notificacoes/${produto.usuarioId}.json`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(notificacao)
+            }
+        );
+
+        if (!respostaNotificacao.ok) {
+            throw new Error("Produto rejeitado, mas não foi possível criar a notificação.");
         }
 
         res.redirect("/admin/aprovar-produtos");
 
     } catch (erro) {
-        console.error("Erro ao rejeitar:", erro);
+        console.error("Erro ao rejeitar produto:", erro);
         res.status(500).send("Não foi possível rejeitar o produto.");
     }
 });
-
 module.exports = router;

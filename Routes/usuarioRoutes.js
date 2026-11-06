@@ -98,7 +98,8 @@ router.post("/cadastro", async (req, res) => {
         nome: nome,
         email: email,
         senha: senha,
-        tipo: "usuario"
+        tipo: "usuario",
+        criadoEm: new Date().toISOString()
     };
 
     try {

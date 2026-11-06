@@ -163,14 +163,70 @@
                     <div class="section-heading">
                         <div>
                             <h3>Atividades recentes</h3>
-                            <p>Acompanhe as movimentações da plataforma.</p>
+                            <p>Acompanhe as últimas movimentações da plataforma.</p>
                         </div>
                     </div>
 
-                    <div class="empty-state">
-                        <span>—</span>
-                        <p>As atividades recentes aparecerão aqui.</p>
-                    </div>
+                    <% if (atividadesRecentes.length===0) { %>
+
+                        <div class="empty-state">
+                            <span>—</span>
+                            <p>Nenhuma atividade registrada até o momento.</p>
+                        </div>
+
+                        <% } else { %>
+
+                            <div class="activity-list">
+
+                                <% atividadesRecentes.forEach(atividade=> { %>
+
+                                    <div class="activity-item">
+
+                                        <div class="activity-icon
+                        <%= atividade.tipo === 'aprovacao' ? 'activity-approved' :
+                            atividade.tipo === 'rejeicao' ? 'activity-rejected' :
+                            atividade.tipo === 'usuario' ? 'activity-user' :
+                            'activity-product' %>">
+
+                                            <% if (atividade.tipo==='aprovacao' ) { %>
+                                                ✓
+                                                <% } else if (atividade.tipo==='rejeicao' ) { %>
+                                                    !
+                                                    <% } else if (atividade.tipo==='usuario' ) { %>
+                                                        ♙
+                                                        <% } else { %>
+                                                            ▧
+                                                            <% } %>
+
+                                        </div>
+
+                                        <div class="activity-info">
+
+                                            <strong>
+                                                <%= atividade.titulo %>
+                                            </strong>
+
+                                            <p>
+                                                <%= atividade.descricao %>
+                                            </p>
+
+                                            <small>
+                                                <% if (atividade.criadoEm) { %>
+                                                    <%= new Date(atividade.criadoEm).toLocaleString("pt-BR") %>
+                                                        <% } else { %>
+                                                            Data não informada
+                                                            <% } %>
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                    <% }) %>
+
+                            </div>
+
+                            <% } %>
 
                 </section>
 

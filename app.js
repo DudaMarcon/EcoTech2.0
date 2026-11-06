@@ -24,8 +24,9 @@ app.use(
 
 // Passa o nome da sessão para todas as páginas
 app.use((req, res, next) => {
-  res.locals.nomeUsuario = req.session.nome;
-  next();
+    res.locals.nomeUsuario = req.session.nome;
+    res.locals.tipoUsuario = req.session.tipo;
+    next();
 });
 
 // ==========================================

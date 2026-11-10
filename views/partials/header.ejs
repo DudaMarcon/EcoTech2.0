@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -23,7 +22,6 @@
 
     <!-- Estilos da navbar e notificações -->
     <style>
-
         /* ====================================== */
         /* NOTIFICAÇÕES */
         /* ====================================== */
@@ -118,7 +116,6 @@
             }
 
         }
-
     </style>
 
 </head>
@@ -137,27 +134,16 @@
             <!-- Logo -->
             <a href="/" class="navbar-brand">
 
-                <img
-                    src="/img/ecotech-vetorizado3.svg"
-                    alt="EcoTech"
-                    width="120">
+                <img src="/img/ecotech-vetorizado3.svg" alt="EcoTech" width="120">
 
             </a>
 
 
             <!-- Botão abrir menu -->
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#menu"
-                aria-controls="menu"
-                aria-expanded="false"
-                aria-label="Abrir menu">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
 
-                <span
-                    class="navbar-toggler-icon"
-                    style="filter: brightness(0) invert(1);">
+                <span class="navbar-toggler-icon" style="filter: brightness(0) invert(1);">
                 </span>
 
             </button>
@@ -172,18 +158,11 @@
 
                     <a href="/">
 
-                        <img
-                            src="/img/ecotech-vetorizado3.svg"
-                            alt="EcoTech"
-                            class="logo-menu-mobile">
+                        <img src="/img/ecotech-vetorizado3.svg" alt="EcoTech" class="logo-menu-mobile">
 
                     </a>
 
-                    <button
-                        type="button"
-                        class="btn-fechar-menu"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#menu"
+                    <button type="button" class="btn-fechar-menu" data-bs-toggle="collapse" data-bs-target="#menu"
                         aria-label="Fechar menu">
 
                         <i class="bi bi-x-lg"></i>
@@ -196,7 +175,7 @@
                             Olá, <%= nomeUsuario %>!
                         </div>
 
-                    <% } %>
+                        <% } %>
 
                 </div>
 
@@ -218,11 +197,7 @@
                     <!-- RECICLA -->
                     <li class="nav-item dropdown">
 
-                        <a
-                            class="nav-link dropdown-toggle"
-                            href="/recicla"
-                            role="button"
-                            data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="/recicla" role="button" data-bs-toggle="dropdown">
 
                             Recicla
 
@@ -272,11 +247,7 @@
                     <!-- SAIBA MAIS -->
                     <li class="nav-item dropdown">
 
-                        <a
-                            class="nav-link dropdown-toggle"
-                            href="/saibamais"
-                            role="button"
-                            data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="/saibamais" role="button" data-bs-toggle="dropdown">
 
                             Saiba mais
 
@@ -327,7 +298,7 @@
 
 
                         <!-- PAINEL ADMINISTRATIVO -->
-                        <% if (tipoUsuario === "admin") { %>
+                        <% if (tipoUsuario==="admin" ) { %>
 
                             <li class="nav-item">
 
@@ -341,103 +312,95 @@
 
                             </li>
 
-                        <% } %>
+                            <% } %>
 
 
-                        <!-- SAUDAÇÃO DESKTOP -->
-                        <li class="nav-item saudacao-desktop d-none d-lg-flex">
+                                <!-- SAUDAÇÃO DESKTOP -->
+                                <li class="nav-item saudacao-desktop d-none d-lg-flex">
 
-                            <span class="nav-link fw-bold">
+                                    <span class="nav-link fw-bold">
 
-                                Olá, <%= nomeUsuario %>!
+                                        Olá, <%= nomeUsuario %>!
 
-                            </span>
+                                    </span>
 
-                        </li>
-
-
-                        <!-- NOTIFICAÇÕES -->
-                        <li class="nav-item dropdown" id="areaNotificacoes">
-
-                            <button
-                                type="button"
-                                class="nav-link position-relative"
-                                id="botaoNotificacoes"
-                                aria-expanded="false"
-                                aria-label="Notificações">
-
-                                <i class="bi bi-bell fs-5"></i>
-
-                                <span
-                                    id="contadorNotificacoes"
-                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                                    style="display: none;">
-
-                                    0
-
-                                </span>
-
-                            </button>
+                                </li>
 
 
-                            <!-- MENU DE NOTIFICAÇÕES -->
-                            <div
-                                id="menuNotificacoes"
-                                class="dropdown-menu dropdown-menu-end notificacoes-menu p-3">
+                                <!-- NOTIFICAÇÕES -->
+                                <li class="nav-item dropdown" id="areaNotificacoes">
 
-                                <h6 class="fw-bold mb-3">
+                                    <button type="button" class="nav-link position-relative" id="botaoNotificacoes"
+                                        aria-expanded="false" aria-label="Notificações">
 
-                                    <i class="bi bi-bell me-2"></i>
+                                        <i class="bi bi-bell fs-5"></i>
 
-                                    Notificações
+                                        <span id="contadorNotificacoes"
+                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                            style="display: none;">
 
-                                </h6>
+                                            0
 
-                                <div id="listaNotificacoes">
+                                        </span>
 
-                                    <p class="text-muted small mb-0">
-                                        Carregando notificações...
-                                    </p>
+                                    </button>
 
-                                </div>
-
-                            </div>
-
-                        </li>
+                                    <a href="/carrinho" class="nav-link" title="Meu carrinho">
+                                        <i class="bi bi-cart3 fs-5"></i>
+                                    </a>
 
 
-                        <!-- SAIR -->
-                        <li class="nav-item">
+                                    <!-- MENU DE NOTIFICAÇÕES -->
+                                    <div id="menuNotificacoes"
+                                        class="dropdown-menu dropdown-menu-end notificacoes-menu p-3">
 
-                            <a
-                                class="nav-link"
-                                href="/logout"
-                                title="Sair">
+                                        <h6 class="fw-bold mb-3">
 
-                                <img
-                                    src="/img/sair.png"
-                                    alt="Logout"
-                                    width="25">
+                                            <i class="bi bi-bell me-2"></i>
 
-                            </a>
+                                            Notificações
 
-                        </li>
+                                        </h6>
 
+                                        <div id="listaNotificacoes">
 
-                    <% } else { %>
+                                            <p class="text-muted small mb-0">
+                                                Carregando notificações...
+                                            </p>
 
+                                        </div>
 
-                        <!-- ENTRAR -->
-                        <li class="nav-item">
+                                    </div>
 
-                            <a class="nav-link" href="/login">
-                                Entrar
-                            </a>
-
-                        </li>
+                                </li>
 
 
-                    <% } %>
+                                <!-- SAIR -->
+                                <li class="nav-item">
+
+                                    <a class="nav-link" href="/logout" title="Sair">
+
+                                        <img src="/img/sair.png" alt="Logout" width="25">
+
+                                    </a>
+
+                                </li>
+
+
+                                <% } else { %>
+
+
+                                    <!-- ENTRAR -->
+                                    <li class="nav-item">
+
+                                        <a class="nav-link" href="/login">
+                                            Entrar
+                                        </a>
+
+                                    </li>
+
+
+                                    <% } %>
 
                 </ul>
 
@@ -453,11 +416,7 @@
     <!-- MODAL DE BUSCA DE ECOPONTOS -->
     <!-- ====================================== -->
 
-    <div
-        class="modal fade"
-        id="modalEcopontos"
-        tabindex="-1"
-        aria-hidden="true">
+    <div class="modal fade" id="modalEcopontos" tabindex="-1" aria-hidden="true">
 
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 
@@ -473,11 +432,7 @@
 
                     </h5>
 
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Fechar">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar">
                     </button>
 
                 </div>

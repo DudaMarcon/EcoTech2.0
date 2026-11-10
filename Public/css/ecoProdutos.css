@@ -12,3 +12,88 @@
     background-color: #ffc107;
     color: #212529;
 }
+
+
+/* Apresentação EcoProdutos */
+.intro-ecotech {
+    padding: 65px 20px 55px;
+    text-align: center;
+    /* Não define background nem font-family */
+}
+
+.intro-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 17px;
+    border-radius: 30px;
+    background: rgba(25, 135, 84, 0.10);
+    color: #198754;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    margin-bottom: 22px;
+}
+
+.intro-ecotech h1 {
+    font-size: clamp(36px, 5vw, 50px);
+    font-weight: 800;
+    color: inherit;
+    letter-spacing: -1.5px;
+    margin-bottom: 18px;
+}
+
+.intro-ecotech h1 span {
+    color: #198754;
+}
+
+.intro-divider {
+    width: 65px;
+    height: 4px;
+    border-radius: 10px;
+    background: #35a66b;
+    margin: 0 auto 25px;
+}
+
+.intro-description {
+    max-width: 700px;
+    margin: 0 auto 15px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.intro-text {
+    max-width: 790px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.9;
+    opacity: 0.8;
+}
+
+.intro-footer {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 27px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: rgba(25, 135, 84, 0.08);
+    color: #198754;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+@media (max-width: 576px) {
+    .intro-ecotech {
+        padding: 45px 18px;
+    }
+
+    .intro-description {
+        font-size: 18px;
+    }
+
+    .intro-text {
+        font-size: 15px;
+    }
+}

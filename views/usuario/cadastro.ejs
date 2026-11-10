@@ -1,110 +1,99 @@
 <%- include("../partials/header") %>
 
-<main class="main-content">
+<main class="auth-container">
+     <link rel="stylesheet" href="/css/loginCadastro.css">
 
-<div class="container mt-5">
+    <section class="auth-card">
 
-    <div class="row justify-content-center">
+        <div class="auth-heading">
+            <span class="auth-eyebrow">FAÇA PARTE DO MOVIMENTO</span>
 
-        <div class="col-md-6">
+            <h1>Crie sua conta.</h1>
 
-            <div class="card shadow">
-
-                <div class="card-body">
-
-                    <h3 class="text-center mb-4">
-                        Criar conta
-                    </h3>
-
-                    <form action="/cadastro" method="POST">
-
-                        <div class="mb-3">
-
-                            <label for="nome" class="form-label">
-                                Nome
-                            </label>
-
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="nome"
-                                name="nome"
-                                placeholder="Digite seu nome"
-                                required
-                            >
-
-                        </div>
-
-                        <% if (erro) { %>
-    <div class="texto-erro">
-        <%= erro %>
-    </div>
-<% } %>
-
-  <div class="mb-3">
-
-    <label for="email" class="form-label">
-        E-mail
-    </label>
-
-    <input
-        type="email"
-        class="form-control"
-        id="email"
-        name="email"
-        placeholder="Digite seu e-mail"
-        required
-    >
-
-</div>
+            <p>Comece a fazer parte de um futuro mais sustentável.</p>
+        </div>
 
 
-<div class="mb-3">
-
-    <label for="senha" class="form-label">
-        Senha
-    </label>
-
-    <input
-        type="password"
-        class="form-control"
-        id="senha"
-        name="senha"
-        placeholder="Digite sua senha"
-        required
-    >
-
-</div>
-
-                        <button
-                            type="submit"
-                            class="btn btn-ecotech w-100"
-                        >
-                            Cadastrar
-                        </button>
-
-                    </form>
+        <% if (typeof erro !== 'undefined' && erro) { %>
+            <div class="auth-error" role="alert">
+                <%= erro %>
+            </div>
+        <% } %>
 
 
-                    <div class="text-center mt-3">
+        <form action="/cadastro" method="POST">
 
-                        <span>Já possui uma conta?</span>
+            <div class="auth-field">
 
-                        <a href="/login">
-                            Entrar
-                        </a>
+                <label for="nome">
+                    Nome completo
+                </label>
 
-                    </div>
-
-                </div>
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Seu nome"
+                    maxlength="80"
+                    required
+                >
 
             </div>
 
-        </div>
 
-    </div>
+            <div class="auth-field">
 
-</div>
+                <label for="email">
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="seuemail@exemplo.com"
+                    required
+                >
+
+            </div>
+
+
+            <div class="auth-field">
+
+                <label for="senha">
+                    Senha
+                </label>
+
+                <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="Mínimo de 6 caracteres"
+                    minlength="6"
+                    required
+                >
+
+            </div>
+
+
+            <button type="submit" class="auth-submit">
+                Criar minha conta
+            </button>
+
+        </form>
+
+
+        <p class="auth-switch">
+
+            Já possui uma conta?
+
+            <a href="/login">
+                Entrar
+            </a>
+
+        </p>
+
+    </section>
 
 </main>
 

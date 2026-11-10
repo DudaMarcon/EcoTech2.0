@@ -19,203 +19,203 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
+    
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
 
-            <!-- Logo -->
-            <a href="/" class="navbar-brand">
-                <img src="/img/ecotech-vetorizado3.svg" alt="EcoTech" width="150">
-            </a>
+        <!-- Logo do cabeçalho -->
+        <a href="/" class="navbar-brand">
+            <img src="/img/ecotech-vetorizado3.svg"
+                 alt="EcoTech" width="120">
+        </a>
 
-            <!-- Botão do menu no celular -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
-                aria-controls="menu" aria-expanded="false" aria-label="Abrir ou fechar menu">
+        <!-- Botão abrir menu -->
+        <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menu"
+            aria-controls="menu"
+            aria-expanded="false"
+            aria-label="Abrir menu">
 
-                <span class="navbar-toggler-icon" style="filter: brightness(0) invert(1);">
-                </span>
-            </button>
+            <span class="navbar-toggler-icon"
+                style="filter: brightness(0) invert(1);">
+            </span>
+        </button>
 
-            <!-- Links -->
-            <div class="collapse navbar-collapse" id="menu">
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="menu">
 
-                <ul class="navbar-nav ms-auto">
+            <!-- Cabeçalho exclusivo do menu lateral -->
+            <div class="menu-mobile-header d-lg-none">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">
-                            Início
-                        </a>
-                    </li>
+                <a href="/">
+                    <img src="/img/ecotech-vetorizado3.svg"
+                         alt="EcoTech" class="logo-menu-mobile">
+                </a>
 
-                    <!-- Recicla -->
-                    <li class="nav-item dropdown">
+                <button type="button"
+                    class="btn-fechar-menu"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menu"
+                    aria-label="Fechar menu">
+                    <i class="bi bi-x-lg"></i>
+                </button>
 
-                        <a class="nav-link dropdown-toggle" href="/recicla" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                <% if (nomeUsuario) { %>
+                    <div class="saudacao-mobile">
+                        Olá, <%= nomeUsuario %>!
+                    </div>
+                <% } %>
 
-                            Recicla
-
-                        </a>
-
-                        <ul class="dropdown-menu">
-
-                            <li>
-                                <a class="dropdown-item" href="/recicla#funciona">
-                                    Como funciona
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="/recicla#problemas">
-                                    Impactos ambientais
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="/recicla#impacto-ecotech">
-                                    Impacto da EcoTech
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="/recicla#impacto">
-                                    Dados sobre o impacto
-                                </a>
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    <!-- EcoProdutos -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="/ecoProdutos">
-                            EcoProdutos
-                        </a>
-                    </li>
-
-                    <!-- Saiba mais -->
-                    <li class="nav-item dropdown">
-
-                        <a class="nav-link dropdown-toggle" href="/saibamais" role="button" data-bs-toggle="dropdown">
-
-                            Saiba mais
-
-                        </a>
-
-                        <ul class="dropdown-menu">
-
-                            <li>
-                                <a class="dropdown-item" href="/saibamais#sobre">
-                                    Sobre a EcoTech
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="/saibamais#circular">
-                                    Economia Circular
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="/saibamais#funciona">
-                                    Como funciona
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="/saibamais#ecopontos">
-                                    EcoPontos
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="/saibamais#lab">
-                                    EcoTech Lab
-                                </a>
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    <!-- Login / usuário -->
-                    <% if (nomeUsuario) { %>
-
-                        <% if (tipoUsuario==="admin" ) { %>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin">
-                                    <i class="bi bi-speedometer2"></i>
-                                    Painel Administrativo
-                                </a>
-                            </li>
-                            <% } %>
-
-
-                                <!-- Notificações -->
-                                <li class="nav-item dropdown" id="areaNotificacoes">
-
-                                    <button class="nav-link position-relative" type="button" id="botaoNotificacoes"
-                                        data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
-                                        aria-label="Abrir notificações" title="Notificações">
-
-                                        <i class="bi bi-bell fs-5"></i>
-
-                                        <span id="contadorNotificacoes"
-                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                                            style="display: none;">
-                                            0
-                                        </span>
-
-                                    </button>
-
-                                    <div class="dropdown-menu dropdown-menu-end notificacoes-menu p-3"
-                                        aria-labelledby="botaoNotificacoes">
-
-                                        <h6 class="fw-bold mb-3">
-                                            <i class="bi bi-bell me-2"></i>
-                                            Notificações
-                                        </h6>
-
-                                        <div id="listaNotificacoes">
-                                            <p class="text-muted small mb-0">
-                                                Carregando notificações...
-                                            </p>
-                                        </div>
-
-                                    </div>
-
-                                </li>
-
-
-                                <!-- Usuário logado -->
-                                <li class="nav-item">
-                                    <span class="nav-link fw-bold">
-                                        Olá, <%= nomeUsuario %>!
-                                    </span>
-                                </li>
-
-                                <!-- Logout -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/logout" title="Sair">
-                                        <img src="/img/sair.png" alt="Logout" width="25">
-                                    </a>
-                                </li>
-
-                                <% } else { %>
-
-                                    <!-- Usuário não logado -->
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/login">
-                                            Entrar
-                                        </a>
-                                    </li>
-
-                                    <% } %>
-
-                </ul>
             </div>
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Início</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                       href="/recicla" role="button"
+                       data-bs-toggle="dropdown">
+                        Recicla
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/recicla#funciona">Como funciona</a></li>
+                        <li><a class="dropdown-item" href="/recicla#problemas">Impactos ambientais</a></li>
+                        <li><a class="dropdown-item" href="/recicla#impacto-ecotech">Impacto da EcoTech</a></li>
+                        <li><a class="dropdown-item" href="/recicla#impacto">Dados sobre o impacto</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/ecoProdutos">EcoProdutos</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                       href="/saibamais" role="button"
+                       data-bs-toggle="dropdown">
+                        Saiba mais
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/saibamais#sobre">Sobre a EcoTech</a></li>
+                        <li><a class="dropdown-item" href="/saibamais#circular">Economia Circular</a></li>
+                        <li><a class="dropdown-item" href="/saibamais#funciona">Como funciona</a></li>
+                        <li><a class="dropdown-item" href="/saibamais#ecopontos">EcoPontos</a></li>
+                        <li><a class="dropdown-item" href="/saibamais#lab">EcoTech Lab</a></li>
+                    </ul>
+                </li>
+
+                <% if (nomeUsuario) { %>
+
+                    <% if (tipoUsuario === "admin") { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">
+                                <i class="bi bi-speedometer2"></i>
+                                Painel Administrativo
+                            </a>
+                        </li>
+                    <% } %>
+
+                   
+<!-- NOTIFICAÇÕES -->
+<li class="nav-item dropdown" id="areaNotificacoes">
+
+    <!-- Notificações -->
+<li class="nav-item dropdown" id="areaNotificacoes">
+
+    <button
+        class="nav-link dropdown-toggle position-relative"
+        type="button"
+        id="botaoNotificacoes"
+        data-bs-toggle="dropdown"
+        data-bs-auto-close="true"
+        aria-expanded="false"
+        aria-label="Notificações">
+
+        <i class="bi bi-bell fs-5"></i>
+
+        <span id="contadorNotificacoes"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            style="display:none;">
+            0
+        </span>
+    </button>
+
+    <div class="dropdown-menu dropdown-menu-end notificacoes-menu p-3"
+        aria-labelledby="botaoNotificacoes">
+
+        <h6 class="fw-bold mb-3">
+            <i class="bi bi-bell me-2"></i>
+            Notificações
+        </h6>
+
+        <div id="listaNotificacoes">
+            <p class="text-muted small mb-0">
+                Carregando notificações...
+            </p>
         </div>
-    </nav>
+
+    </div>
+</li>
+
+<!-- Saudação no computador -->
+<li class="nav-item saudacao-desktop">
+    <span class="nav-link fw-bold">
+        Olá, <%= nomeUsuario %>!
+    </span>
+</li>
+</li>
+
+
+                        <div class="dropdown-menu dropdown-menu-end notificacoes-menu p-3"
+                            aria-labelledby="botaoNotificacoes">
+
+                            <h6 class="fw-bold mb-3">
+                                <i class="bi bi-bell me-2"></i>
+                                Notificações
+                            </h6>
+
+                            <div id="listaNotificacoes">
+                                <p class="text-muted small mb-0">
+                                    Carregando notificações...
+                                </p>
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <!-- Saudação no computador -->
+                    <li class="nav-item saudacao-desktop">
+                        <span class="nav-link fw-bold">
+                            Olá, <%= nomeUsuario %>!
+                        </span>
+                    </li>
+
+                    <!-- Sair -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout" title="Sair">
+                            <img src="/img/sair.png" alt="Logout" width="25">
+                        </a>
+                    </li>
+
+                <% } else { %>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Entrar</a>
+                    </li>
+
+                <% } %>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
 
 
     <!-- ====================================== -->
@@ -318,31 +318,7 @@
         });
     </script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-
-            const botao = document.getElementById("botaoNotificacoes");
-
-            if (!botao) return;
-
-            const dropdown = bootstrap.Dropdown.getOrCreateInstance(botao, {
-                autoClose: "outside"
-            });
-
-            // Mantém o painel aberto até clicar no sino ou fora dele.
-            botao.addEventListener("click", function (evento) {
-                evento.preventDefault();
-                evento.stopPropagation();
-
-                if (botao.getAttribute("aria-expanded") === "true") {
-                    dropdown.hide();
-                } else {
-                    dropdown.show();
-                }
-            });
-
-        });
-    </script>
+    
 
 
     <!-- ====================================== -->

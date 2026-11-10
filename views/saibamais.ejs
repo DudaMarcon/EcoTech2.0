@@ -13,7 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- CSS da EcoTech -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/saiba-mais.css">
     <link rel="stylesheet" href="/css/footer.css">
 
 </head>
@@ -41,13 +41,59 @@
         <section class="banner-container">
 
             <img
-                src="/img/banner da ecotech.png"
-                alt="Banner da EcoTech"
-                class="banner-ecotech"
+                src="../img/banner-tecnologia-1920x800.png "
+               
             >
 
         </section>
+<style>
+   
+/* =========================
+   BANNER ECOTECH
+   ========================= */
 
+.banner-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+    margin: 0 auto;
+}
+
+.banner-ecotech {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* Tablets */
+@media (max-width: 991px) {
+    .banner-container {
+        padding: 10px;
+    }
+
+    .banner-ecotech {
+        max-width: 100%;
+    }
+}
+
+/* Celulares */
+@media (max-width: 576px) {
+    .banner-container {
+        padding: 5px;
+    }
+
+    .banner-ecotech {
+        width: 100%;
+        height: auto;
+    }
+}
+
+</style>
 
         <!-- =========================
              2. SOBRE A ECOTECH
@@ -226,58 +272,42 @@
              4. ECONOMIA CIRCULAR
              ========================= -->
 
-        <section id="circular" class="container py-5">
+        
+<!-- 4. ECONOMIA CIRCULAR -->
 
-            <div class="text-center">
-
-                <h2>
-                    Economia Circular
-                </h2>
-
-                <p class="mt-3">
-
-                    A economia circular propõe uma mudança na forma como
-                    utilizamos produtos e materiais.
-
-                </p>
-
-                <p>
-
-                    Em vez de seguir apenas o caminho
-                    <strong>produzir → usar → descartar</strong>,
-                    buscamos manter os recursos em circulação pelo maior
-                    tempo possível.
-
-                </p>
-
-            </div>
-
-
-            <!-- =========================
-                 CICLO ECOTECH
-                 ========================= -->
-
-  <!-- ECONOMIA CIRCULAR -->
 <section id="circular" class="py-5">
 
     <div class="container">
 
-        <div class="text-center mb-5">
+        <div class="text-center">
+
             <h2>Economia Circular</h2>
 
             <p class="mt-3">
-                A EcoTech busca dar novos destinos aos resíduos eletroeletrônicos.
+                A economia circular propõe uma mudança na forma como
+                utilizamos produtos e materiais.
             </p>
+
+            <p>
+                Em vez de seguir apenas o caminho
+                <strong>produzir → usar → descartar</strong>,
+                buscamos manter os recursos em circulação pelo maior
+                tempo possível.
+            </p>
+
         </div>
 
         <!-- Imagem do ciclo -->
+
         <div class="ciclo-ecotech">
-            <img 
-                src="/img/ciclo-ecotech.png"
+            <img
+                src="/img/Design sem nome.jpg"
                 alt="Ciclo da economia circular da EcoTech"
             >
         </div>
-<!-- Explicação do ciclo -->
+
+        <!-- Explicação do ciclo -->
+
         <div class="text-center mt-4">
             <p>
                 O ciclo não termina necessariamente na reciclagem.
@@ -289,6 +319,7 @@
     </div>
 
 </section>
+
 
         <!-- =========================
              5. COMO FUNCIONA
@@ -869,7 +900,7 @@
              8. FECHAMENTO
              ========================= -->
 
-        <section class="container py-5 text-center">
+        <section class="container text-center secao-final">
 
             <h2>
                 Um eletrônico pode ter mais de um destino.

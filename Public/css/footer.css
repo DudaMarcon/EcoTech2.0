@@ -3,10 +3,11 @@
    ========================= */
 
 .footer-ecotech {
+    width: 100%;
     background-color: var(--dark-green);
     color: white;
     padding: 45px 0 20px;
-    margin-top: 60px;
+    margin-top: 0px;
 }
 
 
@@ -124,13 +125,4 @@
         gap: 5px;
     }
 
-}
-
-
-.footer-ecotech {
-    width: 100%;
-    background-color: var(--dark-green);
-    color: white;
-    padding: 45px 0 20px;
-    margin-top: 60px;
 }

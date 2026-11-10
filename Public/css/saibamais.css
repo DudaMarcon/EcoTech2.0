@@ -1,0 +1,488 @@
+/* =========================================
+   ECOTECH — PÁGINA SAIBA MAIS
+   Arquivo: Public/css/saiba-mais.css
+   ========================================= */
+
+:root {
+    --saiba-verde: #245b43;
+    --saiba-verde-escuro: #173f30;
+    --saiba-verde-claro: #eaf2e9;
+    --saiba-fundo: #f7f8f2;
+    --saiba-card: #ffffff;
+    --saiba-texto: #35443a;
+    --saiba-texto-suave: #68766c;
+    --saiba-borda: #dce7dc;
+    --saiba-sombra: 0 10px 30px rgba(29, 69, 49, 0.09);
+}
+
+/* Base da página */
+body {
+    background-color: var(--saiba-fundo);
+    color: var(--saiba-texto);
+}
+
+main {
+    overflow: hidden;
+}
+
+main section {
+    scroll-margin-top: 90px;
+}
+
+main .container {
+    max-width: 1160px;
+}
+
+main h2 {
+    color: var(--saiba-verde-escuro);
+    font-size: clamp(1.8rem, 3vw, 2.45rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+
+main h3 {
+    color: var(--saiba-verde);
+    font-weight: 750;
+}
+
+main p {
+    color: var(--saiba-texto-suave);
+    font-size: 1.04rem;
+    line-height: 1.85;
+}
+
+main strong {
+    color: var(--saiba-verde);
+    font-weight: 750;
+}
+
+/* Banner */
+main .banner-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--saiba-verde-escuro);
+}
+
+main .banner-ecotech {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 510px;
+    object-fit: cover;
+}
+
+/* Seções claras */
+main #sobre,
+main #circular,
+main #funciona,
+main #diferencial,
+main #lab {
+    padding-top: 90px !important;
+    padding-bottom: 90px !important;
+}
+
+/* Sobre a EcoTech */
+main #sobre {
+    max-width: 100%;
+    background: var(--saiba-fundo);
+}
+
+main #sobre .text-center {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Problema */
+main #problema {
+    max-width: 100%;
+    background: var(--saiba-verde-claro);
+    padding-top: 90px !important;
+    padding-bottom: 90px !important;
+}
+
+main #problema .container{
+    max-width: 1160px;
+}
+main #problema > .row,
+main #funciona > .row,
+main #diferencial > .row,
+main #lab > .row {
+    max-width: 1160px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main #problema > .text-center {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Cards em geral */
+/* CARDS DA SEÇÃO O PROBLEMA */
+
+#problema .row {
+    align-items: stretch;
+}
+
+#problema .row > div {
+    display: flex;
+}
+
+#problema .card {
+    width: 100%;
+    min-height: 280px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 22px;
+}
+
+#problema .card .fs-1 {
+    width: 76px;
+    height: 76px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#problema .card h3 {
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#problema .card p {
+    flex-grow: 1;
+}
+
+/* Frases de destaque */
+main #problema .text-center.mt-5 h3,
+main #diferencial .text-center.mt-5 h3 {
+    max-width: 850px;
+    margin: 0 auto;
+    color: var(--saiba-verde-escuro);
+    font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+/* Economia circular e ciclo */
+main #circular {
+    background: var(--saiba-fundo);
+}
+
+main .ciclo-ecotech {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+main .ciclo-ecotech img {
+    display: block;
+    width: min(100%, 760px);
+    max-height: 600px;
+    object-fit: contain;
+    border-radius: 18px;
+}
+
+/* Como funciona */
+main #funciona {
+    max-width: 100%;
+    background: var(--saiba-verde-claro);
+}
+
+main #funciona > .container,
+main #funciona .container {
+    max-width: 1160px;
+}
+
+main #funciona .card {
+    border-top: 5px solid var(--saiba-verde);
+}
+
+main #funciona .text-center.mt-5 {
+    padding: 28px 22px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.72);
+}
+
+main #funciona .text-center.mt-5 h3 {
+    margin-bottom: 12px;
+}
+
+main #funciona .text-center.mt-5 p {
+    margin-bottom: 0;
+    color: var(--saiba-verde-escuro);
+    font-size: clamp(0.9rem, 1.6vw, 1.12rem) !important;
+    font-weight: 700;
+    line-height: 1.9;
+}
+
+/* EcoPontos */
+main #ecopontos {
+    max-width: 100%;
+    padding-top: 90px !important;
+    padding-bottom: 90px !important;
+    background: var(--saiba-verde-escuro);
+}
+
+main #ecopontos h2,
+main #ecopontos h3 {
+    color: #ffffff;
+}
+
+main #ecopontos p {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+main #ecopontos .container {
+    max-width: 1160px;
+}
+
+main #ecopontos .card {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.97);
+}
+
+main #ecopontos .card h3 {
+    color: var(--saiba-verde-escuro);
+    font-size: 1.2rem;
+}
+
+main #ecopontos .card p {
+    color: var(--saiba-texto-suave);
+}
+
+main #ecopontos .table-responsive {
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+main #ecopontos table {
+    margin-bottom: 0;
+    background: #ffffff;
+    color: var(--saiba-texto);
+    border-color: var(--saiba-borda);
+}
+
+main #ecopontos thead th {
+    padding: 17px 14px;
+    background: var(--saiba-verde);
+    color: #ffffff;
+    font-weight: 750;
+}
+
+main #ecopontos tbody td {
+    padding: 15px 14px;
+    color: var(--saiba-texto);
+    font-weight: 550;
+}
+
+main #ecopontos tbody tr:nth-child(even) td {
+    background: #f0f5ef;
+}
+
+main #ecopontos tbody tr:hover td {
+    background: #e3eee2;
+}
+
+main #ecopontos .text-center.mt-5 {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Mais do que reciclar */
+main #diferencial {
+    max-width: 100%;
+    background: var(--saiba-fundo);
+}
+
+main #diferencial > .text-center {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+main #diferencial .card {
+    border-bottom: 5px solid var(--saiba-verde);
+}
+
+/* EcoTech Lab */
+main #lab {
+    max-width: 100%;
+    background: var(--saiba-verde-claro);
+}
+
+main #lab > .text-center {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+main #lab .card {
+    background: #ffffff;
+}
+
+/* Fechamento */
+main > section.container.text-center {
+    max-width: 100%;
+    padding: 35px 20px 25px !important;
+    margin-bottom: 0 !important;
+    background: var(--saiba-verde-escuro);
+}
+
+main > section.container.text-center h2 {
+    max-width: 850px;
+    margin: 0 auto;
+    color: #ffffff;
+}
+
+main > section.container.text-center p {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(255, 255, 255, 0.84);
+}
+
+/* Botão principal */
+main .btn-ecotech {
+    display: inline-block;
+    padding: 13px 30px;
+    border: 2px solid var(--saiba-verde);
+    border-radius: 999px;
+    background: var(--saiba-verde);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 750;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+main .btn-ecotech:hover {
+    transform: translateY(-3px);
+    border-color: #ffffff;
+    background: #ffffff;
+    color: var(--saiba-verde-escuro);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Ajustes para tablets e celulares */
+@media (max-width: 768px) {
+    main #sobre,
+    main #circular,
+    main #funciona,
+    main #diferencial,
+    main #lab,
+    main #problema,
+    main #ecopontos {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+
+    main .banner-ecotech {
+        max-height: 300px;
+    }
+
+    main p {
+        font-size: 0.98rem;
+        line-height: 1.75;
+    }
+
+    main .card {
+        border-radius: 17px;
+    }
+
+    main .ciclo-ecotech {
+        padding: 10px 0;
+    }
+
+    main #funciona .text-center.mt-5 p {
+        font-size: 0.9rem !important;
+    }
+
+    main > section.container.text-center {
+        padding: 65px 20px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    main h2 {
+        font-size: 1.75rem;
+    }
+
+    main .card .fs-1 {
+        width: 66px;
+        height: 66px;
+        font-size: 2rem !important;
+    }
+
+    main #ecopontos thead th,
+    main #ecopontos tbody td {
+        padding: 12px 8px;
+        font-size: 0.88rem;
+    }
+
+    main #funciona .text-center.mt-5 {
+        padding: 20px 14px;
+    }
+}
+
+/* CORREÇÃO DO LAYOUT GERAL */
+
+html,
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--saiba-fundo);
+}
+
+main {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+}
+
+
+/* Cards da seção O PROBLEMA */
+#problema .row > div {
+    display: flex;
+}
+
+#problema .card {
+    width: 100%;
+    min-height: 255px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+#problema .card .fs-1 {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#problema .card h3 {
+    min-height: 30px;
+}

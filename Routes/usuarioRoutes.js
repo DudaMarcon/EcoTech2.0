@@ -66,7 +66,7 @@ router.post("/login", async (req, res) => {
             return res.redirect("/admin");
         }
 
-        return res.redirect("/usuario/dashboard");
+        return res.redirect("/");
 
     } catch (erro) {
         console.log(erro);

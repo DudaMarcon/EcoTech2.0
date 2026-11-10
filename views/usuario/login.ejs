@@ -1,80 +1,81 @@
 <%- include("../partials/header") %>
 
-    <main class="main-content">
-        <div class="container mt-5">
+<main class="auth-container">
+    <link rel="stylesheet" href="/css/loginCadastro.css">
 
-            <div class="row justify-content-center">
+    <section class="auth-card">
 
-                <div class="col-md-6">
+        <div class="auth-heading">
+            <span class="auth-eyebrow">BEM-VINDO DE VOLTA</span>
 
-                    <div class="card shadow">
+            <h1>Entre na sua conta.</h1>
 
-                        <div class="card-body">
-
-                            <h3 class="text-center mb-4">
-                                Login
-                            </h3>
-
-                            <form action="/login" method="POST">
-
-                                <div class="mb-3">
-
-                                    <label for="email" class="form-label">
-                                        E-mail
-                                    </label>
-
-                                    <input type="email"
-                                        class="form-control <%= (typeof erro !== 'undefined' && erro) ? 'campo-erro' : '' %>"
-                                        id="email" name="email" placeholder="Digite seu e-mail" required>
+            <p>Continue acompanhando sua jornada com a EcoTech.</p>
+        </div>
 
 
-                                    <small class="form-text text-muted">
-                                        Seu e-mail será utilizado para acessar sua conta.
-                                    </small>
-
-                                </div>
-
-
-                                <div class="mb-3">
-
-                                    <label for="senha" class="form-label">
-                                        Senha
-                                    </label>
-                                    <input type="password"
-                                        class="form-control <%= (typeof erro !== 'undefined' && erro) ? 'campo-erro' : '' %>"
-                                        id="senha" name="senha" placeholder="Digite sua senha" required>
-
-                                </div>
-
-                                <% if (typeof erro !=='undefined' && erro) { %>
-                                    <div class="texto-erro mb-3">
-                                        <%= erro %>
-                                    </div>
-                                    <% } %>
-                                        <button type="submit" class="btn btn-ecotech w-100">
-                                            Entrar
-                                        </button>
-
-                            </form>
+        <% if (typeof erro !== 'undefined' && erro) { %>
+            <div class="auth-error" role="alert">
+                <%= erro %>
+            </div>
+        <% } %>
 
 
-                            <div class="text-center mt-3">
+        <form action="/login" method="POST">
 
-                                <span>Não possui uma conta?</span>
+            <div class="auth-field">
 
-                                <a href="/cadastro">
-                                    Cadastre-se
-                                </a>
+                <label for="email">
+                    E-mail
+                </label>
 
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="seuemail@exemplo.com"
+                    required
+                >
 
             </div>
-        </div>
-    </main>
-    <%- include("../partials/footer") %>
+
+
+            <div class="auth-field">
+
+                <label for="senha">
+                    Senha
+                </label>
+
+                <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="Sua senha"
+                    required
+                >
+
+            </div>
+
+
+            <button type="submit" class="auth-submit">
+                Entrar
+            </button>
+
+        </form>
+
+
+        <p class="auth-switch">
+
+            Ainda não possui uma conta?
+
+            <a href="/cadastro">
+                Criar conta
+            </a>
+
+        </p>
+
+    </section>
+
+</main>
+
+<%- include("../partials/footer") %>

@@ -486,3 +486,132 @@ main {
 #problema .card h3 {
     min-height: 30px;
 }
+
+/* =========================================
+   TIPOGRAFIA — PÁGINA SAIBA MAIS
+========================================= */
+
+/* Fonte padrão */
+html,
+body,
+main,
+main *,
+main button,
+main a {
+    font-family: Arial, sans-serif;
+}
+
+/* Títulos principais */
+main h2 {
+    font-family: Arial, sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.45rem);
+    font-weight: 800;
+    letter-spacing: -0.7px;
+    line-height: 1.25;
+    color: var(--saiba-verde-escuro);
+}
+
+/* Subtítulos */
+main h3 {
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    line-height: 1.4;
+    color: var(--saiba-verde);
+}
+
+/* Textos */
+main p {
+    font-family: Arial, sans-serif;
+    font-size: 1.04rem;
+    font-weight: 400;
+    line-height: 1.85;
+    color: var(--saiba-texto-suave);
+}
+
+/* Palavras em destaque */
+main strong {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    color: var(--saiba-verde);
+}
+
+/* Textos dos cards */
+main .card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+}
+
+main .card p {
+    font-size: 0.96rem;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+/* Títulos das tabelas */
+main table th {
+    font-size: 0.98rem;
+    font-weight: 700;
+}
+
+/* Conteúdo das tabelas */
+main table td {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Frases de destaque */
+main #problema .text-center.mt-5 h3,
+main #diferencial .text-center.mt-5 h3 {
+    font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+/* Botões */
+main .btn {
+    font-family: Arial, sans-serif;
+    font-size: 0.98rem;
+    font-weight: 700;
+    letter-spacing: 0.1px;
+}
+
+/* Seção final */
+main.secao-final h2,
+main > section.secao-final h2 {
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    main p {
+        font-size: 0.98rem;
+        line-height: 1.75;
+    }
+
+    main .card h3 {
+        font-size: 1.1rem;
+    }
+
+    main .card p {
+        font-size: 0.94rem;
+    }
+}
+
+@media (max-width: 480px) {
+    main h2 {
+        font-size: 1.75rem;
+    }
+
+    main h3 {
+        font-size: 1.1rem;
+    }
+
+    main p {
+        font-size: 0.95rem;
+    }
+}

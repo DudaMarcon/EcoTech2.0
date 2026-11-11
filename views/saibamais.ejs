@@ -6,14 +6,14 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/svg+xml" href="/img/ecotech-facicon-claro.svg?v=2">
+    <link rel="icon" type="image/svg+xml" href="/img/ecotech-facicon-claro.svg?v=2">
     <title>Saiba mais | EcoTech</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- CSS da EcoTech -->
-    <link rel="stylesheet" href="/css/saiba-mais.css">
+    <link rel="stylesheet" href="/css/saibamais.css">
     <link rel="stylesheet" href="/css/footer.css">
 
 </head>
@@ -27,912 +27,911 @@
     <%- include("partials/header") %>
 
 
-    <!-- =========================
+        <!-- =========================
          CONTEÚDO PRINCIPAL
          ========================= -->
 
-    <main>
+        <main>
 
 
-        <!-- =========================
+            <!-- =========================
              1. BANNER
              ========================= -->
 
-        <section class="banner-container">
+            <section class="banner-container">
 
-            <img
-                src="../img/banner-tecnologia-1920x800.png "
-               
-            >
+                <img src="../img/banner-tecnologia-1920x800.png ">
 
-        </section>
-<style>
-   
-/* =========================
+            </section>
+            <style>
+                /* =========================
    BANNER ECOTECH
    ========================= */
 
-.banner-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px 20px;
-    margin: 0 auto;
-}
+                /* Esconder banner em celulares */
+                @media (max-width: 576px) {
+                    .banner-container {
+                        display: none !important;
+                    }
+                }
 
-.banner-ecotech {
-    display: block;
-    width: 100%;
-    max-width: 1200px;
-    height: auto;
-    object-fit: contain;
-    object-position: center;
-}
+                .banner-container {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0;
+                    margin: 0;
+                }
 
-/* Tablets */
-@media (max-width: 991px) {
-    .banner-container {
-        padding: 10px;
-    }
+                .banner-ecotech {
+                    display: block;
+                    width: 100%;
+                    max-width: 1200px;
+                    height: auto;
+                    object-fit: contain;
+                    object-position: center;
+                }
 
-    .banner-ecotech {
-        max-width: 100%;
-    }
-}
+                /* Tablets */
+                @media (max-width: 991px) {
+                    .banner-container {
+                        padding: 10px;
+                    }
 
-/* Celulares */
-@media (max-width: 576px) {
-    .banner-container {
-        padding: 5px;
-    }
+                    .banner-ecotech {
+                        max-width: 100%;
+                    }
+                }
 
-    .banner-ecotech {
-        width: 100%;
-        height: auto;
-    }
-}
+                /* Celulares */
+                @media (max-width: 576px) {
+                    .banner-container {
+                        padding: 5px;
+                    }
 
-</style>
+                    .banner-ecotech {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            </style>
 
-        <!-- =========================
+            <!-- =========================
              2. SOBRE A ECOTECH
              ========================= -->
 
-        <section id="sobre" class="container py-5">
+            <section id="sobre" class="container py-5">
 
-            <div class="text-center">
+                <div class="text-center">
 
-                <h2>
-                    Sobre a EcoTech
-                </h2>
+                    <h2>
+                        Sobre a EcoTech
+                    </h2>
 
-                <p class="mt-3">
+                    <p class="mt-3">
 
-                    A EcoTech é uma plataforma de gestão de resíduos
-                    eletroeletrônicos baseada na
-                    <strong>economia circular</strong>.
+                        A EcoTech é uma plataforma de gestão de resíduos
+                        eletroeletrônicos baseada na
+                        <strong>economia circular</strong>.
 
-                </p>
+                    </p>
 
-                <p>
+                    <p>
 
-                    Em vez de considerar um eletrônico como simples lixo,
-                    buscamos identificar possibilidades de
-                    <strong>reparo, reutilização, remanufatura e reciclagem</strong>.
+                        Em vez de considerar um eletrônico como simples lixo,
+                        buscamos identificar possibilidades de
+                        <strong>reparo, reutilização, remanufatura e reciclagem</strong>.
 
-                </p>
+                    </p>
 
-                <p>
+                    <p>
 
-                    Nosso objetivo é ajudar a aumentar o tempo de vida dos
-                    equipamentos e aproveitar seus componentes e materiais
-                    pelo maior tempo possível.
+                        Nosso objetivo é ajudar a aumentar o tempo de vida dos
+                        equipamentos e aproveitar seus componentes e materiais
+                        pelo maior tempo possível.
 
-                </p>
+                    </p>
 
-            </div>
+                </div>
 
-        </section>
+            </section>
 
 
-        <!-- =========================
+            <!-- =========================
              3. O PROBLEMA
              ========================= -->
 
-        <section id="problema" class="container py-5">
+            <section id="problema" class="container py-5">
 
-            <div class="text-center">
+                <div class="text-center">
 
-                <h2>
-                    Por que a EcoTech existe?
-                </h2>
+                    <h2>
+                        Por que a EcoTech existe?
+                    </h2>
 
-                <p class="mt-3">
+                    <p class="mt-3">
 
-                    Quando um equipamento eletrônico deixa de ser utilizado,
-                    ele nem sempre precisa ser descartado imediatamente.
+                        Quando um equipamento eletrônico deixa de ser utilizado,
+                        ele nem sempre precisa ser descartado imediatamente.
 
-                </p>
+                    </p>
 
-                <p>
+                    <p>
 
-                    Muitas vezes, ele ainda possui componentes que podem ser
-                    reparados, reutilizados ou aproveitados em outro equipamento.
+                        Muitas vezes, ele ainda possui componentes que podem ser
+                        reparados, reutilizados ou aproveitados em outro equipamento.
 
-                </p>
-
-            </div>
-
-
-            <!-- Cards -->
-
-            <div class="row g-4 mt-4">
-
-
-                <!-- Card 1 -->
-
-                <div class="col-md-4">
-
-                    <div class="card p-4 text-center h-100">
-
-                        <div class="fs-1">
-                            🔌
-                        </div>
-
-                        <h3 class="h5 mt-3">
-                            Eletrônicos sem uso
-                        </h3>
-
-                        <p>
-
-                            Equipamentos antigos ou com defeitos acabam ficando
-                            parados, mesmo quando ainda possuem componentes
-                            aproveitáveis.
-
-                        </p>
-
-                    </div>
+                    </p>
 
                 </div>
 
 
-                <!-- Card 2 -->
+                <!-- Cards -->
 
-                <div class="col-md-4">
+                <div class="row g-4 mt-4">
 
-                    <div class="card p-4 text-center h-100">
 
-                        <div class="fs-1">
-                            🗑️
+                    <!-- Card 1 -->
+
+                    <div class="col-md-4">
+
+                        <div class="card p-4 text-center h-100">
+
+                            <div class="fs-1">
+                                🔌
+                            </div>
+
+                            <h3 class="h5 mt-3">
+                                Eletrônicos sem uso
+                            </h3>
+
+                            <p>
+
+                                Equipamentos antigos ou com defeitos acabam ficando
+                                parados, mesmo quando ainda possuem componentes
+                                aproveitáveis.
+
+                            </p>
+
                         </div>
 
-                        <h3 class="h5 mt-3">
-                            Descarte inadequado
-                        </h3>
+                    </div>
 
-                        <p>
 
-                            O descarte incorreto de resíduos eletroeletrônicos
-                            pode dificultar o reaproveitamento de materiais.
+                    <!-- Card 2 -->
 
-                        </p>
+                    <div class="col-md-4">
+
+                        <div class="card p-4 text-center h-100">
+
+                            <div class="fs-1">
+                                🗑️
+                            </div>
+
+                            <h3 class="h5 mt-3">
+                                Descarte inadequado
+                            </h3>
+
+                            <p>
+
+                                O descarte incorreto de resíduos eletroeletrônicos
+                                pode dificultar o reaproveitamento de materiais.
+
+                            </p>
+
+                        </div>
 
                     </div>
+
+
+                    <!-- Card 3 -->
+
+                    <div class="col-md-4">
+
+                        <div class="card p-4 text-center h-100">
+
+                            <div class="fs-1">
+                                ♻️
+                            </div>
+
+                            <h3 class="h5 mt-3">
+                                Materiais desperdiçados
+                            </h3>
+
+                            <p>
+
+                                Muitos componentes presentes nos eletrônicos ainda
+                                podem continuar sendo utilizados em novos ciclos.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
 
                 </div>
 
 
-                <!-- Card 3 -->
+                <!-- Frase de destaque -->
 
-                <div class="col-md-4">
+                <div class="text-center mt-5">
 
-                    <div class="card p-4 text-center h-100">
+                    <h3 class="h4">
 
-                        <div class="fs-1">
-                            ♻️
-                        </div>
+                        A EcoTech busca transformar o descarte
+                        em uma oportunidade para criar novos ciclos.
 
-                        <h3 class="h5 mt-3">
-                            Materiais desperdiçados
-                        </h3>
-
-                        <p>
-
-                            Muitos componentes presentes nos eletrônicos ainda
-                            podem continuar sendo utilizados em novos ciclos.
-
-                        </p>
-
-                    </div>
+                    </h3>
 
                 </div>
 
-
-            </div>
-
-
-            <!-- Frase de destaque -->
-
-            <div class="text-center mt-5">
-
-                <h3 class="h4">
-
-                    A EcoTech busca transformar o descarte
-                    em uma oportunidade para criar novos ciclos.
-
-                </h3>
-
-            </div>
-
-        </section>
+            </section>
 
 
-        <!-- =========================
+            <!-- =========================
              4. ECONOMIA CIRCULAR
              ========================= -->
 
-        
-<!-- 4. ECONOMIA CIRCULAR -->
 
-<section id="circular" class="py-5">
+            <!-- 4. ECONOMIA CIRCULAR -->
 
-    <div class="container">
+            <section id="circular" class="py-5">
 
-        <div class="text-center">
+                <div class="container">
 
-            <h2>Economia Circular</h2>
+                    <div class="text-center">
 
-            <p class="mt-3">
-                A economia circular propõe uma mudança na forma como
-                utilizamos produtos e materiais.
-            </p>
+                        <h2>Economia Circular</h2>
 
-            <p>
-                Em vez de seguir apenas o caminho
-                <strong>produzir → usar → descartar</strong>,
-                buscamos manter os recursos em circulação pelo maior
-                tempo possível.
-            </p>
+                        <p class="mt-3">
+                            A economia circular propõe uma mudança na forma como
+                            utilizamos produtos e materiais.
+                        </p>
 
-        </div>
+                        <p>
+                            Em vez de seguir apenas o caminho
+                            <strong>produzir → usar → descartar</strong>,
+                            buscamos manter os recursos em circulação pelo maior
+                            tempo possível.
+                        </p>
 
-        <!-- Imagem do ciclo -->
+                    </div>
 
-        <div class="ciclo-ecotech">
-            <img
-                src="/img/Design sem nome.jpg"
-                alt="Ciclo da economia circular da EcoTech"
-            >
-        </div>
+                    <!-- Imagem do ciclo -->
 
-        <!-- Explicação do ciclo -->
+                    <div class="ciclo-ecotech">
+                        <img src="/img/Design sem nome.jpg" alt="Ciclo da economia circular da EcoTech">
+                    </div>
 
-        <div class="text-center mt-4">
-            <p>
-                O ciclo não termina necessariamente na reciclagem.
-                Antes disso, a EcoTech busca possibilidades de manter
-                o equipamento ou seus componentes em circulação.
-            </p>
-        </div>
+                    <!-- Explicação do ciclo -->
 
-    </div>
+                    <div class="text-center mt-4">
+                        <p>
+                            O ciclo não termina necessariamente na reciclagem.
+                            Antes disso, a EcoTech busca possibilidades de manter
+                            o equipamento ou seus componentes em circulação.
+                        </p>
+                    </div>
 
-</section>
+                </div>
+
+            </section>
 
 
-        <!-- =========================
+            <!-- =========================
              5. COMO FUNCIONA
              ========================= -->
 
-        <section id="funciona" class="container py-5">
+            <section id="funciona" class="container py-5">
 
-            <div class="text-center">
+                <div class="text-center">
 
-                <h2>
-                    Como funciona a EcoTech?
-                </h2>
+                    <h2>
+                        Como funciona a EcoTech?
+                    </h2>
 
-                <p class="mt-3">
+                    <p class="mt-3">
 
-                    A plataforma acompanha o eletrônico desde o cadastro
-                    até a definição de um novo destino.
+                        A plataforma acompanha o eletrônico desde o cadastro
+                        até a definição de um novo destino.
 
-                </p>
+                    </p>
 
-            </div>
-
-
-            <div class="row g-4 mt-4">
+                </div>
 
 
-                <!-- 1 -->
+                <div class="row g-4 mt-4">
 
-                <div class="col-md-4">
 
-                    <div class="card p-4 text-center h-100">
+                    <!-- 1 -->
 
-                        <div class="fs-1">
-                            👤
+                    <div class="col-md-4">
+
+                        <div class="card p-4 text-center h-100">
+
+                            <div class="fs-1">
+                                👤
+                            </div>
+
+                            <h3 class="h5 mt-3">
+                                1. Cadastro
+                            </h3>
+
+                            <p>
+
+                                O usuário cadastra o eletrônico, informando
+                                dados como tipo, estado e descrição do equipamento.
+
+                            </p>
+
                         </div>
 
-                        <h3 class="h5 mt-3">
-                            1. Cadastro
+                    </div>
+
+
+                    <!-- 2 -->
+
+                    <div class="col-md-4">
+
+                        <div class="card p-4 text-center h-100">
+
+                            <div class="fs-1">
+                                🔎
+                            </div>
+
+                            <h3 class="h5 mt-3">
+                                2. Análise
+                            </h3>
+
+                            <p>
+
+                                A EcoTech recebe as informações e analisa
+                                as condições do equipamento para identificar
+                                possibilidades de reaproveitamento.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- 3 -->
+
+                    <div class="col-md-4">
+
+                        <div class="card p-4 text-center h-100">
+
+                            <div class="fs-1">
+                                ♻️
+                            </div>
+
+                            <h3 class="h5 mt-3">
+                                3. Novo destino
+                            </h3>
+
+                            <p>
+
+                                O equipamento pode seguir para reparo,
+                                reutilização, remanufatura, aproveitamento
+                                de componentes ou reciclagem.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- Fluxo -->
+
+                <div class="text-center mt-5">
+
+                    <h3 class="h5">
+                        O fluxo da EcoTech
+                    </h3>
+
+                    <p class="fs-5 mt-3">
+
+                        <strong>USUÁRIO</strong>
+                        →
+                        <strong>CADASTRA ELETRÔNICO</strong>
+                        →
+                        <strong>ECOTECH ANALISA</strong>
+                        →
+                        <strong>DEFINE O DESTINO</strong>
+                        →
+                        <strong>NOVO CICLO</strong>
+
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- ECOPONTOS -->
+            <section id="ecopontos" class="py-5">
+
+                <div class="container">
+
+                    <div class="text-center mb-5">
+
+                        <h2>
+                            EcoPontos
+                        </h2>
+
+                        <p class="mt-3">
+                            Participe da economia circular e transforme suas ações
+                            em benefícios.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Explicação -->
+
+                    <div class="row justify-content-center mb-5">
+
+                        <div class="col-12 col-lg-9 text-center">
+
+                            <p>
+                                Os EcoPontos são uma forma de recompensar os usuários
+                                que participam do processo de destinação de resíduos
+                                eletroeletrônicos através da EcoTech.
+                            </p>
+
+                            <p>
+                                Ao cadastrar um eletrônico e participar do processo,
+                                o usuário pode receber pontos de acordo com as regras
+                                definidas pela plataforma. Esses pontos ficam
+                                acumulados em sua conta e podem ser utilizados para
+                                obter descontos em aparelhos disponíveis no
+                                EcoTech Market.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Como funciona -->
+
+                    <div class="row g-4 mb-5">
+
+                        <div class="col-12 col-md-4">
+
+                            <div class="card h-100 text-center p-4">
+
+                                <h3>
+                                    1. Cadastre
+                                </h3>
+
+                                <p>
+                                    Registre seu eletrônico na plataforma e informe
+                                    as condições do aparelho.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-12 col-md-4">
+
+                            <div class="card h-100 text-center p-4">
+
+                                <h3>
+                                    2. Participe
+                                </h3>
+
+                                <p>
+                                    A EcoTech analisa o eletrônico e define o destino
+                                    mais adequado dentro da economia circular.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-12 col-md-4">
+
+                            <div class="card h-100 text-center p-4">
+
+                                <h3>
+                                    3. Acumule
+                                </h3>
+
+                                <p>
+                                    Os EcoPontos recebidos ficam registrados na sua
+                                    conta para serem utilizados posteriormente.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Tabela -->
+
+                    <div class="text-center mb-4">
+
+                        <h3>
+                            Como os EcoPontos funcionam?
                         </h3>
 
                         <p>
+                            A quantidade de pontos pode variar de acordo com
+                            o eletrônico e sua condição.
+                        </p>
 
-                            O usuário cadastra o eletrônico, informando
-                            dados como tipo, estado e descrição do equipamento.
+                    </div>
 
+
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered table-hover text-center align-middle">
+
+                            <thead>
+                                <tr>
+                                    <th>Condição do eletrônico</th>
+                                    <th>EcoPontos</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Eletrônico em bom estado</td>
+                                    <td>+100 pontos</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Eletrônico para reparo</td>
+                                    <td>+75 pontos</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Eletrônico para reutilização de peças</td>
+                                    <td>+50 pontos</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Eletrônico para reciclagem</td>
+                                    <td>+25 pontos</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- Desconto -->
+
+                    <div class="text-center mt-5">
+
+                        <h3>
+                            Troque seus EcoPontos
+                        </h3>
+
+                        <p>
+                            Depois de acumular pontos suficientes, eles podem ser
+                            utilizados para conseguir descontos em aparelhos
+                            disponíveis no EcoTech Market.
                         </p>
 
                     </div>
 
                 </div>
 
+            </section>
 
-                <!-- 2 -->
-
-                <div class="col-md-4">
-
-                    <div class="card p-4 text-center h-100">
-
-                        <div class="fs-1">
-                            🔎
-                        </div>
-
-                        <h3 class="h5 mt-3">
-                            2. Análise
-                        </h3>
-
-                        <p>
-
-                            A EcoTech recebe as informações e analisa
-                            as condições do equipamento para identificar
-                            possibilidades de reaproveitamento.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- 3 -->
-
-                <div class="col-md-4">
-
-                    <div class="card p-4 text-center h-100">
-
-                        <div class="fs-1">
-                            ♻️
-                        </div>
-
-                        <h3 class="h5 mt-3">
-                            3. Novo destino
-                        </h3>
-
-                        <p>
-
-                            O equipamento pode seguir para reparo,
-                            reutilização, remanufatura, aproveitamento
-                            de componentes ou reciclagem.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- Fluxo -->
-
-            <div class="text-center mt-5">
-
-                <h3 class="h5">
-                    O fluxo da EcoTech
-                </h3>
-
-                <p class="fs-5 mt-3">
-
-                    <strong>USUÁRIO</strong>
-                    →
-                    <strong>CADASTRA ELETRÔNICO</strong>
-                    →
-                    <strong>ECOTECH ANALISA</strong>
-                    →
-                    <strong>DEFINE O DESTINO</strong>
-                    →
-                    <strong>NOVO CICLO</strong>
-
-                </p>
-
-            </div>
-
-        </section>
-
-        <!-- ECOPONTOS -->
-<section id="ecopontos" class="py-5">
-
-    <div class="container">
-
-        <div class="text-center mb-5">
-
-            <h2>
-                EcoPontos
-            </h2>
-
-            <p class="mt-3">
-                Participe da economia circular e transforme suas ações
-                em benefícios.
-            </p>
-
-        </div>
-
-
-        <!-- Explicação -->
-
-        <div class="row justify-content-center mb-5">
-
-            <div class="col-12 col-lg-9 text-center">
-
-                <p>
-                    Os EcoPontos são uma forma de recompensar os usuários
-                    que participam do processo de destinação de resíduos
-                    eletroeletrônicos através da EcoTech.
-                </p>
-
-                <p>
-                    Ao cadastrar um eletrônico e participar do processo,
-                    o usuário pode receber pontos de acordo com as regras
-                    definidas pela plataforma. Esses pontos ficam
-                    acumulados em sua conta e podem ser utilizados para
-                    obter descontos em aparelhos disponíveis no
-                    EcoTech Market.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Como funciona -->
-
-        <div class="row g-4 mb-5">
-
-            <div class="col-12 col-md-4">
-
-                <div class="card h-100 text-center p-4">
-
-                    <h3>
-                        1. Cadastre
-                    </h3>
-
-                    <p>
-                        Registre seu eletrônico na plataforma e informe
-                        as condições do aparelho.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-12 col-md-4">
-
-                <div class="card h-100 text-center p-4">
-
-                    <h3>
-                        2. Participe
-                    </h3>
-
-                    <p>
-                        A EcoTech analisa o eletrônico e define o destino
-                        mais adequado dentro da economia circular.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-12 col-md-4">
-
-                <div class="card h-100 text-center p-4">
-
-                    <h3>
-                        3. Acumule
-                    </h3>
-
-                    <p>
-                        Os EcoPontos recebidos ficam registrados na sua
-                        conta para serem utilizados posteriormente.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Tabela -->
-
-        <div class="text-center mb-4">
-
-            <h3>
-                Como os EcoPontos funcionam?
-            </h3>
-
-            <p>
-                A quantidade de pontos pode variar de acordo com
-                o eletrônico e sua condição.
-            </p>
-
-        </div>
-
-
-        <div class="table-responsive">
-
-            <table class="table table-bordered table-hover text-center align-middle">
-
-                <thead>
-                    <tr>
-                        <th>Condição do eletrônico</th>
-                        <th>EcoPontos</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <td>Eletrônico em bom estado</td>
-                        <td>+100 pontos</td>
-                    </tr>
-
-                    <tr>
-                        <td>Eletrônico para reparo</td>
-                        <td>+75 pontos</td>
-                    </tr>
-
-                    <tr>
-                        <td>Eletrônico para reutilização de peças</td>
-                        <td>+50 pontos</td>
-                    </tr>
-
-                    <tr>
-                        <td>Eletrônico para reciclagem</td>
-                        <td>+25 pontos</td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-
-        <!-- Desconto -->
-
-        <div class="text-center mt-5">
-
-            <h3>
-                Troque seus EcoPontos
-            </h3>
-
-            <p>
-                Depois de acumular pontos suficientes, eles podem ser
-                utilizados para conseguir descontos em aparelhos
-                disponíveis no EcoTech Market.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-        <!-- =========================
+            <!-- =========================
              6. DIFERENCIAL
              ========================= -->
 
-        <section id="diferencial" class="container py-5">
+            <section id="diferencial" class="container py-5">
 
-            <div class="text-center">
+                <div class="text-center">
 
-                <h2>
-                    Mais do que reciclar
-                </h2>
+                    <h2>
+                        Mais do que reciclar
+                    </h2>
 
-                <p class="mt-3">
+                    <p class="mt-3">
 
-                    A EcoTech não trata a reciclagem como único
-                    destino possível.
+                        A EcoTech não trata a reciclagem como único
+                        destino possível.
 
-                </p>
+                    </p>
 
-                <p>
+                    <p>
 
-                    O sistema busca primeiro identificar se o equipamento
-                    pode continuar sendo utilizado ou se seus componentes
-                    podem ser aproveitados.
+                        O sistema busca primeiro identificar se o equipamento
+                        pode continuar sendo utilizado ou se seus componentes
+                        podem ser aproveitados.
 
-                </p>
-
-            </div>
-
-
-            <div class="row g-4 mt-4">
-
-
-                <!-- Reparar -->
-
-                <div class="col-md-3">
-
-                    <div class="card p-4 text-center h-100">
-
-                        <div class="fs-1">
-                            🔧
-                        </div>
-
-                        <h3 class="h5 mt-3">
-                            Reparar
-                        </h3>
-
-                        <p>
-                            Recuperar o funcionamento do equipamento.
-                        </p>
-
-                    </div>
+                    </p>
 
                 </div>
 
 
-                <!-- Reutilizar -->
+                <div class="row g-4 mt-4">
 
-                <div class="col-md-3">
 
-                    <div class="card p-4 text-center h-100">
+                    <!-- Reparar -->
 
-                        <div class="fs-1">
-                            🔄
+                    <div class="col-md-3">
+
+                        <div class="card p-4 text-center h-100">
+
+                            <div class="fs-1">
+                                🔧
+                            </div>
+
+                            <h3 class="h5 mt-3">
+                                Reparar
+                            </h3>
+
+                            <p>
+                                Recuperar o funcionamento do equipamento.
+                            </p>
+
                         </div>
 
-                        <h3 class="h5 mt-3">
-                            Reutilizar
-                        </h3>
+                    </div>
 
-                        <p>
-                            Dar uma nova utilização ao equipamento.
-                        </p>
+
+                    <!-- Reutilizar -->
+
+                    <div class="col-md-3">
+
+                        <div class="card p-4 text-center h-100">
+
+                            <div class="fs-1">
+                                🔄
+                            </div>
+
+                            <h3 class="h5 mt-3">
+                                Reutilizar
+                            </h3>
+
+                            <p>
+                                Dar uma nova utilização ao equipamento.
+                            </p>
+
+                        </div>
 
                     </div>
+
+
+                    <!-- Remanufaturar -->
+
+                    <div class="col-md-3">
+
+                        <div class="card p-4 text-center h-100">
+
+                            <div class="fs-1">
+                                ⚙️
+                            </div>
+
+                            <h3 class="h5 mt-3">
+                                Remanufaturar
+                            </h3>
+
+                            <p>
+                                Aproveitar componentes e materiais
+                                em um novo ciclo.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Reciclar -->
+
+                    <div class="col-md-3">
+
+                        <div class="card p-4 text-center h-100">
+
+                            <div class="fs-1">
+                                ♻️
+                            </div>
+
+                            <h3 class="h5 mt-3">
+                                Reciclar
+                            </h3>
+
+                            <p>
+                                Encaminhar materiais que não possuem
+                                possibilidade de reaproveitamento.
+                            </p>
+
+                        </div>
+
+                    </div>
+
 
                 </div>
 
 
-                <!-- Remanufaturar -->
+                <div class="text-center mt-5">
 
-                <div class="col-md-3">
+                    <h3 class="h4">
 
-                    <div class="card p-4 text-center h-100">
+                        O objetivo é manter produtos, componentes
+                        e materiais em circulação pelo maior tempo possível.
 
-                        <div class="fs-1">
-                            ⚙️
-                        </div>
-
-                        <h3 class="h5 mt-3">
-                            Remanufaturar
-                        </h3>
-
-                        <p>
-                            Aproveitar componentes e materiais
-                            em um novo ciclo.
-                        </p>
-
-                    </div>
+                    </h3>
 
                 </div>
 
-
-                <!-- Reciclar -->
-
-                <div class="col-md-3">
-
-                    <div class="card p-4 text-center h-100">
-
-                        <div class="fs-1">
-                            ♻️
-                        </div>
-
-                        <h3 class="h5 mt-3">
-                            Reciclar
-                        </h3>
-
-                        <p>
-                            Encaminhar materiais que não possuem
-                            possibilidade de reaproveitamento.
-                        </p>
-
-                    </div>
-
-                </div>
+            </section>
 
 
-            </div>
-
-
-            <div class="text-center mt-5">
-
-                <h3 class="h4">
-
-                    O objetivo é manter produtos, componentes
-                    e materiais em circulação pelo maior tempo possível.
-
-                </h3>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
+            <!-- =========================
              7. ECOTECH LAB
              ========================= -->
 
-        <section id="lab" class="container py-5">
+            <section id="lab" class="container py-5">
 
-            <div class="text-center">
+                <div class="text-center">
+
+                    <h2>
+                        EcoTech Lab
+                    </h2>
+
+                    <p class="mt-3">
+
+                        O EcoTech Lab é um espaço voltado para
+                        <strong>tecnologia, inovação e sustentabilidade</strong>.
+
+                    </p>
+
+                    <p>
+
+                        A ideia é desenvolver e experimentar novas formas
+                        de aproveitar tecnologias, componentes e materiais,
+                        buscando soluções relacionadas à economia circular.
+
+                    </p>
+
+                </div>
+
+
+                <div class="row g-4 mt-4">
+
+
+                    <!-- Inovação -->
+
+                    <div class="col-md-4">
+
+                        <div class="card p-4 text-center h-100">
+
+                            <div class="fs-1">
+                                💡
+                            </div>
+
+                            <h3 class="h5 mt-3">
+                                Inovação
+                            </h3>
+
+                            <p>
+
+                                Novas ideias para problemas relacionados
+                                ao descarte eletrônico.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Tecnologia -->
+
+                    <div class="col-md-4">
+
+                        <div class="card p-4 text-center h-100">
+
+                            <div class="fs-1">
+                                💻
+                            </div>
+
+                            <h3 class="h5 mt-3">
+                                Tecnologia
+                            </h3>
+
+                            <p>
+
+                                Uso da tecnologia para desenvolver
+                                soluções sustentáveis.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Experimentação -->
+
+                    <div class="col-md-4">
+
+                        <div class="card p-4 text-center h-100">
+
+                            <div class="fs-1">
+                                🔧
+                            </div>
+
+                            <h3 class="h5 mt-3">
+                                Experimentação
+                            </h3>
+
+                            <p>
+
+                                Testes e projetos voltados
+                                ao reaproveitamento.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+             8. FECHAMENTO
+             ========================= -->
+
+            <section class="container text-center secao-final">
 
                 <h2>
-                    EcoTech Lab
+                    Um eletrônico pode ter mais de um destino.
                 </h2>
 
                 <p class="mt-3">
 
-                    O EcoTech Lab é um espaço voltado para
-                    <strong>tecnologia, inovação e sustentabilidade</strong>.
+                    Na EcoTech, acreditamos que tecnologia e sustentabilidade
+                    podem trabalhar juntas para criar novos ciclos.
 
                 </p>
 
-                <p>
+                <a href="/login" class="btn btn-ecotech mt-3">
+                    Começar agora
+                </a>
 
-                    A ideia é desenvolver e experimentar novas formas
-                    de aproveitar tecnologias, componentes e materiais,
-                    buscando soluções relacionadas à economia circular.
-
-                </p>
-
-            </div>
+            </section>
 
 
-            <div class="row g-4 mt-4">
-
-
-                <!-- Inovação -->
-
-                <div class="col-md-4">
-
-                    <div class="card p-4 text-center h-100">
-
-                        <div class="fs-1">
-                            💡
-                        </div>
-
-                        <h3 class="h5 mt-3">
-                            Inovação
-                        </h3>
-
-                        <p>
-
-                            Novas ideias para problemas relacionados
-                            ao descarte eletrônico.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Tecnologia -->
-
-                <div class="col-md-4">
-
-                    <div class="card p-4 text-center h-100">
-
-                        <div class="fs-1">
-                            💻
-                        </div>
-
-                        <h3 class="h5 mt-3">
-                            Tecnologia
-                        </h3>
-
-                        <p>
-
-                            Uso da tecnologia para desenvolver
-                            soluções sustentáveis.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Experimentação -->
-
-                <div class="col-md-4">
-
-                    <div class="card p-4 text-center h-100">
-
-                        <div class="fs-1">
-                            🔧
-                        </div>
-
-                        <h3 class="h5 mt-3">
-                            Experimentação
-                        </h3>
-
-                        <p>
-
-                            Testes e projetos voltados
-                            ao reaproveitamento.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </section>
+        </main>
 
 
         <!-- =========================
-             8. FECHAMENTO
-             ========================= -->
-
-        <section class="container text-center secao-final">
-
-            <h2>
-                Um eletrônico pode ter mais de um destino.
-            </h2>
-
-            <p class="mt-3">
-
-                Na EcoTech, acreditamos que tecnologia e sustentabilidade
-                podem trabalhar juntas para criar novos ciclos.
-
-            </p>
-
-            <a href="/login" class="btn btn-ecotech mt-3">
-                Começar agora
-            </a>
-
-        </section>
-
-
-    </main>
-
-
-    <!-- =========================
          RODAPÉ
          ========================= -->
 
-    <%- include("partials/footer") %>
+        <%- include("partials/footer") %>
 
 
-    <!-- Bootstrap JavaScript -->
+            <!-- Bootstrap JavaScript -->
 
-   
+
 </body>
 
 </html>

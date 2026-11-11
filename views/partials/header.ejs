@@ -3,9 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-
     <link rel="icon" type="image/svg+xml" href="/img/ecotech-facicon-claro.svg?v=2">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>EcoTech</title>
@@ -20,11 +18,8 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/footer.css">
 
-    <!-- Estilos da navbar e notificações -->
     <style>
-        /* ====================================== */
         /* NOTIFICAÇÕES */
-        /* ====================================== */
 
         #areaNotificacoes {
             position: relative;
@@ -56,7 +51,6 @@
             font-size: 10px;
         }
 
-        /* Menu de notificações */
         #menuNotificacoes {
             position: absolute;
             top: 100%;
@@ -69,14 +63,11 @@
             z-index: 2000;
         }
 
-        /* Exibir menu quando clicado */
         #menuNotificacoes.show {
             display: block;
         }
 
-        /* ====================================== */
         /* SAUDAÇÃO */
-        /* ====================================== */
 
         .saudacao-desktop {
             align-items: center;
@@ -86,9 +77,7 @@
             white-space: nowrap;
         }
 
-        /* ====================================== */
-        /* ALINHAMENTO DA NAVBAR */
-        /* ====================================== */
+        /* ALINHAMENTO DESKTOP */
 
         @media (min-width: 992px) {
 
@@ -123,12 +112,9 @@
                 margin: 0;
                 line-height: 1;
             }
-
         }
 
-        /* ====================================== */
         /* RESPONSIVIDADE */
-        /* ====================================== */
 
         @media (max-width: 991.98px) {
 
@@ -140,85 +126,66 @@
                 left: 0;
                 right: auto;
             }
-
         }
     </style>
-
 </head>
 
 <body>
 
-    <!-- ====================================== -->
     <!-- NAVBAR -->
-    <!-- ====================================== -->
 
     <nav class="navbar navbar-expand-lg">
 
         <div class="container">
 
-            <!-- Logo -->
+            <!-- LOGO -->
             <a href="/" class="navbar-brand">
-
                 <img src="/img/ecotech-vetorizado3.svg" alt="EcoTech" width="120">
-
             </a>
 
-            <!-- Botão abrir menu -->
+            <!-- BOTÃO MENU MOBILE -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
                 aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
 
-                <span class="navbar-toggler-icon" style="filter: brightness(0) invert(1);">
-                </span>
-
+                <span class="navbar-toggler-icon" style="filter: brightness(0) invert(1);"></span>
             </button>
 
-            <!-- Menu -->
+            <!-- MENU -->
             <div class="collapse navbar-collapse" id="menu">
 
-                <!-- Cabeçalho exclusivo do menu mobile -->
+                <!-- CABEÇALHO MOBILE -->
                 <div class="menu-mobile-header d-lg-none">
 
                     <a href="/">
-
                         <img src="/img/ecotech-vetorizado3.svg" alt="EcoTech" class="logo-menu-mobile">
-
                     </a>
 
                     <button type="button" class="btn-fechar-menu" data-bs-toggle="collapse" data-bs-target="#menu"
                         aria-label="Fechar menu">
 
                         <i class="bi bi-x-lg"></i>
-
                     </button>
 
                     <% if (nomeUsuario) { %>
-
                         <div class="saudacao-mobile">
                             Olá, <%= nomeUsuario %>!
                         </div>
-
                         <% } %>
 
                 </div>
 
-                <!-- Links da navbar -->
+                <!-- LINKS -->
                 <ul class="navbar-nav ms-auto">
 
                     <!-- INÍCIO -->
                     <li class="nav-item">
-
-                        <a class="nav-link" href="/">
-                            Início
-                        </a>
-
+                        <a class="nav-link" href="/">Início</a>
                     </li>
 
                     <!-- RECICLA -->
                     <li class="nav-item dropdown">
 
-                        <a class="nav-link" href="/recicla">
-                            Recicla
-                        </a>
+                        <a class="nav-link" href="/recicla">Recicla</a>
 
                         <button class="nav-link dropdown-toggle border-0 bg-transparent" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false" aria-label="Abrir submenu Recicla">
@@ -251,24 +218,17 @@
                             </li>
 
                         </ul>
-
                     </li>
 
                     <!-- ECOPRODUTOS -->
                     <li class="nav-item">
-
-                        <a class="nav-link" href="/ecoProdutos">
-                            EcoProdutos
-                        </a>
-
+                        <a class="nav-link" href="/ecoProdutos">EcoProdutos</a>
                     </li>
 
                     <!-- SAIBA MAIS -->
                     <li class="nav-item dropdown">
 
-                        <a class="nav-link" href="/saibamais">
-                            Saiba mais
-                        </a>
+                        <a class="nav-link" href="/saibamais">Saiba mais</a>
 
                         <button class="nav-link dropdown-toggle border-0 bg-transparent" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false" aria-label="Abrir submenu Saiba mais">
@@ -307,36 +267,27 @@
                             </li>
 
                         </ul>
-
                     </li>
 
-                    <!-- ====================================== -->
                     <!-- ÁREA DO USUÁRIO -->
-                    <!-- ====================================== -->
-
                     <% if (nomeUsuario) { %>
 
-                        <!-- ACESSO AO PAINEL -->
                         <% if (tipoUsuario==="admin" ) { %>
 
                             <li class="nav-item">
-
                                 <a class="nav-link" href="/admin">
                                     <i class="bi bi-speedometer2"></i>
                                     Painel Administrativo
                                 </a>
-
                             </li>
 
                             <% } else { %>
 
                                 <li class="nav-item">
-
                                     <a class="nav-link" href="/usuario/dashboard">
                                         <i class="bi bi-person-circle"></i>
                                         Olá, <%= nomeUsuario %>!
                                     </a>
-
                                 </li>
 
                                 <% } %>
@@ -352,13 +303,12 @@
                                             <span id="contadorNotificacoes"
                                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                                                 style="display: none;">
-
                                                 0
-
                                             </span>
 
                                         </button>
 
+                                        <!-- CARRINHO -->
                                         <a href="/carrinho" class="nav-link" title="Meu carrinho">
                                             <i class="bi bi-cart3 fs-5"></i>
                                         </a>
@@ -368,60 +318,41 @@
                                             class="dropdown-menu dropdown-menu-end notificacoes-menu p-3">
 
                                             <h6 class="fw-bold mb-3">
-
                                                 <i class="bi bi-bell me-2"></i>
-
                                                 Notificações
-
                                             </h6>
 
                                             <div id="listaNotificacoes">
-
                                                 <p class="text-muted small mb-0">
                                                     Carregando notificações...
                                                 </p>
-
                                             </div>
 
                                         </div>
-
                                     </li>
 
                                     <!-- SAIR -->
                                     <li class="nav-item">
-
                                         <a class="nav-link" href="/logout" title="Sair">
-
                                             <img src="/img/sair.png" alt="Logout" width="25">
-
                                         </a>
-
                                     </li>
 
                                     <% } else { %>
 
                                         <!-- ENTRAR -->
                                         <li class="nav-item">
-
-                                            <a class="nav-link" href="/login">
-                                                Entrar
-                                            </a>
-
+                                            <a class="nav-link" href="/login">Entrar</a>
                                         </li>
 
                                         <% } %>
 
                 </ul>
-
             </div>
-
         </div>
-
     </nav>
 
-    <!-- ====================================== -->
-    <!-- MODAL DE BUSCA DE ECOPONTOS -->
-    <!-- ====================================== -->
+    <!-- MODAL ECOPONTOS -->
 
     <div class="modal fade" id="modalEcopontos" tabindex="-1" aria-hidden="true">
 
@@ -432,11 +363,8 @@
                 <div class="modal-header">
 
                     <h5 class="modal-title">
-
                         <i class="bi bi-geo-alt"></i>
-
                         Ecopontos próximos de você
-
                     </h5>
 
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar">
@@ -447,37 +375,22 @@
                 <div class="modal-body">
 
                     <p id="statusEcopontos" class="text-muted">
-
                         Estamos procurando locais de descarte próximos a você...
-
                     </p>
 
                     <div id="listaEcopontos"></div>
 
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
-    <!-- ====================================== -->
     <!-- BOOTSTRAP JAVASCRIPT -->
-    <!-- ====================================== -->
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ====================================== -->
-    <!-- SCRIPT DOS MENUS -->
-    <!-- ====================================== -->
-
+    <!-- MENUS -->
     <script>
-
         document.addEventListener("DOMContentLoaded", function () {
-
-            // Hover somente nos menus tradicionais.
-            // Notificações possuem controle próprio.
 
             const dropdowns = document.querySelectorAll(
                 '.navbar .nav-item.dropdown:not(#areaNotificacoes)'
@@ -512,199 +425,148 @@
             });
 
         });
-
     </script>
 
-    <!-- ====================================== -->
-    <!-- SCRIPT MANUAL DO SINO -->
-    <!-- ====================================== -->
-
+    <!-- CONTROLE DO SINO -->
     <script>
-
         document.addEventListener("DOMContentLoaded", function () {
 
             const botao = document.getElementById("botaoNotificacoes");
-
             const menu = document.getElementById("menuNotificacoes");
 
             if (!botao || !menu) return;
 
-            // ABRIR E FECHAR AO CLICAR NO SINO
-
             botao.addEventListener("click", function (e) {
 
                 e.preventDefault();
-
                 e.stopPropagation();
 
                 const aberto = menu.classList.contains("show");
 
                 menu.classList.remove("show");
-
                 botao.setAttribute("aria-expanded", "false");
 
                 if (!aberto) {
-
                     menu.classList.add("show");
-
                     botao.setAttribute("aria-expanded", "true");
-
                 }
 
             });
 
-            // NÃO FECHAR AO CLICAR DENTRO DO MENU
-
             menu.addEventListener("click", function (e) {
-
                 e.stopPropagation();
-
             });
-
-            // FECHAR AO CLICAR FORA
 
             document.addEventListener("click", function () {
 
                 menu.classList.remove("show");
-
                 botao.setAttribute("aria-expanded", "false");
 
             });
 
-            // FECHAR COM ESC
-
             document.addEventListener("keydown", function (e) {
 
                 if (e.key === "Escape") {
-
-                    menu.classList.remove("show");
-
-                    botao.setAttribute("aria-expanded", "false");
-
+                    fecharMenuNotificacoes();
                 }
 
             });
 
         });
-
     </script>
 
-    <!-- ====================================== -->
-    <!-- SCRIPT DE NOTIFICAÇÕES -->
-    <!-- ====================================== -->
-
+    <!-- NOTIFICAÇÕES -->
     <script>
-
         document.addEventListener("DOMContentLoaded", () => {
 
             const lista = document.getElementById("listaNotificacoes");
-
             const contador = document.getElementById("contadorNotificacoes");
 
             if (!lista || !contador) return;
 
-            // ======================================
-            // CARREGAR NOTIFICAÇÕES
-            // ======================================
-
+            // BUSCAR NOTIFICAÇÕES NO SERVIDOR
             async function carregarNotificacoes() {
 
                 try {
 
-                    const resposta = await fetch("/api/notificacoes");
+                    const resposta = await fetch("/api/notificacoes", {
+                        method: "GET",
+                        headers: {
+                            "Accept": "application/json"
+                        }
+                    });
 
                     if (!resposta.ok) {
-
-                        throw new Error("Não foi possível carregar.");
-
+                        throw new Error(
+                            `Erro ao carregar notificações: HTTP ${resposta.status}`
+                        );
                     }
 
-                    const notificacoes = await resposta.json();
+                    const resultado = await resposta.json();
+
+                    // Aceita tanto um array direto quanto um objeto
+                    // contendo a propriedade notificacoes.
+                    const notificacoes = Array.isArray(resultado)
+                        ? resultado
+                        : resultado.notificacoes;
+
+                    if (!Array.isArray(notificacoes)) {
+                        throw new Error("Formato de notificações inválido.");
+                    }
 
                     lista.innerHTML = "";
 
                     // CONTAR NÃO LIDAS
-
                     const naoLidas = notificacoes.filter(n => !n.lida).length;
 
                     if (naoLidas > 0) {
-
                         contador.textContent = naoLidas;
-
                         contador.style.display = "inline-block";
-
                     } else {
-
                         contador.style.display = "none";
-
                     }
 
                     // NENHUMA NOTIFICAÇÃO
-
                     if (notificacoes.length === 0) {
 
                         lista.textContent = "Você ainda não tem notificações.";
-
                         lista.className = "text-muted small";
 
                         return;
-
                     }
 
                     lista.className = "";
 
                     // MOSTRAR NOTIFICAÇÕES
-
                     notificacoes.forEach(notificacao => {
 
                         const item = document.createElement("div");
-
                         item.className = "border-bottom pb-3 mb-3";
 
                         const titulo = document.createElement("strong");
-
                         titulo.textContent = notificacao.titulo || "Notificação";
 
                         const mensagem = document.createElement("p");
-
                         mensagem.className = "small text-muted mt-1 mb-2";
-
                         mensagem.textContent = notificacao.mensagem || "";
 
                         const botao = document.createElement("button");
-
                         botao.type = "button";
-
                         botao.className = "btn btn-sm btn-outline-success";
 
-                        // TEXTO DO BOTÃO
-
                         if (notificacao.tipo === "aprovado") {
-
                             botao.textContent = "Ver EcoProdutos";
-
                         } else if (notificacao.tipo === "rejeitado") {
-
                             botao.textContent = "Encontrar ecopontos";
-
                         } else {
-
                             botao.textContent = "Entendi";
-
                         }
-
-                        // DESTACAR NÃO LIDAS
 
                         if (!notificacao.lida) {
-
                             item.style.backgroundColor = "#f0f8f2";
-
                         }
 
-                        // ======================================
                         // CLIQUE NA NOTIFICAÇÃO
-                        // ======================================
-
                         botao.addEventListener("click", async () => {
 
                             try {
@@ -712,33 +574,25 @@
                                 botao.disabled = true;
 
                                 const respostaLida = await fetch(
-
                                     `/api/notificacoes/${encodeURIComponent(notificacao.id)}/lida`,
-
                                     {
                                         method: "POST"
                                     }
-
                                 );
 
                                 if (!respostaLida.ok) {
-
-                                    throw new Error("Não foi possível marcar como lida.");
-
+                                    throw new Error(
+                                        "Não foi possível marcar como lida."
+                                    );
                                 }
 
                                 // PRODUTO APROVADO
-
                                 if (notificacao.tipo === "aprovado") {
-
                                     window.location.href = "/ecoProdutos";
-
                                     return;
-
                                 }
 
                                 // PRODUTO REJEITADO
-
                                 if (notificacao.tipo === "rejeitado") {
 
                                     await carregarNotificacoes();
@@ -748,11 +602,9 @@
                                     abrirBuscaEcopontos();
 
                                     return;
-
                                 }
 
                                 // NOTIFICAÇÃO COMUM
-
                                 await carregarNotificacoes();
 
                             } catch (erro) {
@@ -766,9 +618,7 @@
                         });
 
                         item.appendChild(titulo);
-
                         item.appendChild(mensagem);
-
                         item.appendChild(botao);
 
                         lista.appendChild(item);
@@ -780,29 +630,24 @@
                     console.error("Erro nas notificações:", erro);
 
                     lista.textContent = "Não foi possível carregar as notificações.";
+                    lista.className = "text-muted small";
 
                 }
 
             }
 
             // CARREGAR AO ABRIR A PÁGINA
-
             carregarNotificacoes();
 
             // ATUALIZAR A CADA 30 SEGUNDOS
-
             setInterval(carregarNotificacoes, 30000);
 
         });
 
-        // ======================================
         // FECHAR MENU DE NOTIFICAÇÕES
-        // ======================================
-
         function fecharMenuNotificacoes() {
 
             const menu = document.getElementById("menuNotificacoes");
-
             const botao = document.getElementById("botaoNotificacoes");
 
             if (menu) {
@@ -814,23 +659,19 @@
             }
 
         }
+    </script>
 
-        // ======================================
-        // BUSCAR OS 3 ECOPONTOS MAIS PRÓXIMOS
-        // ======================================
-
+    <!-- BUSCAR ECOPONTOS -->
+    <script>
         async function abrirBuscaEcopontos() {
 
             const modalElemento = document.getElementById("modalEcopontos");
-
             const status = document.getElementById("statusEcopontos");
-
             const lista = document.getElementById("listaEcopontos");
 
             if (!modalElemento || !status || !lista || !window.bootstrap) {
 
                 console.error("Elementos do modal de ecopontos não encontrados.");
-
                 return;
 
             }
@@ -840,17 +681,15 @@
             modal.show();
 
             lista.innerHTML = "";
-
             status.textContent = "Obtendo sua localização...";
 
             // VERIFICAR SUPORTE À LOCALIZAÇÃO
-
             if (!navigator.geolocation) {
 
-                status.textContent = "Seu navegador não permite obter sua localização.";
+                status.textContent =
+                    "Seu navegador não permite obter sua localização.";
 
                 return;
-
             }
 
             navigator.geolocation.getCurrentPosition(
@@ -860,69 +699,116 @@
                     try {
 
                         const latitude = posicao.coords.latitude;
-
                         const longitude = posicao.coords.longitude;
-
                         const precisao = posicao.coords.accuracy;
 
                         console.log("Localização obtida:", {
-
                             latitude,
-
                             longitude,
-
                             precisao: `${Math.round(precisao)} metros`
-
                         });
 
-                        status.textContent = "Procurando pontos de reciclagem próximos...";
-
-                        // ======================================
-                        // CONSULTA OPENSTREETMAP
-                        // ======================================
+                        status.textContent =
+                            "Procurando pontos de reciclagem próximos...";
 
                         const consulta = `
+                            [out:json][timeout:40];
 
-                            [out:json][timeout:20];
-
-                            nwr(around:10000,${latitude},${longitude})["amenity"="recycling"];
+                            (
+                                node(around:5000,${latitude},${longitude})["amenity"="recycling"];
+                                way(around:5000,${latitude},${longitude})["amenity"="recycling"];
+                                relation(around:5000,${latitude},${longitude})["amenity"="recycling"];
+                            );
 
                             out center tags;
-
                         `;
 
-                        const resposta = await fetch(
-
+                        // SERVIDORES ALTERNATIVOS
+                        const servidoresOverpass = [
                             "https://overpass-api.de/api/interpreter",
+                            "https://overpass.private.coffee/api/interpreter",
+                            "https://maps.mail.ru/osm/tools/overpass/api/interpreter"
+                        ];
 
-                            {
+                        let dados = null;
+                        let ultimoErro = null;
 
-                                method: "POST",
+                        // TENTAR OS SERVIDORES ATÉ UM RESPONDER
+                        for (const servidor of servidoresOverpass) {
 
-                                headers: {
+                            const controlador = new AbortController();
 
-                                    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+                            const tempoLimite = setTimeout(() => {
+                                controlador.abort();
+                            }, 25000);
 
-                                },
+                            try {
 
-                                body: "data=" + encodeURIComponent(consulta)
+                                console.log("Tentando consultar:", servidor);
+
+                                const resposta = await fetch(servidor, {
+
+                                    method: "POST",
+
+                                    headers: {
+                                        "Content-Type":
+                                            "application/x-www-form-urlencoded; charset=UTF-8"
+                                    },
+
+                                    body: "data=" + encodeURIComponent(consulta),
+
+                                    signal: controlador.signal
+
+                                });
+
+                                if (!resposta.ok) {
+                                    throw new Error(`Erro HTTP ${resposta.status}`);
+                                }
+
+                                const resultado = await resposta.json();
+
+                                if (!Array.isArray(resultado.elements)) {
+                                    throw new Error("Resposta inválida da API.");
+                                }
+
+                                dados = resultado;
+
+                                console.log(
+                                    "Consulta concluída com sucesso:",
+                                    servidor
+                                );
+
+                                break;
+
+                            } catch (erro) {
+
+                                ultimoErro = erro;
+
+                                console.warn(
+                                    "Servidor indisponível:",
+                                    servidor,
+                                    erro.message
+                                );
+
+                            } finally {
+
+                                clearTimeout(tempoLimite);
 
                             }
 
-                        );
+                        }
 
-                        if (!resposta.ok) {
+                        // TODOS OS SERVIDORES FALHARAM
+                        if (!dados) {
 
-                            throw new Error("Falha ao consultar o OpenStreetMap.");
+                            throw new Error(
+                                "Todos os servidores de consulta estão indisponíveis. " +
+                                (ultimoErro?.message || "")
+                            );
 
                         }
 
-                        const dados = await resposta.json();
-
-                        // ======================================
                         // CALCULAR DISTÂNCIA
-                        // ======================================
-
                         function calcularDistancia(lat1, lon1, lat2, lon2) {
 
                             const R = 6371;
@@ -930,89 +816,62 @@
                             const rad = valor => valor * Math.PI / 180;
 
                             const dLat = rad(lat2 - lat1);
-
                             const dLon = rad(lon2 - lon1);
 
                             const a =
-
                                 Math.sin(dLat / 2) ** 2 +
-
                                 Math.cos(rad(lat1)) *
-
                                 Math.cos(rad(lat2)) *
-
                                 Math.sin(dLon / 2) ** 2;
 
                             return 2 * R * Math.atan2(
-
                                 Math.sqrt(a),
-
                                 Math.sqrt(1 - a)
-
                             );
 
                         }
 
-                        // ======================================
                         // ORGANIZAR PONTOS
-                        // ======================================
-
                         const pontos = dados.elements
 
                             .map(ponto => {
 
                                 const lat = ponto.lat ?? ponto.center?.lat;
-
                                 const lon = ponto.lon ?? ponto.center?.lon;
 
                                 if (lat == null || lon == null) {
-
                                     return null;
-
                                 }
 
                                 const tags = ponto.tags || {};
 
                                 const rua = tags["addr:street"] || "";
-
                                 const numero = tags["addr:housenumber"] || "";
-
                                 const bairro = tags["addr:suburb"] || "";
-
                                 const cidade = tags["addr:city"] || "";
 
                                 const endereco = [
-
                                     rua,
-
                                     numero,
-
                                     bairro,
-
                                     cidade
-
                                 ].filter(Boolean).join(", ");
 
                                 return {
 
-                                    nome: tags.name || tags.operator || "Ponto de reciclagem",
+                                    nome: tags.name ||
+                                        tags.operator ||
+                                        "Ponto de reciclagem",
 
                                     endereco,
-
                                     lat,
-
                                     lon,
 
                                     distancia: calcularDistancia(
-
                                         latitude,
-
                                         longitude,
-
                                         lat,
-
                                         lon
-
                                     )
 
                                 };
@@ -1023,10 +882,7 @@
 
                             .sort((a, b) => a.distancia - b.distancia);
 
-                        // ======================================
                         // REMOVER PONTOS DUPLICADOS
-                        // ======================================
-
                         const pontosUnicos = [];
 
                         pontos.forEach(ponto => {
@@ -1034,15 +890,10 @@
                             const duplicado = pontosUnicos.some(outro => {
 
                                 const distanciaEntrePontos = calcularDistancia(
-
                                     ponto.lat,
-
                                     ponto.lon,
-
                                     outro.lat,
-
                                     outro.lon
-
                                 );
 
                                 return distanciaEntrePontos < 0.1;
@@ -1050,41 +901,29 @@
                             });
 
                             if (!duplicado) {
-
                                 pontosUnicos.push(ponto);
-
                             }
 
                         });
 
-                        // ======================================
                         // NENHUM PONTO ENCONTRADO
-                        // ======================================
-
                         if (pontosUnicos.length === 0) {
 
                             status.textContent =
-
                                 "Não encontramos pontos de reciclagem cadastrados em um raio de 10 km.";
 
                             return;
-
                         }
 
-                        // ======================================
                         // MOSTRAR OS 3 MAIS PRÓXIMOS
-                        // ======================================
-
                         const tresMaisProximos = pontosUnicos.slice(0, 3);
 
                         status.textContent =
-
                             `Encontramos ${tresMaisProximos.length} pontos de reciclagem próximos de você.`;
 
                         if (precisao > 100) {
 
                             status.textContent +=
-
                                 ` Atenção: sua localização está aproximada (margem de ${Math.round(precisao)} metros).`;
 
                         }
@@ -1092,39 +931,28 @@
                         tresMaisProximos.forEach(ponto => {
 
                             const card = document.createElement("div");
-
                             card.className = "border rounded p-3 mb-2";
 
                             const titulo = document.createElement("h6");
-
                             titulo.className = "fw-bold";
-
                             titulo.textContent = ponto.nome;
 
                             const endereco = document.createElement("p");
-
                             endereco.className = "mb-2 text-muted";
-
                             endereco.textContent =
-
                                 ponto.endereco || "Endereço não informado";
 
                             const link = document.createElement("a");
 
                             link.href =
-
                                 `https://www.openstreetmap.org/?mlat=${ponto.lat}&mlon=${ponto.lon}#map=18/${ponto.lat}/${ponto.lon}`;
 
                             link.target = "_blank";
-
                             link.rel = "noopener noreferrer";
-
                             link.textContent = "Ver localização no mapa";
 
                             card.appendChild(titulo);
-
                             card.appendChild(endereco);
-
                             card.appendChild(link);
 
                             lista.appendChild(card);
@@ -1136,17 +964,13 @@
                         console.error("Erro ao buscar ecopontos:", erro);
 
                         status.textContent =
-
                             "Não foi possível buscar os ecopontos no momento. Tente novamente mais tarde.";
 
                     }
 
                 },
 
-                // ======================================
                 // ERROS DE LOCALIZAÇÃO
-                // ======================================
-
                 (erro) => {
 
                     console.error("Erro ao obter localização:", erro);
@@ -1154,25 +978,21 @@
                     if (erro.code === 1) {
 
                         status.textContent =
-
                             "Permita o acesso à localização no navegador para encontrar pontos próximos.";
 
                     } else if (erro.code === 2) {
 
                         status.textContent =
-
                             "Não foi possível identificar sua localização.";
 
                     } else if (erro.code === 3) {
 
                         status.textContent =
-
                             "A localização demorou demais. Tente novamente.";
 
                     } else {
 
                         status.textContent =
-
                             "Não conseguimos acessar sua localização.";
 
                     }
@@ -1180,19 +1000,14 @@
                 },
 
                 {
-
                     enableHighAccuracy: true,
-
                     timeout: 20000,
-
                     maximumAge: 0
-
                 }
 
             );
 
         }
-
     </script>
 
 </body>

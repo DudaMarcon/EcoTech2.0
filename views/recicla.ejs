@@ -22,13 +22,20 @@
    BANNER ECOTECH
    ========================= */
 
+   /* Esconder banner em celulares */
+@media (max-width: 576px) {
+    .banner-container {
+        display: none !important;
+    }
+}
+
 .banner-container {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px 20px;
-    margin: 0 auto;
+    padding: 0;
+    margin: 0;
 }
 
 .banner-ecotech {

@@ -124,3 +124,99 @@
 .selo-eco i {
     font-size: 0.85rem;
 }
+
+/* ========================================
+   TIPOGRAFIA - ECOPRODUTOS
+======================================== */
+
+/* Fonte padrão da página */
+.intro-ecotech,
+.intro-ecotech *,
+section.container,
+section.container * {
+    font-family: Arial, sans-serif;
+}
+
+/* Título principal */
+.intro-ecotech h1 {
+    font-size: clamp(36px, 5vw, 50px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: var(--primary-color);
+}
+
+/* Palavra destacada */
+.intro-ecotech h1 span {
+    color: #198754;
+}
+
+/* Texto de destaque */
+.intro-description {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.6;
+    color: var(--primary-color);
+}
+
+/* Texto explicativo */
+.intro-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.9;
+    color: #555555;
+}
+
+/* Frase final */
+.intro-footer {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Títulos dos produtos */
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Descrição dos produtos */
+.card-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666666;
+}
+
+/* Preço */
+.card .fs-4 {
+    font-size: 1.4rem !important;
+    font-weight: 700;
+}
+
+/* Botão */
+.card .btn {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* Responsividade */
+@media (max-width: 576px) {
+    .intro-ecotech {
+        padding: 45px 18px;
+    }
+
+    .intro-ecotech h1 {
+        font-size: 36px;
+    }
+
+    .intro-description {
+        font-size: 18px;
+    }
+
+    .intro-text {
+        font-size: 15px;
+    }
+
+    .card-title {
+        font-size: 1.05rem;
+    }
+}

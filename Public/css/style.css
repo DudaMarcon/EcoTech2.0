@@ -786,3 +786,214 @@ footer p {
         max-width: 100%;
     }
 }
+
+/* =========================================
+   MENU MOBILE - AJUSTE DEFINITIVO
+========================================= */
+
+@media (max-width: 991.98px) {
+
+    /* Lista principal */
+    .navbar #menu .navbar-nav {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+        gap: 2px !important;
+        width: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Itens */
+    .navbar #menu .navbar-nav > .nav-item {
+        display: block;
+        width: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Links */
+    .navbar #menu .navbar-nav > .nav-item > .nav-link {
+        display: flex !important;
+        align-items: center !important;
+        min-height: 42px;
+        width: 100%;
+        margin: 0 !important;
+        padding: 10px 5px !important;
+        line-height: 1.3;
+        text-align: left !important;
+        transform: none !important;
+    }
+
+    /* Dropdown: link e botão ficam na mesma linha */
+    .navbar #menu .navbar-nav > .nav-item.dropdown {
+        display: flex !important;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .navbar #menu .navbar-nav > .nav-item.dropdown > a.nav-link {
+        flex: 1 1 0;
+        width: auto !important;
+    }
+
+    /* Botão da seta */
+    .navbar #menu .navbar-nav > .nav-item.dropdown > button.dropdown-toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex: 0 0 42px;
+        width: 42px !important;
+        min-height: 42px;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+    }
+
+    /* Seta visível */
+    .navbar #menu .navbar-nav > .nav-item.dropdown > button.dropdown-toggle::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid white;
+        border-bottom: 2px solid white;
+        transform: rotate(45deg);
+        transition: transform 0.2s ease;
+    }
+
+    .navbar #menu .navbar-nav > .nav-item.dropdown.show > button.dropdown-toggle::before {
+        transform: rotate(225deg);
+    }
+
+    /* Submenus */
+    .navbar #menu .navbar-nav > .nav-item.dropdown > .dropdown-menu {
+        position: static !important;
+        flex: 0 0 100%;
+        width: 100%;
+        margin: 0 !important;
+        padding: 5px 0 8px 12px !important;
+        border: none !important;
+        border-radius: 8px;
+        box-shadow: none !important;
+    }
+
+    .navbar #menu .dropdown-menu .dropdown-item {
+        min-height: 38px;
+        padding: 9px 12px !important;
+    }
+
+    /* Evita animação que desloca os links */
+    .navbar #menu .nav-link:hover {
+        transform: none !important;
+    }
+
+    /* Cabeçalho */
+    .menu-mobile-header {
+        margin-bottom: 10px !important;
+        padding-bottom: 15px !important;
+    }
+
+    .saudacao-mobile {
+        margin-top: 12px !important;
+    }
+
+    /* Notificações e carrinho */
+    #areaNotificacoes {
+        display: flex !important;
+        flex-wrap: wrap;
+        align-items: center !important;
+        gap: 12px;
+        width: 100%;
+        margin-top: 8px !important;
+    }
+
+    #areaNotificacoes #botaoNotificacoes,
+    #areaNotificacoes > a.nav-link {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: auto !important;
+        min-width: 40px;
+        min-height: 42px;
+        padding: 8px !important;
+        margin: 0 !important;
+    }
+
+    #areaNotificacoes .notificacoes-menu {
+        flex: 0 0 100%;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 8px 0 !important;
+    }
+
+    /* Link sair */
+    .navbar #menu .navbar-nav > .nav-item:last-child > .nav-link {
+        width: fit-content !important;
+        min-height: 42px;
+        padding: 8px 5px !important;
+    }
+}
+
+/* ======================================
+   TIPOGRAFIA PADRÃO ECOTECH
+   ====================================== */
+
+html,
+body,
+button,
+input,
+select,
+textarea {
+    font-family: Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+/* =========================
+   IDENTIDADE VISUAL ECOTECH
+   ========================= */
+
+:root {
+    --primary-color: #1F4037;
+    --secondary-color: #F3F2F0;
+    --dark-green: #3A6351;
+    --base-color: #F0EADC;
+    --card-color: #E8DFC9;
+    --text-color: #000000;
+}
+
+/* Fundo geral das seções */
+section {
+    color: var(--text-color);
+}
+
+/* Títulos */
+section h2,
+section h3 {
+    color: var(--primary-color);
+}
+
+/* Textos */
+section p {
+    color: var(--text-color);
+}
+
+/* Seções com fundo claro */
+section:nth-of-type(even) {
+    background-color: var(--base-color);
+}
+
+/* Seções com fundo secundário */
+section:nth-of-type(odd) {
+    background-color: var(--secondary-color);
+}

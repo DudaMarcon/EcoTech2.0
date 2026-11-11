@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cadastrar eletrônico | EcoTech</title>
+  <link rel="icon" type="image/svg+xml" href="/img/ecotech-facicon-claro.svg">
 
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="/css/footer.css" />
@@ -1192,6 +1193,17 @@ categoria.addEventListener("change", atualizarCampoTamanhoTela);
       document.getElementById("contadorproblema").textContent =
         `${problema.value.length}/300`;
     });
+
+    // Aviso de envio do produto para análise
+const formulario = document.querySelector(".formulario-cadastro");
+
+formulario.addEventListener("submit", () => {
+    alert(
+        "Produto enviado para análise!\n\n" +
+        "Seu eletrônico foi encaminhado para avaliação pela equipe EcoTech. " +
+        "Aguarde a análise antes de ele ser disponibilizado na plataforma."
+    );
+});
   </script>
 </body>
 </html>

@@ -97,3 +97,30 @@
         font-size: 15px;
     }
 }
+
+/* ========================================
+   SELO ECO - PRODUTOS ECOTECH
+======================================== */
+
+.selo-eco {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    background: #e8f5e9;
+    color: #218838;
+
+    border: 1px solid #b7dfbd;
+    border-radius: 20px;
+
+    padding: 4px 10px;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.selo-eco i {
+    font-size: 0.85rem;
+}

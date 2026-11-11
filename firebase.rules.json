@@ -1,0 +1,12 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "usuarios": {
+      ".indexOn": ["email"]
+    },
+    "produtos": {
+      ".indexOn": ["usuarioId", "status"]
+    }
+  }
+}

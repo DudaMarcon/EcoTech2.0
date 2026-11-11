@@ -1,11 +1,10 @@
-
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const cloudinary = require("../config/cloudinary");
+const fb = require("../lib/firebase");
 
-const FIREBASE_URL =
-    "https://ecotech-4344c-default-rtdb.firebaseio.com/";
+const TAMANHO_MAXIMO_FOTO = 5 * 1024 * 1024; // 5 MB
 
 // Recebe a imagem temporariamente na memória
 const storage = multer.memoryStorage();
@@ -13,7 +12,7 @@ const storage = multer.memoryStorage();
 const upload = multer({
     storage,
     limits: {
-        fileSize: 5 * 1024 * 1024 // 5 MB
+        fileSize: TAMANHO_MAXIMO_FOTO
     },
     fileFilter: (req, file, cb) => {
         const tiposPermitidos = [
@@ -29,6 +28,29 @@ const upload = multer({
         }
     }
 });
+
+// Executa o upload e responde aos erros do multer
+// (eles acontecem antes da rota, por isso precisam ser tratados aqui)
+function receberFoto(req, res, next) {
+    upload.single("foto")(req, res, (erro) => {
+        if (!erro) {
+            return next();
+        }
+
+        if (erro instanceof multer.MulterError) {
+            if (erro.code === "LIMIT_FILE_SIZE") {
+                return res.status(400).send(
+                    "A imagem deve ter no máximo 5 MB."
+                );
+            }
+
+            return res.status(400).send("Não foi possível enviar a imagem.");
+        }
+
+        // Erro do filtro de formato
+        return res.status(400).send(erro.message);
+    });
+}
 
 // Envia a imagem armazenada na memória para o Cloudinary
 function enviarImagem(buffer) {
@@ -51,20 +73,58 @@ function enviarImagem(buffer) {
     });
 }
 
+// Garante que o campo seja texto e limita o tamanho
+function texto(valor, limite = 100) {
+    return typeof valor === "string" ? valor.trim().slice(0, limite) : "";
+}
+
+function temChave(objeto, chave) {
+    return typeof chave === "string" && Object.hasOwn(objeto, chave);
+}
+
+// Exige login (e bloqueia o administrador)
+function exigirLogin(req, res, next) {
+    if (!req.session.uid) return res.redirect("/login");
+    if (req.session.tipo === "admin") return res.redirect("/admin");
+    next();
+}
+
 // Exibe a página de cadastro
-router.get("/cadastrarEletronicos", (req, res) => {
+router.get("/cadastrarEletronicos", exigirLogin, (req, res) => {
     res.render("usuario/cadastrarEletronicos");
 });
 
-router.get("/cadastrar-eletro", (req, res) => {
+router.get("/cadastrar-eletro", exigirLogin, (req, res) => {
     res.render("usuario/cadastrarEletronicos");
 });
+
+const nomesProdutos = {
+    celular: "Celular / Smartphone",
+    computador: "Computador / Notebook",
+    desktop: "Computador de mesa",
+    tablet: "Tablet",
+    televisao: "Televisão / Monitor",
+    perifericos: "Teclado / Mouse / Periféricos",
+    console: "Console de videogame",
+    impressora: "Impressora",
+    outro: "Outro eletrônico"
+};
+
+const nomesEstados = {
+    funcionando: "Funcionando normalmente",
+    defeito: "Com defeito",
+    danificado: "Danificado",
+    nao_testado: "Não testado"
+};
 
 // Cadastra o eletrônico e sua imagem
 router.post(
     "/cadastrarEletronicos",
-    upload.single("foto"),
+    exigirLogin,
+    receberFoto,
     async (req, res) => {
+        let resultadoImagem = null;
+
         try {
             const {
                 produto,
@@ -74,51 +134,17 @@ router.post(
                 preco
             } = req.body;
 
-            // Novos campos do eletrônico
-            const marcaProduto =
-                req.body.marca || req.body.marcaManual || "";
-
-            const modeloProduto =
-                req.body.modelo || req.body.modeloManual || "";
-
-            const armazenamento =
-                req.body.armazenamento || "";
-
-            const memoriaRam =
-                req.body.ram || "";
-
-            const tamanhoTela =
-                req.body.tamanhoTela || "";
-
-            const nomesProdutos = {
-                celular: "Celular / Smartphone",
-                computador: "Computador / Notebook",
-                tablet: "Tablet",
-                televisao: "Televisão / Monitor",
-                perifericos: "Teclado / Mouse / Periféricos",
-                console: "Console de videogame",
-                impressora: "Impressora",
-                outro: "Outro eletrônico"
-            };
-
-            const nomesEstados = {
-                funcionando: "Funcionando normalmente",
-                defeito: "Com defeito",
-                danificado: "Danificado",
-                nao_testado: "Não testado"
-            };
-
             if (
-                !nomesProdutos[produto] ||
-                !nomesEstados[funcionamento] ||
+                !temChave(nomesProdutos, produto) ||
+                !temChave(nomesEstados, funcionamento) ||
                 typeof problema !== "string" ||
                 !problema.trim() ||
                 problema.length > 300 ||
                 (descricao != null &&
                     (typeof descricao !== "string" ||
                         descricao.length > 500)) ||
-                preco === undefined ||
-                String(preco).trim() === "" ||
+                typeof preco !== "string" ||
+                preco.trim() === "" ||
                 !Number.isFinite(Number(preco)) ||
                 Number(preco) <= 0
             ) {
@@ -134,18 +160,18 @@ router.post(
             }
 
             // Faz upload da foto
-            const resultadoImagem = await enviarImagem(req.file.buffer);
+            resultadoImagem = await enviarImagem(req.file.buffer);
 
             // Dados do produto
             const novoProduto = {
                 nome: nomesProdutos[produto],
                 categoria: produto,
 
-                marca: marcaProduto,
-                modelo: modeloProduto,
-                armazenamento: armazenamento,
-                ram: memoriaRam,
-                tamanhoTela: tamanhoTela,
+                marca: texto(req.body.marca),
+                modelo: texto(req.body.modelo),
+                armazenamento: texto(req.body.armazenamento),
+                ram: texto(req.body.ram),
+                tamanhoTela: texto(req.body.tamanhoTela),
 
                 funcionamento,
                 estado: nomesEstados[funcionamento],
@@ -153,47 +179,35 @@ router.post(
                 descricaoCompleta: descricao?.trim() || "",
                 preco: Number(preco),
                 imagens: [resultadoImagem.secure_url],
+                imagemPublicId: resultadoImagem.public_id,
                 criadoEm: new Date().toISOString(),
 
-                  // Identificação de quem cadastrou
-                  usuarioId: req.session.uid,
+                // Identificação de quem cadastrou
+                usuarioId: req.session.uid,
 
-                 // Controle de aprovação administrativa
-                 status: "pendente"
+                // Controle de aprovação administrativa
+                status: "pendente"
             };
 
             // Salva o produto no Firebase Realtime Database
-            const resposta = await fetch(
-                `${FIREBASE_URL}/produtos.json`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(novoProduto)
-                }
-            );
-
-            if (!resposta.ok) {
-                throw new Error("Falha ao salvar no Firebase.");
-            }
+            await fb.criar(["produtos"], novoProduto);
 
             return res.redirect("/ecoProdutos");
 
         } catch (erro) {
-            console.error("ERRO AO CADASTRAR ELETRÔNICO:");
-            console.error(erro);
-            console.error("Mensagem:", erro.message);
-            console.error("HTTP Code:", erro.http_code);
+            console.error("ERRO AO CADASTRAR ELETRÔNICO:", erro.message);
 
-            if (erro instanceof multer.MulterError) {
-                return res.status(400).send(
-                    "A imagem deve ter no máximo 5 MB."
-                );
+            // Se a foto já subiu mas o produto não foi salvo, remove a foto
+            if (resultadoImagem && resultadoImagem.public_id) {
+                cloudinary.uploader
+                    .destroy(resultadoImagem.public_id, {
+                        resource_type: "image"
+                    })
+                    .catch(() => {});
             }
 
             return res.status(500).send(
-                "Erro ao cadastrar. Verifique o terminal."
+                "Não foi possível cadastrar o eletrônico. Tente novamente."
             );
         }
     }

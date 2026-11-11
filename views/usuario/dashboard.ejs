@@ -1,17 +1,106 @@
-<%- include("../partials/header") %>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/img/ecotech-facicon-claro.svg?v=2">
+    <title>Minha conta | EcoTech</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/usuarioDashboard.css">
+</head>
+<body>
+<div class="admin-layout">
+    <aside class="sidebar">
+        <div class="brand">
+            <h3>EcoTech<span>.</span></h3>
+            <small>ÁREA DO USUÁRIO</small>
+        </div>
+        <div class="menu-label">MENU PRINCIPAL</div>
+        <nav class="sidebar-nav">
+            <a href="/usuario/dashboard" class="nav-item active"><span class="nav-icon">▦</span> Visão geral</a>
+            <a href="/usuario/meus-eletro" class="nav-item"><span class="nav-icon">▤</span> Meus eletrônicos</a>
+            <a href="/ecoProdutos" class="nav-item"><span class="nav-icon">▧</span> EcoProdutos</a>
+            <a href="/cadastrarEletronicos" class="nav-item"><span class="nav-icon">＋</span> Cadastrar eletrônico</a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="/">← Voltar ao site</a>
+            <a href="/logout" class="logout-link">↪ Sair da conta</a>
+        </div>
+    </aside>
 
-<div class="container mt-5">
+    <main class="main-content">
+        <header class="topbar">
+            <div>
+                <span class="breadcrumb-text">EcoTech / Minha conta</span>
+                <h1>Visão geral</h1>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar"><%= (nomeUsuario || "U").charAt(0).toUpperCase() %></div>
+                <div><strong><%= nomeUsuario %></strong><small>Usuário</small></div>
+            </div>
+        </header>
 
-    <div class="text-center">
+        <div class="content-area">
+            <section class="welcome-section">
+                <h2>Olá, <%= nomeUsuario %>!</h2>
+                <p>Acompanhe seus eletrônicos cadastrados e descubra os produtos disponíveis na EcoTech.</p>
+            </section>
 
-        <h1>Usuário Cadastrado com Sucesso!</h1>
+            <section class="stats-section">
+                <div class="stat-item"><span>Meus cadastros</span><strong><%= totalProdutos %></strong><small>Total de eletrônicos enviados</small></div>
+                <div class="stat-item"><span>Aguardando análise</span><strong><%= produtosPendentes %></strong><small>Cadastros em avaliação</small></div>
+                <div class="stat-item"><span>Aprovados</span><strong><%= produtosAprovados %></strong><small>Disponíveis na plataforma</small></div>
+            </section>
 
-        <p class="mt-3">
-            Bem-vindo!
-        </p>
-<br><br><br>
-    </div>
+            <section class="approval-section user-store-section">
+                <div class="approval-content">
+                    <div>
+                        <span class="section-overline">ECONOMIA CIRCULAR</span>
+                        <h3>Explore a loja EcoProdutos</h3>
+                        <p>Confira os eletrônicos aprovados e encontre novas oportunidades de reutilização.</p>
+                    </div>
+                    <a href="/ecoProdutos" class="btn-approval">Acessar loja →</a>
+                </div>
+            </section>
 
+            <section class="activity-section">
+                <div class="section-heading user-section-heading">
+                    <div><h3>Meus últimos cadastros</h3><p>Acompanhe os eletrônicos que você enviou recentemente.</p></div>
+                    <a href="/usuario/meus-eletro" class="user-text-link">Ver todos →</a>
+                </div>
+
+                <% if (produtosRecentes.length === 0) { %>
+                    <div class="empty-state">
+                        <span>▧</span>
+                        <p>Você ainda não cadastrou nenhum eletrônico.</p>
+                        <a href="/cadastrarEletronicos" class="btn-approval">Cadastrar eletrônico</a>
+                    </div>
+                <% } else { %>
+                    <div class="user-product-list">
+                        <% produtosRecentes.forEach(produto => { %>
+                            <article class="user-product-item">
+                                <div class="user-product-image">
+                                    <% if (produto.imagens && produto.imagens.length > 0) { %>
+                                        <img src="<%= produto.imagens[0] %>" alt="<%= produto.nome || 'Eletrônico' %>">
+                                    <% } else { %><span>▧</span><% } %>
+                                </div>
+                                <div class="user-product-info">
+                                    <strong><%= produto.nome || "Eletrônico" %></strong>
+                                    <small><%= produto.marca || "Marca não informada" %> <%= produto.modelo || "" %></small>
+                                    <small><%= produto.criadoEm ? new Date(produto.criadoEm).toLocaleDateString("pt-BR") : "Data não informada" %></small>
+                                </div>
+                                <span class="status-pill status-<%= produto.status || 'pendente' %>">
+                                    <%= produto.status === "aprovado" ? "Aprovado" : produto.status === "rejeitado" ? "Não aprovado" : "Pendente" %>
+                                </span>
+                            </article>
+                        <% }) %>
+                    </div>
+                <% } %>
+            </section>
+
+            <footer class="admin-footer">EcoTech © 2026 — Área do usuário</footer>
+        </div>
+    </main>
 </div>
-
-<%- include("../partials/footer") %>
+</body>
+</html>

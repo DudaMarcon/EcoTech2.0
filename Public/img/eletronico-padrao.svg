@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Eletrônico sem foto">
+  <rect width="400" height="300" fill="#eef3ee"/>
+  <rect x="120" y="70" width="160" height="110" rx="10" fill="none" stroke="#5f7f63" stroke-width="8"/>
+  <rect x="136" y="86" width="128" height="78" rx="4" fill="#d5e2d6"/>
+  <path d="M170 200h60l8 20H162z" fill="#5f7f63"/>
+  <rect x="150" y="220" width="100" height="8" rx="4" fill="#5f7f63"/>
+  <text x="200" y="262" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#5f7f63">Sem foto</text>
+</svg>

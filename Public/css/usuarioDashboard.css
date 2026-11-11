@@ -1,0 +1,29 @@
+/* Complementos do painel do usuário. A base visual vem de admin.css. */
+.user-store-section { background: #f0eadc; border-color: #e4dccb; }
+.user-store-section .section-overline { color: #3a6351; }
+.user-store-section .btn-approval { background: #1f4037; }
+.user-store-section .btn-approval:hover { background: #3a6351; }
+.user-section-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.user-text-link { color: #32764e; text-decoration: none; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.user-text-link:hover { color: #194b32; text-decoration: underline; }
+.user-product-list { margin-top: 20px; }
+.user-product-item { display: flex; align-items: center; gap: 16px; padding: 16px 4px; border-top: 1px solid #e8ece8; }
+.user-product-image { width: 58px; height: 58px; flex: 0 0 58px; display: grid; place-items: center; overflow: hidden; border-radius: 7px; background: #f4f6f3; color: #32764e; font-size: 22px; }
+.user-product-image img { width: 100%; height: 100%; object-fit: cover; }
+.user-product-info { flex: 1; min-width: 0; }
+.user-product-info strong, .user-product-info small { display: block; }
+.user-product-info strong { color: #29352e; font-size: 13px; margin-bottom: 4px; }
+.user-product-info small { color: #828b84; font-size: 11px; margin-top: 3px; }
+.rejection-note { color: #9b4b43 !important; }
+.status-pill { display: inline-block; padding: 6px 10px; border-radius: 20px; font-size: 10px; font-weight: 600; white-space: nowrap; }
+.status-pendente { background: #fff3d9; color: #8a641c; }
+.status-aprovado { background: #e4f2e7; color: #286641; }
+.status-rejeitado { background: #f9e7e5; color: #9b4038; }
+.logout-link { display: block; margin-top: 13px; }
+.empty-state .btn-approval { display: inline-block; margin-top: 12px; }
+@media (max-width: 650px) {
+    .user-section-heading { align-items: flex-start; flex-direction: column; }
+    .user-product-item { align-items: flex-start; flex-wrap: wrap; }
+    .user-product-info { min-width: calc(100% - 80px); }
+    .status-pill { margin-left: 74px; }
+}

@@ -178,11 +178,25 @@ O projeto foi desenvolvido utilizando:
     │
     ├── Routes
     │   ├── adminRoutes.js
+    │   ├── cadastrarEletronicosRoutes.js
+    │   ├── ecoProdutosRoutes.js
     │   ├── eletronicoRoutes.js
     │   ├── impactoRoutes.js
+    │   ├── notificacaoRoutes.js
     │   ├── reciclaRoutes.js
     │   ├── sobreRoutes.js
-    │   └── usuarioRoutes.js
+    │   ├── usuarioRoutes.js
+    │   └── verificarLoginRoutes.js
+    │
+    ├── config
+    │   └── cloudinary.js
+    │
+    ├── lib
+    │   ├── firebase.js
+    │   └── senha.js
+    │
+    ├── scripts
+    │   └── migrar-senhas.js
     │
     ├── views
     │   ├── admin
@@ -193,6 +207,8 @@ O projeto foi desenvolvido utilizando:
     │   ├── recicla.ejs
     │   └── saibamais.ejs
     │
+    ├── .env.example
+    ├── firebase.rules.json
     ├── app.js
     ├── package.json
     └── package-lock.json
@@ -213,13 +229,32 @@ O projeto foi desenvolvido utilizando:
 
     npm install
 
-### 4. Inicie o servidor
+### 4. Configure as variáveis de ambiente
 
-    node app.js
+Copie o arquivo `.env.example` para `.env` e preencha os valores
+(Cloudinary e `SESSION_SECRET`). O arquivo `.env` não deve ser enviado ao Git.
 
-### 5. Acesse o projeto
+### 5. Inicie o servidor
+
+    npm start
+
+### 6. Acesse o projeto
 
     http://localhost:3000
+
+---
+
+## 🔐 Segurança e banco de dados
+
+- As senhas são salvas com hash (scrypt). Contas antigas, com senha em texto puro,
+  são convertidas automaticamente no primeiro login. Para converter todas de uma vez
+  (faça um backup antes): `npm run migrar-senhas`.
+- O acesso ao Firebase passa por `lib/firebase.js`, que valida todos os caminhos.
+- O arquivo `firebase.rules.json` traz regras recomendadas: bloqueiam o acesso
+  direto ao banco e criam os índices usados nas consultas. Ao publicá-las, defina
+  também `FIREBASE_AUTH` no `.env` (segredo do banco), senão o site perde o acesso.
+- Em produção, defina `NODE_ENV=production` e `SESSION_SECRET`. As sessões ficam na
+  memória do servidor; para vários servidores, use um armazenamento de sessão externo.
 
 ---
 

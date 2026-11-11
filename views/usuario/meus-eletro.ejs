@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/img/ecotech-facicon-claro.svg?v=2">
+    <title>Meus eletrônicos | EcoTech</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/usuarioDashboard.css">
+</head>
+<body>
+<div class="admin-layout">
+    <aside class="sidebar">
+        <div class="brand"><h3>EcoTech<span>.</span></h3><small>ÁREA DO USUÁRIO</small></div>
+        <div class="menu-label">MENU PRINCIPAL</div>
+        <nav class="sidebar-nav">
+            <a href="/usuario/dashboard" class="nav-item"><span class="nav-icon">▦</span> Visão geral</a>
+            <a href="/usuario/meus-eletro" class="nav-item active"><span class="nav-icon">▤</span> Meus eletrônicos</a>
+            <a href="/ecoProdutos" class="nav-item"><span class="nav-icon">▧</span> EcoProdutos</a>
+            <a href="/cadastrarEletronicos" class="nav-item"><span class="nav-icon">＋</span> Cadastrar eletrônico</a>
+        </nav>
+        <div class="sidebar-footer"><a href="/">← Voltar ao site</a><a href="/logout" class="logout-link">↪ Sair da conta</a></div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div><span class="breadcrumb-text">EcoTech / Minha conta</span><h1>Meus eletrônicos</h1></div>
+            <div class="user-info"><div class="user-avatar"><%= (nomeUsuario || "U").charAt(0).toUpperCase() %></div><div><strong><%= nomeUsuario %></strong><small>Usuário</small></div></div>
+        </header>
+        <div class="content-area">
+            <section class="welcome-section"><h2>Meus eletrônicos</h2><p>Aqui você pode acompanhar todos os eletrônicos cadastrados na sua conta e o status de cada um.</p></section>
+            <section class="activity-section">
+                <div class="section-heading user-section-heading"><div><h3>Todos os cadastros</h3><p><%= produtos.length %> eletrônico(s) cadastrado(s).</p></div><a href="/cadastrarEletronicos" class="btn-approval">＋ Cadastrar eletrônico</a></div>
+                <% if (produtos.length === 0) { %>
+                    <div class="empty-state"><span>▧</span><p>Você ainda não cadastrou nenhum eletrônico.</p><a href="/cadastrarEletronicos" class="btn-approval">Fazer primeiro cadastro</a></div>
+                <% } else { %>
+                    <div class="user-product-list">
+                        <% produtos.forEach(produto => { %>
+                            <article class="user-product-item">
+                                <div class="user-product-image">
+                                    <% if (produto.imagens && produto.imagens.length > 0) { %><img src="<%= produto.imagens[0] %>" alt="<%= produto.nome || 'Eletrônico' %>"><% } else { %><span>▧</span><% } %>
+                                </div>
+                                <div class="user-product-info">
+                                    <strong><%= produto.nome || "Eletrônico" %></strong>
+                                    <small><%= [produto.marca, produto.modelo].filter(Boolean).join(" • ") || "Marca e modelo não informados" %></small>
+                                    <small>Enviado em: <%= produto.criadoEm ? new Date(produto.criadoEm).toLocaleDateString("pt-BR") : "Data não informada" %></small>
+                                    <% if (produto.status === "rejeitado" && produto.motivoRejeicao) { %><small class="rejection-note">Motivo: <%= produto.motivoRejeicao %></small><% } %>
+                                </div>
+                                <span class="status-pill status-<%= produto.status || 'pendente' %>"><%= produto.status === "aprovado" ? "Aprovado" : produto.status === "rejeitado" ? "Não aprovado" : "Pendente" %></span>
+                            </article>
+                        <% }) %>
+                    </div>
+                <% } %>
+            </section>
+            <footer class="admin-footer">EcoTech © 2026 — Área do usuário</footer>
+        </div>
+    </main>
+</div>
+</body>
+</html>

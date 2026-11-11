@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const FIREBASE_URL =
-    "https://ecotech-4344c-default-rtdb.firebaseio.com/";
+const fb = require("../lib/firebase");
 
 // ========================================
 // BUSCAR NOTIFICAÇÕES DO USUÁRIO
@@ -16,15 +15,7 @@ router.get("/api/notificacoes", async (req, res) => {
             });
         }
 
-        const resposta = await fetch(
-            `${FIREBASE_URL}/notificacoes/${req.session.uid}.json`
-        );
-
-        if (!resposta.ok) {
-            throw new Error("Erro ao consultar notificações.");
-        }
-
-        const dados = await resposta.json();
+        const dados = await fb.ler(["notificacoes", req.session.uid]);
 
         const notificacoes = dados
             ? Object.entries(dados)
@@ -32,9 +23,9 @@ router.get("/api/notificacoes", async (req, res) => {
                     id,
                     ...notificacao
                 }))
-               .sort((a, b) =>
-    new Date(b.criadoEm) - new Date(a.criadoEm)
-)
+                .sort((a, b) =>
+                    new Date(b.criadoEm) - new Date(a.criadoEm)
+                )
             : [];
 
         res.json(notificacoes);
@@ -61,20 +52,31 @@ router.post("/api/notificacoes/:id/lida", async (req, res) => {
             });
         }
 
-        const resposta = await fetch(
-            `${FIREBASE_URL}/notificacoes/${req.session.uid}/${req.params.id}/lida.json`,
-            {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(true)
-            }
-        );
+        const idNotificacao = req.params.id;
 
-        if (!resposta.ok) {
-            throw new Error("Erro ao atualizar notificação.");
+        if (!fb.idValido(idNotificacao)) {
+            return res.status(400).json({
+                erro: "Notificação inválida."
+            });
         }
+
+        // Só atualiza notificações que realmente existem para este usuário
+        const existente = await fb.ler([
+            "notificacoes",
+            req.session.uid,
+            idNotificacao
+        ]);
+
+        if (!existente) {
+            return res.status(404).json({
+                erro: "Notificação não encontrada."
+            });
+        }
+
+        await fb.gravar(
+            ["notificacoes", req.session.uid, idNotificacao, "lida"],
+            true
+        );
 
         res.json({
             sucesso: true

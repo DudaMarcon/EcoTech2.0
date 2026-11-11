@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const FIREBASE_URL =
-    "https://ecotech-4344c-default-rtdb.firebaseio.com";
+const fb = require("../lib/firebase");
+const cloudinary = require("../config/cloudinary");
 
 // ========================================
 // VERIFICAR ADMINISTRADOR
@@ -20,30 +20,61 @@ function verificarAdmin(req, res, next) {
 // FUNÇÕES AUXILIARES
 // ========================================
 
-async function buscarFirebase(caminho) {
-    const resposta = await fetch(`${FIREBASE_URL}/${caminho}.json`);
-
-    if (!resposta.ok) {
-        throw new Error(`Erro ao consultar ${caminho}.`);
-    }
-
-    return resposta.json();
+// Lê um nó do Firebase (caminho em lista de segmentos ou texto fixo)
+function buscarFirebase(caminho) {
+    return fb.ler(caminho);
 }
 
 async function atualizarFirebase(caminho, dados, metodo = "PUT") {
-    const resposta = await fetch(`${FIREBASE_URL}/${caminho}.json`, {
-        method: metodo,
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(dados)
-    });
+    if (metodo === "POST") return fb.criar(caminho, dados);
+    if (metodo === "PATCH") return fb.atualizar(caminho, dados);
 
-    if (!resposta.ok) {
-        throw new Error(`Erro ao atualizar ${caminho}.`);
+    return fb.gravar(caminho, dados);
+}
+
+// Descobre o public_id do Cloudinary a partir da URL da imagem
+// (só aceita imagens da pasta ecotech/produtos)
+function publicIdDaUrl(url) {
+    if (typeof url !== "string") return null;
+
+    const encontrado = url.match(
+        /\/image\/upload\/(?:v\d+\/)?(ecotech\/produtos\/[A-Za-z0-9_-]+)\.[A-Za-z0-9]+(?:\?.*)?$/
+    );
+
+    return encontrado ? encontrado[1] : null;
+}
+
+// Remove as imagens do produto no Cloudinary (sem interromper a exclusão)
+async function apagarImagensDoProduto(produto) {
+    const ids = new Set();
+
+    if (
+        typeof produto.imagemPublicId === "string" &&
+        produto.imagemPublicId.startsWith("ecotech/produtos/")
+    ) {
+        ids.add(produto.imagemPublicId);
     }
 
-    return resposta.json();
+    for (const url of Array.isArray(produto.imagens) ? produto.imagens : []) {
+        const id = publicIdDaUrl(url);
+
+        if (id) ids.add(id);
+    }
+
+    const resultados = await Promise.allSettled(
+        [...ids].map((id) =>
+            cloudinary.uploader.destroy(id, { resource_type: "image" })
+        )
+    );
+
+    resultados.forEach((resultado) => {
+        if (resultado.status === "rejected") {
+            console.error(
+                "Não foi possível remover a imagem do Cloudinary:",
+                resultado.reason && resultado.reason.message
+            );
+        }
+    });
 }
 
 // Registra atividades sem interromper a aprovação caso o histórico falhe.
@@ -180,7 +211,11 @@ router.post("/aprovar-produto/:id", verificarAdmin, async (req, res) => {
     try {
         const idProduto = req.params.id;
 
-        const produto = await buscarFirebase(`produtos/${idProduto}`);
+        if (!fb.idValido(idProduto)) {
+            return res.status(400).send("Produto inválido.");
+        }
+
+        const produto = await buscarFirebase(["produtos", idProduto]);
 
         if (!produto || produto.status !== "pendente") {
             return res.redirect("/admin/aprovar-produtos");
@@ -190,10 +225,7 @@ router.post("/aprovar-produto/:id", verificarAdmin, async (req, res) => {
             throw new Error("Produto sem identificação do usuário.");
         }
 
-        await atualizarFirebase(
-            `produtos/${idProduto}/status`,
-            "aprovado"
-        );
+        await atualizarFirebase(["produtos", idProduto, "status"], "aprovado");
 
         const notificacao = {
             titulo: "Produto aprovado!",
@@ -205,7 +237,7 @@ router.post("/aprovar-produto/:id", verificarAdmin, async (req, res) => {
         };
 
         await atualizarFirebase(
-            `notificacoes/${produto.usuarioId}`,
+            ["notificacoes", produto.usuarioId],
             notificacao,
             "POST"
         );
@@ -235,7 +267,11 @@ router.post("/rejeitar-produto/:id", verificarAdmin, async (req, res) => {
     try {
         const idProduto = req.params.id;
 
-        const produto = await buscarFirebase(`produtos/${idProduto}`);
+        if (!fb.idValido(idProduto)) {
+            return res.status(400).send("Produto inválido.");
+        }
+
+        const produto = await buscarFirebase(["produtos", idProduto]);
 
         if (!produto || produto.status !== "pendente") {
             return res.redirect("/admin/aprovar-produtos");
@@ -245,10 +281,7 @@ router.post("/rejeitar-produto/:id", verificarAdmin, async (req, res) => {
             throw new Error("Produto sem identificação do usuário.");
         }
 
-        await atualizarFirebase(
-            `produtos/${idProduto}/status`,
-            "rejeitado"
-        );
+        await atualizarFirebase(["produtos", idProduto, "status"], "rejeitado");
 
         const notificacao = {
             titulo: "Produto não aprovado",
@@ -260,7 +293,7 @@ router.post("/rejeitar-produto/:id", verificarAdmin, async (req, res) => {
         };
 
         await atualizarFirebase(
-            `notificacoes/${produto.usuarioId}`,
+            ["notificacoes", produto.usuarioId],
             notificacao,
             "POST"
         );
@@ -291,11 +324,16 @@ router.get("/usuarios", verificarAdmin, async (req, res) => {
         const dados = await buscarFirebase("usuarios");
 
         const usuarios = dados
-            ? Object.entries(dados).map(([id, usuario]) => ({
-                ...usuario,
-                id,
-                criadoEm: usuario.criadoEm || usuario.dataCadastro || null
-            })).reverse()
+            ? Object.entries(dados).map(([id, usuario]) => {
+                // A senha nunca é enviada para a página
+                const { senha, ...dadosPublicos } = usuario;
+
+                return {
+                    ...dadosPublicos,
+                    id,
+                    criadoEm: usuario.criadoEm || usuario.dataCadastro || null
+                };
+            }).reverse()
             : [];
 
         res.render("admin/usuarios", {
@@ -369,24 +407,22 @@ router.post("/excluir-produto/:id", verificarAdmin, async (req, res) => {
     try {
         const idProduto = req.params.id;
 
+        if (!fb.idValido(idProduto)) {
+            return res.status(400).send("Produto inválido.");
+        }
+
         // Busca o produto antes de excluir
-        const produto = await buscarFirebase(`produtos/${idProduto}`);
+        const produto = await buscarFirebase(["produtos", idProduto]);
 
         if (!produto) {
             return res.redirect("/admin/produtos");
         }
 
         // Exclui do Firebase
-        const resposta = await fetch(
-            `${FIREBASE_URL}/produtos/${idProduto}.json`,
-            {
-                method: "DELETE"
-            }
-        );
+        await fb.remover(["produtos", idProduto]);
 
-        if (!resposta.ok) {
-            throw new Error("Erro ao excluir produto do Firebase.");
-        }
+        // Remove a foto do Cloudinary
+        await apagarImagensDoProduto(produto);
 
         // Registra a atividade no painel
         await registrarAtividade({

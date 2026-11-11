@@ -1,9 +1,16 @@
-
 const express = require("express");
 const router = express.Router();
 
-const FIREBASE_URL =
-    "https://ecotech-4344c-default-rtdb.firebaseio.com/";
+const fb = require("../lib/firebase");
+
+const IMAGEM_PADRAO = "/img/eletronico-padrao.svg";
+
+function formatarPreco(valor) {
+    return Number(valor || 0).toLocaleString("pt-BR", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
 
 // ========================================
 // LISTAR PRODUTOS DO FIREBASE
@@ -11,15 +18,7 @@ const FIREBASE_URL =
 
 router.get("/ecoProdutos", async (req, res) => {
     try {
-        const resposta = await fetch(
-            `${FIREBASE_URL}/produtos.json`
-        );
-
-        if (!resposta.ok) {
-            throw new Error("Erro ao consultar o Firebase.");
-        }
-
-        const dados = await resposta.json();
+        const dados = await fb.ler(["produtos"]);
 
         const produtos = dados
             ? Object.entries(dados)
@@ -29,12 +28,7 @@ router.get("/ecoProdutos", async (req, res) => {
                 .map(([id, dadosProduto]) => ({
                     ...dadosProduto,
                     id,
-                    preco: Number(
-                        dadosProduto.preco || 0
-                    ).toLocaleString("pt-BR", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2
-                    })
+                    preco: formatarPreco(dadosProduto.preco)
                 }))
                 .reverse()
             : [];
@@ -56,22 +50,13 @@ router.get("/ecoProdutos", async (req, res) => {
 
 router.get("/produto/:id", async (req, res) => {
     try {
-        const resposta = await fetch(
-            `${FIREBASE_URL}/produtos/${req.params.id}.json`
-        );
-
-        if (!resposta.ok) {
-            throw new Error("Erro ao consultar o Firebase.");
+        if (!fb.idValido(req.params.id)) {
+            return res.status(404).send("Produto não encontrado.");
         }
 
-        const dados = await resposta.json();
+        const dados = await fb.ler(["produtos", req.params.id]);
 
-        if (!dados) {
-            return res.status(404).send(
-                "Produto não encontrado."
-            );
-        }
-        if (dados.status !== "aprovado") {
+        if (!dados || dados.status !== "aprovado") {
             return res.status(404).send(
                 "Produto não encontrado."
             );
@@ -80,12 +65,7 @@ router.get("/produto/:id", async (req, res) => {
         const produto = {
             ...dados,
             id: req.params.id,
-            preco: Number(
-                dados.preco || 0
-            ).toLocaleString("pt-BR", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            })
+            preco: formatarPreco(dados.preco)
         };
 
         res.render("detalhesProduto", { produto });
@@ -117,16 +97,15 @@ router.post("/carrinho/adicionar/:id", async (req, res) => {
         const uid = req.session.uid;
         const idProduto = req.params.id;
 
-        // Busca o produto no Firebase
-        const respostaProduto = await fetch(
-            `${FIREBASE_URL}/produtos/${encodeURIComponent(idProduto)}.json`
-        );
-
-        if (!respostaProduto.ok) {
-            throw new Error("Erro ao consultar produto.");
+        if (!fb.idValido(idProduto)) {
+            return res.status(404).json({
+                sucesso: false,
+                mensagem: "Produto não encontrado ou indisponível."
+            });
         }
 
-        const produto = await respostaProduto.json();
+        // Busca o produto no Firebase
+        const produto = await fb.ler(["produtos", idProduto]);
 
         // Verifica se o produto existe e está aprovado
         if (!produto || produto.status !== "aprovado") {
@@ -136,40 +115,29 @@ router.post("/carrinho/adicionar/:id", async (req, res) => {
             });
         }
 
-        // Caminho do carrinho específico do usuário
-        const caminhoCarrinho =
-            `${FIREBASE_URL}/carrinhos/${encodeURIComponent(uid)}/${encodeURIComponent(idProduto)}.json`;
-
-        // Consulta se o produto já está no carrinho
-        const respostaCarrinho = await fetch(caminhoCarrinho);
-
-        if (!respostaCarrinho.ok) {
-            throw new Error("Erro ao consultar carrinho.");
+        // Cada eletrônico é uma peça única: o dono não pode comprá-lo
+        if (produto.usuarioId === uid) {
+            return res.status(400).json({
+                sucesso: false,
+                mensagem: "Você não pode adicionar o seu próprio eletrônico ao carrinho."
+            });
         }
 
-        const itemExistente = await respostaCarrinho.json();
+        // Cada eletrônico é uma peça única: não há como levar duas unidades
+        const itemExistente = await fb.ler(["carrinhos", uid, idProduto]);
 
-        // Define a quantidade
-        const quantidade = itemExistente
-            ? Number(itemExistente.quantidade || 1) + 1
-            : 1;
+        if (itemExistente) {
+            return res.status(409).json({
+                sucesso: false,
+                mensagem: "Este produto já está no seu carrinho."
+            });
+        }
 
-        // Salva no Firebase
-        const respostaSalvar = await fetch(caminhoCarrinho, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                produtoId: idProduto,
-                quantidade: quantidade,
-                adicionadoEm: new Date().toISOString()
-            })
+        await fb.gravar(["carrinhos", uid, idProduto], {
+            produtoId: idProduto,
+            quantidade: 1,
+            adicionadoEm: new Date().toISOString()
         });
-
-        if (!respostaSalvar.ok) {
-            throw new Error("Erro ao salvar produto no carrinho.");
-        }
 
         return res.json({
             sucesso: true,
@@ -197,52 +165,55 @@ router.get("/carrinho", async (req, res) => {
             return res.redirect("/login");
         }
 
-        const uid = encodeURIComponent(req.session.uid);
+        const uid = req.session.uid;
 
-        const respostaCarrinho = await fetch(
-            `${FIREBASE_URL}/carrinhos/${uid}.json`
+        const dadosCarrinho = await fb.ler(["carrinhos", uid]);
+
+        const itens = dadosCarrinho
+            ? Object.keys(dadosCarrinho).filter(fb.idValido)
+            : [];
+
+        // Busca todos os produtos do carrinho ao mesmo tempo
+        const encontrados = await Promise.all(
+            itens.map(async (idProduto) => ({
+                idProduto,
+                produto: await fb.ler(["produtos", idProduto])
+            }))
         );
 
-        if (!respostaCarrinho.ok) {
-            throw new Error("Erro ao consultar carrinho.");
+        const produtos = [];
+        const removidos = [];
+
+        for (const { idProduto, produto } of encontrados) {
+            // Produto excluído: limpa o item do carrinho
+            if (!produto) {
+                removidos.push(idProduto);
+                continue;
+            }
+
+            if (produto.status !== "aprovado") {
+                continue;
+            }
+
+            const preco = Number(produto.preco) || 0;
+
+            produtos.push({
+                id: idProduto,
+                nome: produto.nome,
+                imagem: produto.imagens && produto.imagens.length > 0
+                    ? produto.imagens[0]
+                    : IMAGEM_PADRAO,
+                preco,
+                precoFormatado: formatarPreco(preco),
+                quantidade: 1,
+                subtotal: preco
+            });
         }
 
-        const dadosCarrinho = await respostaCarrinho.json();
-
-        const produtos = [];
-
-        if (dadosCarrinho) {
-            for (const [idProduto, item] of Object.entries(dadosCarrinho)) {
-                const respostaProduto = await fetch(
-                    `${FIREBASE_URL}/produtos/${encodeURIComponent(idProduto)}.json`
-                );
-
-                if (!respostaProduto.ok) {
-                    throw new Error("Erro ao consultar produto.");
-                }
-
-                const produto = await respostaProduto.json();
-
-                if (produto && produto.status === "aprovado") {
-                    const quantidade = Number(item.quantidade) || 1;
-                    const preco = Number(produto.preco) || 0;
-
-                    produtos.push({
-                        id: idProduto,
-                        nome: produto.nome,
-                        imagem: produto.imagens && produto.imagens.length > 0
-                            ? produto.imagens[0]
-                            : "/img/eletronico-padrao.png",
-                        preco,
-                        precoFormatado: preco.toLocaleString("pt-BR", {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                        }),
-                        quantidade,
-                        subtotal: preco * quantidade
-                    });
-                }
-            }
+        if (removidos.length > 0) {
+            await Promise.allSettled(
+                removidos.map((id) => fb.remover(["carrinhos", uid, id]))
+            );
         }
 
         const total = produtos.reduce(
@@ -252,10 +223,7 @@ router.get("/carrinho", async (req, res) => {
 
         res.render("carrinho", {
             produtos,
-            total: total.toLocaleString("pt-BR", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            })
+            total: formatarPreco(total)
         });
 
     } catch (erro) {
@@ -273,17 +241,14 @@ router.delete("/carrinho/remover/:id", async (req, res) => {
             });
         }
 
-        const uid = encodeURIComponent(req.session.uid);
-        const idProduto = encodeURIComponent(req.params.id);
-
-        const resposta = await fetch(
-            `${FIREBASE_URL}carrinhos/${uid}/${idProduto}.json`,
-            { method: "DELETE" }
-        );
-
-        if (!resposta.ok) {
-            throw new Error("Erro ao remover produto do carrinho.");
+        if (!fb.idValido(req.params.id)) {
+            return res.status(400).json({
+                sucesso: false,
+                mensagem: "Produto inválido."
+            });
         }
+
+        await fb.remover(["carrinhos", req.session.uid, req.params.id]);
 
         return res.json({
             sucesso: true,

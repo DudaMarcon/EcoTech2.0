@@ -519,3 +519,10 @@
         font-size: 2.3rem;
     }
 }
+
+.impacto-card,
+.problema-card,
+.impacto-ecotech-card,
+.processo-card {
+    background-color: var(--primary-color) !important;
+}

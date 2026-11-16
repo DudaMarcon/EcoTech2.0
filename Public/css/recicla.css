@@ -430,7 +430,42 @@ body section.recicla-final {
     color: var(--primary-color);
 }
 
+/* ========================================
+   CORREÇÃO DA SEÇÃO UMA ESCOLHA IMPORTANTE
+======================================== */
 
+body section.recicla-importancia {
+    background-color: #1F4037 !important;
+}
+
+/* Título e texto da seção */
+body section.recicla-importancia h2 {
+    color: #FFFFFF !important;
+}
+
+body section.recicla-importancia .section-label {
+    color: #B8D5C5 !important;
+}
+
+body section.recicla-importancia p {
+    color: #E0E8E3 !important;
+}
+
+/* Cards Recuperar, Reduzir e Reaproveitar */
+body section.recicla-importancia .beneficios div {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px;
+    padding: 15px 18px;
+    margin-bottom: 12px;
+}
+
+body section.recicla-importancia .beneficios strong {
+    color: #FFFFFF !important;
+}
+
+body section.recicla-importancia .beneficios span {
+    color: #D1DDD7 !important;
+}
 /* ========================================
    FONTES
 ======================================== */

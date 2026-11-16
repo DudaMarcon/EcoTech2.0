@@ -4,14 +4,14 @@
    ========================================= */
 
 :root {
-    --saiba-verde: #245b43;
-    --saiba-verde-escuro: #173f30;
-    --saiba-verde-claro: #eaf2e9;
-    --saiba-fundo: #f7f8f2;
-    --saiba-card: #ffffff;
-    --saiba-texto: #35443a;
-    --saiba-texto-suave: #68766c;
-    --saiba-borda: #dce7dc;
+    --saiba-verde: #3A6351;
+    --saiba-verde-escuro: #1F4037;
+    --saiba-verde-claro: #F0EADC;
+    --saiba-fundo: #F0EADC;
+    --saiba-card: #E8DFC9;
+    --saiba-texto: #35443A;
+    --saiba-texto-suave: #68766C;
+    --saiba-borda: rgba(31, 64, 55, 0.15);
     --saiba-sombra: 0 10px 30px rgba(29, 69, 49, 0.09);
 }
 
@@ -614,4 +614,101 @@ main > section.secao-final h2 {
     main p {
         font-size: 0.95rem;
     }
+}
+
+/* =========================================
+   PADRONIZAÇÃO FINAL — CORES ECOTECH
+========================================= */
+
+/* Fundo geral */
+body {
+    background-color: #F0EADC !important;
+}
+
+/* Seções com fundo creme */
+main #sobre,
+main #circular,
+main #problema,
+main #funciona,
+main #diferencial,
+main #lab {
+    background-color: #F0EADC !important;
+}
+
+/* Cards em creme */
+main .card {
+    background-color: #E8DFC9 !important;
+    border: 1px solid rgba(31, 64, 55, 0.15);
+    border-radius: 18px;
+    box-shadow: var(--saiba-sombra);
+}
+
+/* Textos dos cards */
+main .card h3 {
+    color: #1F4037 !important;
+}
+
+main .card p {
+    color: #555F57 !important;
+}
+
+/* Títulos das seções claras */
+main #sobre h2,
+main #circular h2,
+main #problema h2,
+main #funciona h2,
+main #diferencial h2,
+main #lab h2 {
+    color: #1F4037 !important;
+}
+
+/* Seção EcoBits */
+main #ecopontos {
+    background-color: #1F4037 !important;
+}
+
+main #ecopontos h2,
+main #ecopontos h3 {
+    color: #FFFFFF !important;
+}
+
+main #ecopontos p {
+    color: #E0E8E3 !important;
+}
+
+/* Cards da seção EcoBits */
+main #ecopontos .card {
+    background-color: #E8DFC9 !important;
+}
+
+main #ecopontos .card h3 {
+    color: #1F4037 !important;
+}
+
+main #ecopontos .card p {
+    color: #555F57 !important;
+}
+
+/* Cabeçalho da tabela */
+main #ecopontos thead th {
+    background-color: #3A6351 !important;
+    color: #FFFFFF !important;
+}
+
+/* Linhas da tabela */
+main #ecopontos tbody tr:nth-child(even) td {
+    background-color: #F0EADC !important;
+}
+
+/* Fechamento */
+main > section.container.text-center {
+    background-color: #1F4037 !important;
+}
+
+main > section.container.text-center h2 {
+    color: #FFFFFF !important;
+}
+
+main > section.container.text-center p {
+    color: #E0E8E3 !important;
 }
